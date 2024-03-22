@@ -62,6 +62,7 @@ Module CRUD_Connection
         Form1.txtStudentAddress.Clear()
         Form1.txtStudentBday.Clear()
         Form1.txtStudentNum.Clear()
+        Form1.txtSearch.Clear()
 
     End Sub
 

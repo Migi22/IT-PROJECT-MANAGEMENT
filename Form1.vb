@@ -9,7 +9,7 @@ Public Class Form1
             '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
             '" & txtStudentNum.Text & "')")
 
-
+            reload_record()
 
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -75,6 +75,8 @@ Public Class Form1
             student_address='" & txtStudentAddress.Text & "', student_Birthday='" & txtStudentBday.Text & "'
             WHERE student_number='" & txtStudentNum.Text & "'")
 
+            reload_record()
+
 
 
         Catch ex As Exception
@@ -84,8 +86,29 @@ Public Class Form1
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Try
-            delete("DELETE FROM tbl_queue WHERE student_number='" & txtSearch.Text & "'")
+            delete("DELETE FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'")
             Call Form1_Load(sender, e)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
+        Try
+            With DataGridView1
+                txtStudentNum.Text = .CurrentRow.Cells("student_number").Value.ToString
+                txtFname.Text = .CurrentRow.Cells("fname").Value.ToString
+                txtMi.Text = .CurrentRow.Cells("m_i").Value.ToString
+                txtLname.Text = .CurrentRow.Cells("lname").Value.ToString
+                txtCourse.Text = .CurrentRow.Cells("course").Value.ToString
+                txtYearLevel.Text = .CurrentRow.Cells("year_level").Value.ToString
+                txtGuardianName.Text = .CurrentRow.Cells("guardian_name").Value.ToString
+                txtGuardianContNum.Text = .CurrentRow.Cells("guardian_contact_num").Value.ToString
+                txtStudentAddress.Text = .CurrentRow.Cells("student_address").Value.ToString
+                txtStudentBday.Text = .CurrentRow.Cells("student_Birthday").Value.ToString
+
+            End With
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

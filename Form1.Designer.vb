@@ -48,13 +48,19 @@ Partial Class Form1
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.btnBrowse = New System.Windows.Forms.Button()
+        Me.btnSaveImage = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(393, 351)
+        Me.DataGridView1.Location = New System.Drawing.Point(393, 270)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(514, 298)
         Me.DataGridView1.TabIndex = 24
@@ -63,7 +69,7 @@ Partial Class Form1
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(389, 270)
+        Me.Label10.Location = New System.Drawing.Point(41, 634)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(171, 20)
         Me.Label10.TabIndex = 22
@@ -73,7 +79,7 @@ Partial Class Form1
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(389, 209)
+        Me.Label9.Location = New System.Drawing.Point(41, 573)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(248, 20)
         Me.Label9.TabIndex = 21
@@ -83,7 +89,7 @@ Partial Class Form1
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(388, 147)
+        Me.Label8.Location = New System.Drawing.Point(40, 511)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(168, 20)
         Me.Label8.TabIndex = 20
@@ -93,7 +99,7 @@ Partial Class Form1
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(389, 83)
+        Me.Label7.Location = New System.Drawing.Point(41, 447)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(146, 20)
         Me.Label7.TabIndex = 19
@@ -162,7 +168,7 @@ Partial Class Form1
         'txtStudentBday
         '
         Me.txtStudentBday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStudentBday.Location = New System.Drawing.Point(393, 292)
+        Me.txtStudentBday.Location = New System.Drawing.Point(45, 656)
         Me.txtStudentBday.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentBday.Name = "txtStudentBday"
         Me.txtStudentBday.Size = New System.Drawing.Size(302, 26)
@@ -171,7 +177,7 @@ Partial Class Form1
         'txtGuardianContNum
         '
         Me.txtGuardianContNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGuardianContNum.Location = New System.Drawing.Point(393, 231)
+        Me.txtGuardianContNum.Location = New System.Drawing.Point(45, 595)
         Me.txtGuardianContNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianContNum.Name = "txtGuardianContNum"
         Me.txtGuardianContNum.Size = New System.Drawing.Size(302, 26)
@@ -180,7 +186,7 @@ Partial Class Form1
         'txtStudentAddress
         '
         Me.txtStudentAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStudentAddress.Location = New System.Drawing.Point(392, 169)
+        Me.txtStudentAddress.Location = New System.Drawing.Point(44, 533)
         Me.txtStudentAddress.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentAddress.Name = "txtStudentAddress"
         Me.txtStudentAddress.Size = New System.Drawing.Size(302, 26)
@@ -189,7 +195,7 @@ Partial Class Form1
         'txtGuardianName
         '
         Me.txtGuardianName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGuardianName.Location = New System.Drawing.Point(393, 105)
+        Me.txtGuardianName.Location = New System.Drawing.Point(45, 469)
         Me.txtGuardianName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianName.Name = "txtGuardianName"
         Me.txtGuardianName.Size = New System.Drawing.Size(302, 26)
@@ -263,7 +269,7 @@ Partial Class Form1
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(45, 458)
+        Me.btnSave.Location = New System.Drawing.Point(44, 710)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(85, 46)
         Me.btnSave.TabIndex = 26
@@ -272,7 +278,7 @@ Partial Class Form1
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(136, 458)
+        Me.btnUpdate.Location = New System.Drawing.Point(135, 710)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(85, 46)
         Me.btnUpdate.TabIndex = 26
@@ -281,7 +287,7 @@ Partial Class Form1
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(227, 458)
+        Me.btnDelete.Location = New System.Drawing.Point(226, 710)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(85, 46)
         Me.btnDelete.TabIndex = 26
@@ -291,17 +297,57 @@ Partial Class Form1
         'txtSearch
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(393, 659)
+        Me.txtSearch.Location = New System.Drawing.Point(393, 578)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(514, 26)
         Me.txtSearch.TabIndex = 12
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(393, 105)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(153, 138)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 27
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Location = New System.Drawing.Point(393, 634)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(153, 139)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 28
+        Me.PictureBox2.TabStop = False
+        '
+        'btnBrowse
+        '
+        Me.btnBrowse.Location = New System.Drawing.Point(567, 634)
+        Me.btnBrowse.Name = "btnBrowse"
+        Me.btnBrowse.Size = New System.Drawing.Size(115, 48)
+        Me.btnBrowse.TabIndex = 29
+        Me.btnBrowse.Text = "Browse"
+        Me.btnBrowse.UseVisualStyleBackColor = True
+        '
+        'btnSaveImage
+        '
+        Me.btnSaveImage.Location = New System.Drawing.Point(567, 688)
+        Me.btnSaveImage.Name = "btnSaveImage"
+        Me.btnSaveImage.Size = New System.Drawing.Size(115, 48)
+        Me.btnSaveImage.TabIndex = 29
+        Me.btnSaveImage.Text = "Save Image"
+        Me.btnSaveImage.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1011, 696)
+        Me.ClientSize = New System.Drawing.Size(1011, 830)
+        Me.Controls.Add(Me.btnSaveImage)
+        Me.Controls.Add(Me.btnBrowse)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnSave)
@@ -331,6 +377,8 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -362,4 +410,8 @@ Partial Class Form1
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents txtSearch As TextBox
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents btnBrowse As Button
+    Friend WithEvents btnSaveImage As Button
 End Class
