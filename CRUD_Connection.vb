@@ -102,11 +102,10 @@ Module CRUD_Connection
             da = New MySqlDataAdapter(sql, strcon)
             da.Fill(dt)
         Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'MessageBox.Show("An error occurred reloadtext(): " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             strcon.Close()
             da.Dispose()
-
         End Try
     End Sub
 
