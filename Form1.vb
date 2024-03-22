@@ -23,19 +23,35 @@ Public Class Form1
             MessageBox.Show("Student's Birthday is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             Try
-                create("INSERT INTO tbl_queue(fname, lname, m_i, course, year_level, guardian_name, guardian_contact_num,
-                student_address, student_Birthday, student_number)
-                VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
-                '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
-                '" & txtStudentNum.Text & "')")
+                ' Check if the student number already exists
+                Dim cmdCheck As New MySqlCommand("SELECT COUNT(*) FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'", strcon)
+                strcon.Open()
+                Dim count As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
+                strcon.Close()
 
-                reload_record()
+                If count > 0 Then
+                    MessageBox.Show("Student number already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    ' Insert the new record into the database
+                    create("INSERT INTO tbl_queue(fname, lname, m_i, course, year_level, guardian_name, guardian_contact_num,
+                    student_address, student_Birthday, student_number)
+                    VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
+                    '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
+                    '" & txtStudentNum.Text & "')")
 
+                    ' Reload records after inserting the new record
+                    reload_record()
+                End If
             Catch ex As Exception
                 MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                If strcon.State = ConnectionState.Open Then
+                    strcon.Close()
+                End If
             End Try
         End If
     End Sub
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reload_record() 'RELOAD THE DATAGRID VIEW UPON START'
@@ -52,36 +68,34 @@ Public Class Form1
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         Try
-            'reloadtxt("SELECT * FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'")
-            Dim sql As String
-            Dim cmd As New MySqlCommand
-            Dim dt As New DataTable
-            Dim da As New MySqlDataAdapter
-
-            strcon.Open()
-            sql = "SELECT * FROM tbl_queue WHERE student_number LIKE '%" & txtSearch.Text & "%'"
-            cmd.Connection = strcon
-            cmd.CommandText = sql
-            da.SelectCommand = cmd
-
-            da.Fill(dt)
-
-            DataGridView1.DataSource = dt
-
+            'NOTE: will add a a dropdown box para naay choices for filtering (Fname, Lname, or student number)
+            reloadtxt("SELECT * FROM tbl_queue WHERE fname LIKE '%" & txtSearch.Text & "%' OR lname LIKE '%" & txtSearch.Text & "'")
             If dt.Rows.Count > 0 Then
-                txtFname.Text = dt.Rows(0).Item("fname").ToString
-                txtLname.Text = dt.Rows(0).Item("lname").ToString
-                txtMi.Text = dt.Rows(0).Item("m_i").ToString
-                txtCourse.Text = dt.Rows(0).Item("course").ToString
-                txtYearLevel.Text = dt.Rows(0).Item("year_level").ToString
-                txtGuardianName.Text = dt.Rows(0).Item("guardian_name").ToString
-                txtGuardianContNum.Text = dt.Rows(0).Item("guardian_contact_num").ToString
-                txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
-                txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
-                txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
-                LoadImage()
+                DataGridView1.DataSource = dt
 
+
+                If dt.Rows.Count > 0 Then
+                    'Will load the Information of the students
+                    txtFname.Text = dt.Rows(0).Item("fname").ToString
+                    txtLname.Text = dt.Rows(0).Item("lname").ToString
+                    txtMi.Text = dt.Rows(0).Item("m_i").ToString
+                    txtCourse.Text = dt.Rows(0).Item("course").ToString
+                    txtYearLevel.Text = dt.Rows(0).Item("year_level").ToString
+                    txtGuardianName.Text = dt.Rows(0).Item("guardian_name").ToString
+                    txtGuardianContNum.Text = dt.Rows(0).Item("guardian_contact_num").ToString
+                    txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
+                    txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
+                    txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
+
+                    'Will load the picture
+                    If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
+                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+                    Else
+                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
+                    End If
+                End If
             End If
+
         Catch ex As Exception
             MessageBox.Show("An error occurred search text box: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
