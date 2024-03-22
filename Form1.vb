@@ -3,55 +3,48 @@ Imports System.IO
 
 Public Class Form1
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If txtFname.Text = "" Then
-            MessageBox.Show("First Name is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtLname.Text = "" Then
-            MessageBox.Show("Student Number is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtMi.Text = "" Then
-            MessageBox.Show("Middle Name is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtCourse.Text = "" Then
-            MessageBox.Show("Course is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtYearLevel.Text = "" Then
-            MessageBox.Show("Year Level is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtGuardianName.Text = "" Then
-            MessageBox.Show("Guardian's Name is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtStudentAddress.Text = "" Then
-            MessageBox.Show("Student's Address is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtGuardianContNum.Text = "" Then
-            MessageBox.Show("Guardian's Contact Number is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtStudentBday.Text = "" Then
-            MessageBox.Show("Student's Birthday is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            Try
-                ' Check if the student number already exists
-                Dim cmdCheck As New MySqlCommand("SELECT COUNT(*) FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'", strcon)
-                strcon.Open()
-                Dim count As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
+
+        'Loop method to check individually the text box if it is a blank
+        Dim requiredFields As New List(Of TextBox) From {txtFname, txtLname, txtMi, txtCourse, txtYearLevel, txtGuardianName, txtStudentAddress, txtGuardianContNum, txtStudentBday}
+        Dim requiredFieldNames As New List(Of String) From {"First Name", "Last Name", "Middle Name", "Course", "Year Level", "Guardian's Name", "Student's Address", "Guardian's Contact Number", "Student's Birthday"}
+
+        For i As Integer = 0 To requiredFields.Count - 1
+            If requiredFields(i).Text = "" Then
+                MessageBox.Show(requiredFieldNames(i) & " is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
+        Next
+        'End of loop
+
+        Try
+            ' Check if the student number already exists
+            Dim cmdCheck As New MySqlCommand("SELECT COUNT(*) FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'", strcon)
+            strcon.Open()
+            Dim count As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
+            strcon.Close()
+
+            If count > 0 Then
+                MessageBox.Show("Student number already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                ' Insert the new record into the database
+                create("INSERT INTO tbl_queue(fname, lname, m_i, course, year_level, guardian_name, guardian_contact_num,
+                        student_address, student_Birthday, student_number)
+                        VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
+                        '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
+                        '" & txtStudentNum.Text & "')")
+
+                ' Reload records after inserting the new record
+                reload_record()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If strcon.State = ConnectionState.Open Then
                 strcon.Close()
+            End If
+        End Try
 
-                If count > 0 Then
-                    MessageBox.Show("Student number already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Else
-                    ' Insert the new record into the database
-                    create("INSERT INTO tbl_queue(fname, lname, m_i, course, year_level, guardian_name, guardian_contact_num,
-                    student_address, student_Birthday, student_number)
-                    VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
-                    '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
-                    '" & txtStudentNum.Text & "')")
-
-                    ' Reload records after inserting the new record
-                    reload_record()
-                End If
-            Catch ex As Exception
-                MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Finally
-                If strcon.State = ConnectionState.Open Then
-                    strcon.Close()
-                End If
-            End Try
-        End If
     End Sub
-
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reload_record() 'RELOAD THE DATAGRID VIEW UPON START'
@@ -105,39 +98,29 @@ Public Class Form1
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If txtFname.Text = "" Then
-            MessageBox.Show("First Name is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtLname.Text = "" Then
-            MessageBox.Show("Student Number is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtMi.Text = "" Then
-            MessageBox.Show("Middle Name is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtCourse.Text = "" Then
-            MessageBox.Show("Course is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtYearLevel.Text = "" Then
-            MessageBox.Show("Year Level is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtGuardianName.Text = "" Then
-            MessageBox.Show("Guardian's Name is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtStudentAddress.Text = "" Then
-            MessageBox.Show("Student's Address is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtGuardianContNum.Text = "" Then
-            MessageBox.Show("Guardian's Contact Number is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ElseIf txtStudentBday.Text = "" Then
-            MessageBox.Show("Student's Birthday is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            Try
-                updates("UPDATE tbl_queue SET fname='" & txtFname.Text & "', lname='" & txtLname.Text & "', m_i='" & txtMi.Text & "', course='" & txtCourse.Text & "',
+        'Loop method to check individually the text box if it is a blank
+        Dim requiredFields As New List(Of TextBox) From {txtFname, txtLname, txtMi, txtCourse, txtYearLevel, txtGuardianName, txtStudentAddress, txtGuardianContNum, txtStudentBday}
+        Dim requiredFieldNames As New List(Of String) From {"First Name", "Last Name", "Middle Name", "Course", "Year Level", "Guardian's Name", "Student's Address", "Guardian's Contact Number", "Student's Birthday"}
+
+        For i As Integer = 0 To requiredFields.Count - 1
+            If requiredFields(i).Text = "" Then
+                MessageBox.Show(requiredFieldNames(i) & " is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
+        Next
+        'End of loop
+
+        Try
+            updates("UPDATE tbl_queue SET fname='" & txtFname.Text & "', lname='" & txtLname.Text & "', m_i='" & txtMi.Text & "', course='" & txtCourse.Text & "',
             year_level='" & txtYearLevel.Text & "', guardian_name='" & txtGuardianName.Text & "', guardian_contact_num='" & txtGuardianContNum.Text & "',
             student_address='" & txtStudentAddress.Text & "', student_Birthday='" & txtStudentBday.Text & "'
             WHERE student_number='" & txtStudentNum.Text & "'")
 
-                reload_record()
+            reload_record()
 
-
-
-            Catch ex As Exception
-                MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End If
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
