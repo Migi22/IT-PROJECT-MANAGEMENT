@@ -48,15 +48,15 @@ Partial Class Form1
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.picStudentPic = New System.Windows.Forms.PictureBox()
-        Me.picBrowserPic = New System.Windows.Forms.PictureBox()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.btnSaveImage = New System.Windows.Forms.Button()
         Me.txtPhoto = New System.Windows.Forms.TextBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.picBrowserPic = New System.Windows.Forms.PictureBox()
+        Me.picStudentPic = New System.Windows.Forms.PictureBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBrowserPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -260,7 +260,7 @@ Partial Class Form1
         '
         'lblStudentInfo
         '
-        Me.lblStudentInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblStudentInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.lblStudentInfo.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblStudentInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStudentInfo.Location = New System.Drawing.Point(0, 0)
@@ -306,26 +306,6 @@ Partial Class Form1
         Me.txtSearch.Size = New System.Drawing.Size(666, 26)
         Me.txtSearch.TabIndex = 12
         '
-        'picStudentPic
-        '
-        Me.picStudentPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picStudentPic.Location = New System.Drawing.Point(393, 105)
-        Me.picStudentPic.Name = "picStudentPic"
-        Me.picStudentPic.Size = New System.Drawing.Size(153, 138)
-        Me.picStudentPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picStudentPic.TabIndex = 27
-        Me.picStudentPic.TabStop = False
-        '
-        'picBrowserPic
-        '
-        Me.picBrowserPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picBrowserPic.Location = New System.Drawing.Point(393, 679)
-        Me.picBrowserPic.Name = "picBrowserPic"
-        Me.picBrowserPic.Size = New System.Drawing.Size(153, 139)
-        Me.picBrowserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picBrowserPic.TabIndex = 28
-        Me.picBrowserPic.TabStop = False
-        '
         'btnBrowse
         '
         Me.btnBrowse.Location = New System.Drawing.Point(567, 679)
@@ -354,6 +334,26 @@ Partial Class Form1
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'picBrowserPic
+        '
+        Me.picBrowserPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picBrowserPic.Location = New System.Drawing.Point(393, 679)
+        Me.picBrowserPic.Name = "picBrowserPic"
+        Me.picBrowserPic.Size = New System.Drawing.Size(153, 139)
+        Me.picBrowserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picBrowserPic.TabIndex = 28
+        Me.picBrowserPic.TabStop = False
+        '
+        'picStudentPic
+        '
+        Me.picStudentPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picStudentPic.Location = New System.Drawing.Point(393, 105)
+        Me.picStudentPic.Name = "picStudentPic"
+        Me.picStudentPic.Size = New System.Drawing.Size(153, 138)
+        Me.picStudentPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picStudentPic.TabIndex = 27
+        Me.picStudentPic.TabStop = False
         '
         'Form1
         '
@@ -394,8 +394,8 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBrowserPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
