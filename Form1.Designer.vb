@@ -54,6 +54,10 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.picBrowserPic = New System.Windows.Forms.PictureBox()
         Me.picStudentPic = New System.Windows.Forms.PictureBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblQueue = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBrowserPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,17 +66,17 @@ Partial Class Form1
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(393, 261)
+        Me.DataGridView1.Location = New System.Drawing.Point(45, 590)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 100
-        Me.DataGridView1.Size = New System.Drawing.Size(840, 360)
+        Me.DataGridView1.Size = New System.Drawing.Size(840, 228)
         Me.DataGridView1.TabIndex = 24
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(41, 634)
+        Me.Label10.Location = New System.Drawing.Point(378, 270)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(171, 20)
         Me.Label10.TabIndex = 22
@@ -82,7 +86,7 @@ Partial Class Form1
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(41, 573)
+        Me.Label9.Location = New System.Drawing.Point(699, 92)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(248, 20)
         Me.Label9.TabIndex = 21
@@ -92,7 +96,7 @@ Partial Class Form1
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(40, 511)
+        Me.Label8.Location = New System.Drawing.Point(41, 335)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(168, 20)
         Me.Label8.TabIndex = 20
@@ -102,7 +106,7 @@ Partial Class Form1
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(41, 447)
+        Me.Label7.Location = New System.Drawing.Point(699, 145)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(146, 20)
         Me.Label7.TabIndex = 19
@@ -112,7 +116,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(41, 387)
+        Me.Label6.Location = New System.Drawing.Point(378, 209)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(109, 20)
         Me.Label6.TabIndex = 18
@@ -122,7 +126,7 @@ Partial Class Form1
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(41, 329)
+        Me.Label5.Location = New System.Drawing.Point(378, 145)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 20)
         Me.Label5.TabIndex = 17
@@ -162,7 +166,7 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(41, 83)
+        Me.Label1.Location = New System.Drawing.Point(378, 92)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(158, 20)
         Me.Label1.TabIndex = 14
@@ -171,7 +175,7 @@ Partial Class Form1
         'txtStudentBday
         '
         Me.txtStudentBday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStudentBday.Location = New System.Drawing.Point(45, 656)
+        Me.txtStudentBday.Location = New System.Drawing.Point(382, 292)
         Me.txtStudentBday.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentBday.Name = "txtStudentBday"
         Me.txtStudentBday.Size = New System.Drawing.Size(302, 26)
@@ -180,7 +184,7 @@ Partial Class Form1
         'txtGuardianContNum
         '
         Me.txtGuardianContNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGuardianContNum.Location = New System.Drawing.Point(45, 595)
+        Me.txtGuardianContNum.Location = New System.Drawing.Point(703, 114)
         Me.txtGuardianContNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianContNum.Name = "txtGuardianContNum"
         Me.txtGuardianContNum.Size = New System.Drawing.Size(302, 26)
@@ -189,16 +193,16 @@ Partial Class Form1
         'txtStudentAddress
         '
         Me.txtStudentAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStudentAddress.Location = New System.Drawing.Point(44, 533)
+        Me.txtStudentAddress.Location = New System.Drawing.Point(45, 357)
         Me.txtStudentAddress.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentAddress.Name = "txtStudentAddress"
-        Me.txtStudentAddress.Size = New System.Drawing.Size(302, 26)
+        Me.txtStudentAddress.Size = New System.Drawing.Size(639, 26)
         Me.txtStudentAddress.TabIndex = 10
         '
         'txtGuardianName
         '
         Me.txtGuardianName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGuardianName.Location = New System.Drawing.Point(45, 469)
+        Me.txtGuardianName.Location = New System.Drawing.Point(703, 167)
         Me.txtGuardianName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianName.Name = "txtGuardianName"
         Me.txtGuardianName.Size = New System.Drawing.Size(302, 26)
@@ -207,7 +211,7 @@ Partial Class Form1
         'txtYearLevel
         '
         Me.txtYearLevel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtYearLevel.Location = New System.Drawing.Point(45, 409)
+        Me.txtYearLevel.Location = New System.Drawing.Point(382, 231)
         Me.txtYearLevel.Margin = New System.Windows.Forms.Padding(2)
         Me.txtYearLevel.Name = "txtYearLevel"
         Me.txtYearLevel.Size = New System.Drawing.Size(302, 26)
@@ -216,7 +220,7 @@ Partial Class Form1
         'txtCourse
         '
         Me.txtCourse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCourse.Location = New System.Drawing.Point(45, 351)
+        Me.txtCourse.Location = New System.Drawing.Point(382, 167)
         Me.txtCourse.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCourse.Name = "txtCourse"
         Me.txtCourse.Size = New System.Drawing.Size(302, 26)
@@ -252,7 +256,7 @@ Partial Class Form1
         'txtStudentNum
         '
         Me.txtStudentNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStudentNum.Location = New System.Drawing.Point(45, 105)
+        Me.txtStudentNum.Location = New System.Drawing.Point(382, 114)
         Me.txtStudentNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentNum.Name = "txtStudentNum"
         Me.txtStudentNum.Size = New System.Drawing.Size(302, 26)
@@ -265,14 +269,14 @@ Partial Class Form1
         Me.lblStudentInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStudentInfo.Location = New System.Drawing.Point(0, 0)
         Me.lblStudentInfo.Name = "lblStudentInfo"
-        Me.lblStudentInfo.Size = New System.Drawing.Size(1245, 52)
+        Me.lblStudentInfo.Size = New System.Drawing.Size(1143, 52)
         Me.lblStudentInfo.TabIndex = 25
         Me.lblStudentInfo.Text = "STUDENT INFORMATION"
         Me.lblStudentInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(45, 710)
+        Me.btnSave.Location = New System.Drawing.Point(45, 400)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(85, 46)
         Me.btnSave.TabIndex = 26
@@ -281,7 +285,7 @@ Partial Class Form1
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(135, 710)
+        Me.btnUpdate.Location = New System.Drawing.Point(135, 400)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(85, 46)
         Me.btnUpdate.TabIndex = 26
@@ -290,7 +294,7 @@ Partial Class Form1
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(226, 710)
+        Me.btnDelete.Location = New System.Drawing.Point(226, 400)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(85, 46)
         Me.btnDelete.TabIndex = 26
@@ -300,35 +304,35 @@ Partial Class Form1
         'txtSearch
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(567, 217)
+        Me.txtSearch.Location = New System.Drawing.Point(145, 559)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(666, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(740, 26)
         Me.txtSearch.TabIndex = 12
         '
         'btnBrowse
         '
-        Me.btnBrowse.Location = New System.Drawing.Point(567, 679)
+        Me.btnBrowse.Location = New System.Drawing.Point(909, 716)
         Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(115, 48)
+        Me.btnBrowse.Size = New System.Drawing.Size(208, 48)
         Me.btnBrowse.TabIndex = 29
         Me.btnBrowse.Text = "Browse"
         Me.btnBrowse.UseVisualStyleBackColor = True
         '
         'btnSaveImage
         '
-        Me.btnSaveImage.Location = New System.Drawing.Point(567, 733)
+        Me.btnSaveImage.Location = New System.Drawing.Point(909, 770)
         Me.btnSaveImage.Name = "btnSaveImage"
-        Me.btnSaveImage.Size = New System.Drawing.Size(115, 48)
+        Me.btnSaveImage.Size = New System.Drawing.Size(208, 48)
         Me.btnSaveImage.TabIndex = 29
         Me.btnSaveImage.Text = "Save Image"
         Me.btnSaveImage.UseVisualStyleBackColor = True
         '
         'txtPhoto
         '
-        Me.txtPhoto.Location = New System.Drawing.Point(393, 653)
+        Me.txtPhoto.Location = New System.Drawing.Point(909, 690)
         Me.txtPhoto.Name = "txtPhoto"
-        Me.txtPhoto.Size = New System.Drawing.Size(289, 20)
+        Me.txtPhoto.Size = New System.Drawing.Size(208, 20)
         Me.txtPhoto.TabIndex = 30
         '
         'OpenFileDialog1
@@ -338,9 +342,9 @@ Partial Class Form1
         'picBrowserPic
         '
         Me.picBrowserPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picBrowserPic.Location = New System.Drawing.Point(393, 679)
+        Me.picBrowserPic.Location = New System.Drawing.Point(909, 494)
         Me.picBrowserPic.Name = "picBrowserPic"
-        Me.picBrowserPic.Size = New System.Drawing.Size(153, 139)
+        Me.picBrowserPic.Size = New System.Drawing.Size(208, 180)
         Me.picBrowserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBrowserPic.TabIndex = 28
         Me.picBrowserPic.TabStop = False
@@ -348,18 +352,60 @@ Partial Class Form1
         'picStudentPic
         '
         Me.picStudentPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picStudentPic.Location = New System.Drawing.Point(393, 105)
+        Me.picStudentPic.Location = New System.Drawing.Point(703, 209)
         Me.picStudentPic.Name = "picStudentPic"
         Me.picStudentPic.Size = New System.Drawing.Size(153, 138)
         Me.picStudentPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picStudentPic.TabIndex = 27
         Me.picStudentPic.TabStop = False
         '
+        'Label11
+        '
+        Me.Label11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(41, 494)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(844, 52)
+        Me.Label11.TabIndex = 31
+        Me.Label11.Text = "LISTT OF RECORDS"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(41, 560)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(99, 25)
+        Me.Label12.TabIndex = 22
+        Me.Label12.Text = "SEARCH"
+        '
+        'lblQueue
+        '
+        Me.lblQueue.AutoSize = True
+        Me.lblQueue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblQueue.Location = New System.Drawing.Point(41, 92)
+        Me.lblQueue.Name = "lblQueue"
+        Me.lblQueue.Size = New System.Drawing.Size(141, 20)
+        Me.lblQueue.TabIndex = 32
+        Me.lblQueue.Text = "QUEUE NUMBER" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(46, 114)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(301, 26)
+        Me.TextBox1.TabIndex = 33
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1245, 830)
+        Me.ClientSize = New System.Drawing.Size(1143, 830)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.lblQueue)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtPhoto)
         Me.Controls.Add(Me.btnSaveImage)
         Me.Controls.Add(Me.btnBrowse)
@@ -370,6 +416,7 @@ Partial Class Form1
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.lblStudentInfo)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
@@ -433,4 +480,8 @@ Partial Class Form1
     Friend WithEvents btnSaveImage As Button
     Friend WithEvents txtPhoto As TextBox
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents lblQueue As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class
