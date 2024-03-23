@@ -205,13 +205,14 @@ Public Class Form1
     Private Sub btnSaveImage_Click(sender As Object, e As EventArgs) Handles btnSaveImage.Click
         Try
             If String.IsNullOrEmpty(txtPhoto.Text) OrElse String.IsNullOrEmpty(txtStudentNum.Text) Then
-                MessageBox.Show("You need to select first the student before saving a profile picture", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("You need to select a picture of the student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ElseIf Directory.Exists(Application.StartupPath & "\Profile\" & txtStudentNum.Text & ".png") Then
                 Directory.Delete(txtStudentNum.Text)
             Else
                 picBrowserPic.Image.Save(Application.StartupPath & "\Profile\" & txtStudentNum.Text & ".png")
                 updates("UPDATE tbl_queue SET image_file_name='" & txtStudentNum.Text & ".png' 
                 WHERE student_number='" & txtStudentNum.Text & "'")
+                reload_record() 'Reload the datagrid
             End If
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -228,6 +229,22 @@ Public Class Form1
                 Else
                     picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
                 End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnDeleteProfile_Click(sender As Object, e As EventArgs) Handles btnDeleteProfile.Click
+        Try
+            If String.IsNullOrEmpty(txtStudentNum.Text) Then
+                MessageBox.Show("You need to select first a student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ElseIf String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
+                MessageBox.Show("There is no image to delete for this student", "No Image", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                updates("UPDATE tbl_queue SET image_file_name='' 
+                WHERE student_number='" & txtStudentNum.Text & "'")
+                reload_record() 'Reload the datagrid
             End If
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

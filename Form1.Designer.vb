@@ -58,6 +58,7 @@ Partial Class Form1
         Me.Label12 = New System.Windows.Forms.Label()
         Me.lblQueue = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnDeleteProfile = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBrowserPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -264,9 +265,10 @@ Partial Class Form1
         '
         'lblStudentInfo
         '
-        Me.lblStudentInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblStudentInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.lblStudentInfo.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblStudentInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStudentInfo.ForeColor = System.Drawing.Color.White
         Me.lblStudentInfo.Location = New System.Drawing.Point(0, 0)
         Me.lblStudentInfo.Name = "lblStudentInfo"
         Me.lblStudentInfo.Size = New System.Drawing.Size(1143, 52)
@@ -312,7 +314,7 @@ Partial Class Form1
         '
         'btnBrowse
         '
-        Me.btnBrowse.Location = New System.Drawing.Point(909, 716)
+        Me.btnBrowse.Location = New System.Drawing.Point(909, 661)
         Me.btnBrowse.Name = "btnBrowse"
         Me.btnBrowse.Size = New System.Drawing.Size(208, 48)
         Me.btnBrowse.TabIndex = 29
@@ -321,16 +323,16 @@ Partial Class Form1
         '
         'btnSaveImage
         '
-        Me.btnSaveImage.Location = New System.Drawing.Point(909, 770)
+        Me.btnSaveImage.Location = New System.Drawing.Point(909, 715)
         Me.btnSaveImage.Name = "btnSaveImage"
         Me.btnSaveImage.Size = New System.Drawing.Size(208, 48)
         Me.btnSaveImage.TabIndex = 29
-        Me.btnSaveImage.Text = "Save Image"
+        Me.btnSaveImage.Text = "Update Profile"
         Me.btnSaveImage.UseVisualStyleBackColor = True
         '
         'txtPhoto
         '
-        Me.txtPhoto.Location = New System.Drawing.Point(909, 690)
+        Me.txtPhoto.Location = New System.Drawing.Point(909, 635)
         Me.txtPhoto.Name = "txtPhoto"
         Me.txtPhoto.Size = New System.Drawing.Size(208, 20)
         Me.txtPhoto.TabIndex = 30
@@ -342,7 +344,7 @@ Partial Class Form1
         'picBrowserPic
         '
         Me.picBrowserPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picBrowserPic.Location = New System.Drawing.Point(909, 494)
+        Me.picBrowserPic.Location = New System.Drawing.Point(909, 439)
         Me.picBrowserPic.Name = "picBrowserPic"
         Me.picBrowserPic.Size = New System.Drawing.Size(208, 180)
         Me.picBrowserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -361,8 +363,9 @@ Partial Class Form1
         '
         'Label11
         '
-        Me.Label11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Label11.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(41, 494)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(844, 52)
@@ -398,15 +401,26 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(301, 26)
         Me.TextBox1.TabIndex = 33
         '
+        'btnDeleteProfile
+        '
+        Me.btnDeleteProfile.Location = New System.Drawing.Point(909, 769)
+        Me.btnDeleteProfile.Name = "btnDeleteProfile"
+        Me.btnDeleteProfile.Size = New System.Drawing.Size(208, 48)
+        Me.btnDeleteProfile.TabIndex = 29
+        Me.btnDeleteProfile.Text = "Delete Profile"
+        Me.btnDeleteProfile.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1143, 830)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.lblQueue)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.txtPhoto)
+        Me.Controls.Add(Me.btnDeleteProfile)
         Me.Controls.Add(Me.btnSaveImage)
         Me.Controls.Add(Me.btnBrowse)
         Me.Controls.Add(Me.picBrowserPic)
@@ -438,8 +452,10 @@ Partial Class Form1
         Me.Controls.Add(Me.txtMi)
         Me.Controls.Add(Me.txtFname)
         Me.Controls.Add(Me.txtStudentNum)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBrowserPic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
@@ -484,4 +500,5 @@ Partial Class Form1
     Friend WithEvents Label12 As Label
     Friend WithEvents lblQueue As Label
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents btnDeleteProfile As Button
 End Class

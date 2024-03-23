@@ -63,6 +63,9 @@ Module CRUD_Connection
         Form1.txtStudentBday.Clear()
         Form1.txtStudentNum.Clear()
         Form1.txtSearch.Clear()
+        Form1.txtPhoto.Clear()
+        Form1.picBrowserPic.Image = Nothing
+        Form1.picStudentPic.Image = Nothing
 
     End Sub
 
