@@ -54,6 +54,25 @@ Public Class Form1
     Public Sub reload_record()
         Try
             reload("SELECT * FROM tbl_queue", DataGridView1)
+
+            If dt.Rows.Count > 0 Then
+                DataGridView1.DataSource = dt
+
+                dt.Columns.Add("Picture", GetType(Byte()))
+                For Each row As DataRow In dt.Rows
+                    If row("image_file_name").ToString = "" Then
+                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
+                    Else
+                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
+                    End If
+                Next
+
+                Dim img As New DataGridViewImageColumn()
+                img = DataGridView1.Columns(12)
+                img.ImageLayout = DataGridViewImageCellLayout.Stretch
+
+            End If
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

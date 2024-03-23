@@ -117,11 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="jmc logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jmc logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAC6SURBVEhL7ZGxCQJBFEQ3UWxCjLQPIxFsxMQmxMRIzI1M
+        jTQwtAlB0CoEFUzUuf1z8BNPWWaze/Bg7rPMBBdqfvKuZspn6bDoG0/Y49M0rKeSHZ+mwRIprDZ4k8Jq
+        g7eCB2zwrMO6IwfYtSjj7AdmcGJRxsIPjODeooxBOfCCbXiPXxpusFUOnODQooyt/8kruLQoY+wH1vBi
+        UUbHD6g5xvICHtTMWZ9toM/6LANX2GR9loENq2v+IYQPgIVTNxFcoA0AAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="icons8-opened-folder-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-opened-folder-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAC6SURBVEhL7ZGxCQJBFEQ3UWxCjLQPIxFsxMQmxMRIzI1M
+        jTQwtAlB0CoEFUzUuf1z8BNPWWaze/Bg7rPMBBdqfvKuZspn6bDoG0/Y49M0rKeSHZ+mwRIprDZ4k8Jq
+        g7eCB2zwrMO6IwfYtSjj7AdmcGJRxsIPjODeooxBOfCCbXiPXxpusFUOnODQooyt/8kruLQoY+wH1vBi
+        UUbHD6g5xvICHtTMWZ9toM/6LANX2GR9loENq2v+IYQPgIVTNxFcoA0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAC6SURBVEhL7ZGxCQJBFEQ3UWxCjLQPIxFsxMQmxMRIzI1M
+        jTQwtAlB0CoEFUzUuf1z8BNPWWaze/Bg7rPMBBdqfvKuZspn6bDoG0/Y49M0rKeSHZ+mwRIprDZ4k8Jq
+        g7eCB2zwrMO6IwfYtSjj7AdmcGJRxsIPjODeooxBOfCCbXiPXxpusFUOnODQooyt/8kruLQoY+wH1vBi
+        UUbHD6g5xvICHtTMWZ9toM/6LANX2GR9loENq2v+IYQPgIVTNxFcoA0AAAAASUVORK5CYII=
+</value>
   </data>
 </root>

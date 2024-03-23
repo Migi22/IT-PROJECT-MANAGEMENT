@@ -62,9 +62,10 @@ Partial Class Form1
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(393, 323)
+        Me.DataGridView1.Location = New System.Drawing.Point(393, 261)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(579, 298)
+        Me.DataGridView1.RowTemplate.Height = 100
+        Me.DataGridView1.Size = New System.Drawing.Size(840, 360)
         Me.DataGridView1.TabIndex = 24
         '
         'Label10
@@ -264,7 +265,7 @@ Partial Class Form1
         Me.lblStudentInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStudentInfo.Location = New System.Drawing.Point(0, 0)
         Me.lblStudentInfo.Name = "lblStudentInfo"
-        Me.lblStudentInfo.Size = New System.Drawing.Size(1011, 52)
+        Me.lblStudentInfo.Size = New System.Drawing.Size(1245, 52)
         Me.lblStudentInfo.TabIndex = 25
         Me.lblStudentInfo.Text = "STUDENT INFORMATION"
         Me.lblStudentInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -299,10 +300,10 @@ Partial Class Form1
         'txtSearch
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(393, 292)
+        Me.txtSearch.Location = New System.Drawing.Point(567, 217)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(579, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(666, 26)
         Me.txtSearch.TabIndex = 12
         '
         'picStudentPic
@@ -358,7 +359,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1011, 830)
+        Me.ClientSize = New System.Drawing.Size(1245, 830)
         Me.Controls.Add(Me.txtPhoto)
         Me.Controls.Add(Me.btnSaveImage)
         Me.Controls.Add(Me.btnBrowse)
