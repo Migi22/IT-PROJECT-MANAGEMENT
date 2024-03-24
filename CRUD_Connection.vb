@@ -52,6 +52,7 @@ Module CRUD_Connection
     End Sub
 
     Public Sub ClearText()
+        Form1.txtQueueNum.Clear()
         Form1.txtFname.Clear()
         Form1.txtLname.Clear()
         Form1.txtMi.Clear()

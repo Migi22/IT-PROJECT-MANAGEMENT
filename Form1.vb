@@ -87,7 +87,35 @@ Public Class Form1
             reloadtxt("SELECT * FROM tbl_queue WHERE fname LIKE '%" & txtSearch.Text & "%' OR lname LIKE '%" & txtSearch.Text & "'")
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
-                dt.Columns.Add("Picture", GetType(Byte()))
+
+                'Will load the Information of the students
+                txtQueueNum.Text = dt.Rows(0).Item("queue_ID").ToString
+                txtFname.Text = dt.Rows(0).Item("fname").ToString
+                txtLname.Text = dt.Rows(0).Item("lname").ToString
+                txtMi.Text = dt.Rows(0).Item("m_i").ToString
+                txtCourse.Text = dt.Rows(0).Item("course").ToString
+                txtYearLevel.Text = dt.Rows(0).Item("year_level").ToString
+                txtGuardianName.Text = dt.Rows(0).Item("guardian_name").ToString
+                txtGuardianContNum.Text = dt.Rows(0).Item("guardian_contact_num").ToString
+                txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
+                txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
+                txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
+
+                ' The one to show the student picture
+                If dt.Rows.Count > 0 Then
+                    If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
+                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+                    Else
+                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
+                    End If
+                End If
+
+                'Checks if the column Picture already exist. To avoid creating it again after updating picture of student
+                If Not dt.Columns.Contains("Picture") Then
+                    dt.Columns.Add("Picture", GetType(Byte()))
+                End If
+
+                'Add picture of the student to the datagrid
                 For Each row As DataRow In dt.Rows
                     If row("image_file_name").ToString = "" Then
                         row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
@@ -96,6 +124,7 @@ Public Class Form1
                     End If
                 Next
 
+                'Property of Picture column on datagridview
                 Dim img As New DataGridViewImageColumn()
                 img = DataGridView1.Columns(12)
                 img.ImageLayout = DataGridViewImageCellLayout.Stretch
@@ -149,6 +178,7 @@ Public Class Form1
     Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
         Try
             With DataGridView1
+                txtQueueNum.Text = .CurrentRow.Cells("queue_ID").Value.ToString
                 txtStudentNum.Text = .CurrentRow.Cells("student_number").Value.ToString
                 txtFname.Text = .CurrentRow.Cells("fname").Value.ToString
                 txtMi.Text = .CurrentRow.Cells("m_i").Value.ToString
