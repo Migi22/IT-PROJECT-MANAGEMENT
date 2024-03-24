@@ -134,6 +134,13 @@
   <ItemGroup>
     <Compile Include="CRUD_Connection.vb" />
     <Compile Include="DB_Connection.vb" />
+    <Compile Include="DoubleBuffer.vb" />
+    <Compile Include="editImage.Designer.vb">
+      <DependentUpon>editImage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="editImage.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +172,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="editImage.resx">
+      <DependentUpon>editImage.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>

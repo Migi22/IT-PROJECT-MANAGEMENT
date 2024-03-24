@@ -1,7 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.IO
+Imports System.Reflection
 
 Public Class Form1
+
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         'Loop method to check individually the text box if it is a blank
@@ -48,6 +50,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reload_record() 'RELOAD THE DATAGRID VIEW UPON START'
+        DoubleBuffer.DoubleBuffered(DataGridView1, True)
     End Sub
 
     'FUNCTION THAT RELOAD THE DATAGRIDVIEW'S DATA'
@@ -84,28 +87,20 @@ Public Class Form1
             reloadtxt("SELECT * FROM tbl_queue WHERE fname LIKE '%" & txtSearch.Text & "%' OR lname LIKE '%" & txtSearch.Text & "'")
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
-
-
-                If dt.Rows.Count > 0 Then
-                    'Will load the Information of the students
-                    txtFname.Text = dt.Rows(0).Item("fname").ToString
-                    txtLname.Text = dt.Rows(0).Item("lname").ToString
-                    txtMi.Text = dt.Rows(0).Item("m_i").ToString
-                    txtCourse.Text = dt.Rows(0).Item("course").ToString
-                    txtYearLevel.Text = dt.Rows(0).Item("year_level").ToString
-                    txtGuardianName.Text = dt.Rows(0).Item("guardian_name").ToString
-                    txtGuardianContNum.Text = dt.Rows(0).Item("guardian_contact_num").ToString
-                    txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
-                    txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
-                    txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
-
-                    'Will load the picture
-                    If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+                dt.Columns.Add("Picture", GetType(Byte()))
+                For Each row As DataRow In dt.Rows
+                    If row("image_file_name").ToString = "" Then
+                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
                     Else
-                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
+                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
                     End If
-                End If
+                Next
+
+                Dim img As New DataGridViewImageColumn()
+                img = DataGridView1.Columns(12)
+                img.ImageLayout = DataGridViewImageCellLayout.Stretch
+
+
             End If
 
         Catch ex As Exception
@@ -165,6 +160,7 @@ Public Class Form1
                 txtStudentAddress.Text = .CurrentRow.Cells("student_address").Value.ToString
                 txtStudentBday.Text = .CurrentRow.Cells("student_Birthday").Value.ToString
                 LoadImage() 'View the image to the datagridview
+
             End With
 
         Catch ex As Exception
@@ -172,52 +168,9 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
-        Try
-            With OpenFileDialog1
-                .CheckFileExists = True
-                .CheckPathExists = True
-                .DefaultExt = "jpg"
-                .DereferenceLinks = True
-                .FileName = ""
-                .Filter = "(*.jpg)|*.jpg|(*.png)|*.png|(*.jpg)|*.jpg|All Files|*.*"
-                .Multiselect = False
 
-                .RestoreDirectory = True
-                .Title = "SELECT FILE TO OPEN"
-                .ValidateNames = True
 
-                If .ShowDialog = DialogResult.OK Then
-                    Try
-                        txtPhoto.Text = .FileName
-                        picBrowserPic.ImageLocation = .FileName
-                        picBrowserPic.SizeMode = PictureBoxSizeMode.StretchImage
-                    Catch fileException As Exception
-                        Throw fileException
-                    End Try
-                End If
-            End With
-        Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
-    Private Sub btnSaveImage_Click(sender As Object, e As EventArgs) Handles btnSaveImage.Click
-        Try
-            If String.IsNullOrEmpty(txtPhoto.Text) OrElse String.IsNullOrEmpty(txtStudentNum.Text) Then
-                MessageBox.Show("You need to select a picture of the student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ElseIf Directory.Exists(Application.StartupPath & "\Profile\" & txtStudentNum.Text & ".png") Then
-                Directory.Delete(txtStudentNum.Text)
-            Else
-                picBrowserPic.Image.Save(Application.StartupPath & "\Profile\" & txtStudentNum.Text & ".png")
-                updates("UPDATE tbl_queue SET image_file_name='" & txtStudentNum.Text & ".png' 
-                WHERE student_number='" & txtStudentNum.Text & "'")
-                reload_record() 'Reload the datagrid
-            End If
-        Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
     Public Sub LoadImage()
         Try
@@ -235,7 +188,7 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub btnDeleteProfile_Click(sender As Object, e As EventArgs) Handles btnDeleteProfile.Click
+    Private Sub btnDeleteProfile_Click(sender As Object, e As EventArgs)
         Try
             If String.IsNullOrEmpty(txtStudentNum.Text) Then
                 MessageBox.Show("You need to select first a student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -249,6 +202,15 @@ Public Class Form1
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub btnEditImage_Click(sender As Object, e As EventArgs) Handles btnEditImage.Click
+        With editImage
+            .StudentNumber = txtStudentNum.Text
+            .ReloadFunction = AddressOf reload_record
+            .Show()
+
+        End With
     End Sub
 
 
