@@ -117,32 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAALpJREFUSEvtkbEJAkEURDdRbEKMtA8jEWzExCbExEjMjUyNNDC0CUHQKgQVTNS5
-        /XPwE09ZZrN78GDus8wEF2p+8q5mymfpsOgbT9jj0zSsp5Idn6bBEimsNniTwmqDt4IHbPCsw7ojB9i1
-        KOPsB2ZwYlHGwg+M4N6ijEE58IJteI9fGm6wVQ6c4NCijK3/ySu4tChj7AfW8GJRRscPqDnG8gIe1MxZ
-        n22gz/osA1fYZH2WgQ2ra/4hhA+AhVM3EVygDQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="Button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAALpJREFUSEvtkbEJAkEURDdRbEKMtA8jEWzExCbExEjMjUyNNDC0CUHQKgQVTNS5
-        /XPwE09ZZrN78GDus8wEF2p+8q5mymfpsOgbT9jj0zSsp5Idn6bBEimsNniTwmqDt4IHbPCsw7ojB9i1
-        KOPsB2ZwYlHGwg+M4N6ijEE58IJteI9fGm6wVQ6c4NCijK3/ySu4tChj7AfW8GJRRscPqDnG8gIe1MxZ
-        n22gz/osA1fYZH2WgQ2ra/4hhA+AhVM3EVygDQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnReports.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAALpJREFUSEvtkbEJAkEURDdRbEKMtA8jEWzExCbExEjMjUyNNDC0CUHQKgQVTNS5
-        /XPwE09ZZrN78GDus8wEF2p+8q5mymfpsOgbT9jj0zSsp5Idn6bBEimsNniTwmqDt4IHbPCsw7ojB9i1
-        KOPsB2ZwYlHGwg+M4N6ijEE58IJteI9fGm6wVQ6c4NCijK3/ySu4tChj7AfW8GJRRscPqDnG8gIe1MxZ
-        n22gz/osA1fYZH2WgQ2ra/4hhA+AhVM3EVygDQAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

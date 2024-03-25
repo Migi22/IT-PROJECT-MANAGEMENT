@@ -27,7 +27,7 @@ Partial Class Dashboard
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnReports = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,7 +43,7 @@ Partial Class Dashboard
         Me.panelLeft.Controls.Add(Me.Button6)
         Me.panelLeft.Controls.Add(Me.Button4)
         Me.panelLeft.Controls.Add(Me.Button3)
-        Me.panelLeft.Controls.Add(Me.Button2)
+        Me.panelLeft.Controls.Add(Me.btnReports)
         Me.panelLeft.Controls.Add(Me.btnHome)
         Me.panelLeft.Controls.Add(Me.PictureBox1)
         Me.panelLeft.Controls.Add(Me.Label1)
@@ -113,25 +113,25 @@ Partial Class Dashboard
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnReports
         '
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(0, 228)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Button2.Size = New System.Drawing.Size(268, 45)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "   Reports"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnReports.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnReports.FlatAppearance.BorderSize = 0
+        Me.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReports.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReports.ForeColor = System.Drawing.Color.White
+        Me.btnReports.Image = CType(resources.GetObject("btnReports.Image"), System.Drawing.Image)
+        Me.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnReports.Location = New System.Drawing.Point(0, 228)
+        Me.btnReports.Name = "btnReports"
+        Me.btnReports.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnReports.Size = New System.Drawing.Size(268, 45)
+        Me.btnReports.TabIndex = 1
+        Me.btnReports.Text = "   Reports"
+        Me.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnReports.UseVisualStyleBackColor = True
         '
         'btnHome
         '
@@ -216,7 +216,7 @@ Partial Class Dashboard
     Friend WithEvents panelLeft As Panel
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnReports As Button
     Friend WithEvents btnHome As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label

@@ -170,6 +170,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Reports.Designer.vb">
+      <DependentUpon>Reports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="editImage.resx">
@@ -186,6 +192,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -13,4 +13,15 @@
 
         End With
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnReports.Click
+        With Reports
+            .TopLevel = False
+            panelRight.Controls.Add(Reports)
+            .BringToFront()
+            .Show()
+            .Focus()
+
+        End With
+    End Sub
 End Class
