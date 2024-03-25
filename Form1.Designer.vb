@@ -55,6 +55,7 @@ Partial Class Form1
         Me.txtQueueNum = New System.Windows.Forms.TextBox()
         Me.btnEditImage = New System.Windows.Forms.Button()
         Me.picStudentPic = New System.Windows.Forms.PictureBox()
+        Me.btnPrintID = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -173,7 +174,7 @@ Partial Class Form1
         '
         Me.txtStudentBday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStudentBday.Location = New System.Drawing.Point(382, 292)
-        Me.txtStudentBday.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStudentBday.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentBday.Name = "txtStudentBday"
         Me.txtStudentBday.Size = New System.Drawing.Size(302, 26)
         Me.txtStudentBday.TabIndex = 12
@@ -182,7 +183,7 @@ Partial Class Form1
         '
         Me.txtGuardianContNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGuardianContNum.Location = New System.Drawing.Point(703, 114)
-        Me.txtGuardianContNum.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtGuardianContNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianContNum.Name = "txtGuardianContNum"
         Me.txtGuardianContNum.Size = New System.Drawing.Size(302, 26)
         Me.txtGuardianContNum.TabIndex = 11
@@ -191,7 +192,7 @@ Partial Class Form1
         '
         Me.txtStudentAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStudentAddress.Location = New System.Drawing.Point(45, 357)
-        Me.txtStudentAddress.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStudentAddress.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentAddress.Name = "txtStudentAddress"
         Me.txtStudentAddress.Size = New System.Drawing.Size(639, 26)
         Me.txtStudentAddress.TabIndex = 10
@@ -200,7 +201,7 @@ Partial Class Form1
         '
         Me.txtGuardianName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGuardianName.Location = New System.Drawing.Point(703, 167)
-        Me.txtGuardianName.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtGuardianName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianName.Name = "txtGuardianName"
         Me.txtGuardianName.Size = New System.Drawing.Size(302, 26)
         Me.txtGuardianName.TabIndex = 9
@@ -209,7 +210,7 @@ Partial Class Form1
         '
         Me.txtYearLevel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtYearLevel.Location = New System.Drawing.Point(382, 231)
-        Me.txtYearLevel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtYearLevel.Margin = New System.Windows.Forms.Padding(2)
         Me.txtYearLevel.Name = "txtYearLevel"
         Me.txtYearLevel.Size = New System.Drawing.Size(302, 26)
         Me.txtYearLevel.TabIndex = 8
@@ -218,7 +219,7 @@ Partial Class Form1
         '
         Me.txtCourse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCourse.Location = New System.Drawing.Point(382, 167)
-        Me.txtCourse.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCourse.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCourse.Name = "txtCourse"
         Me.txtCourse.Size = New System.Drawing.Size(302, 26)
         Me.txtCourse.TabIndex = 7
@@ -227,7 +228,7 @@ Partial Class Form1
         '
         Me.txtLname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLname.Location = New System.Drawing.Point(45, 292)
-        Me.txtLname.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtLname.Margin = New System.Windows.Forms.Padding(2)
         Me.txtLname.Name = "txtLname"
         Me.txtLname.Size = New System.Drawing.Size(302, 26)
         Me.txtLname.TabIndex = 6
@@ -236,7 +237,7 @@ Partial Class Form1
         '
         Me.txtMi.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMi.Location = New System.Drawing.Point(45, 231)
-        Me.txtMi.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtMi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtMi.Name = "txtMi"
         Me.txtMi.Size = New System.Drawing.Size(302, 26)
         Me.txtMi.TabIndex = 5
@@ -245,7 +246,7 @@ Partial Class Form1
         '
         Me.txtFname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFname.Location = New System.Drawing.Point(45, 169)
-        Me.txtFname.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFname.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFname.Name = "txtFname"
         Me.txtFname.Size = New System.Drawing.Size(302, 26)
         Me.txtFname.TabIndex = 13
@@ -254,7 +255,7 @@ Partial Class Form1
         '
         Me.txtStudentNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStudentNum.Location = New System.Drawing.Point(382, 114)
-        Me.txtStudentNum.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStudentNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentNum.Name = "txtStudentNum"
         Me.txtStudentNum.Size = New System.Drawing.Size(302, 26)
         Me.txtStudentNum.TabIndex = 4
@@ -303,7 +304,7 @@ Partial Class Form1
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearch.Location = New System.Drawing.Point(145, 559)
-        Me.txtSearch.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(1296, 26)
         Me.txtSearch.TabIndex = 12
@@ -371,12 +372,22 @@ Partial Class Form1
         Me.picStudentPic.TabIndex = 27
         Me.picStudentPic.TabStop = False
         '
+        'btnPrintID
+        '
+        Me.btnPrintID.Location = New System.Drawing.Point(544, 400)
+        Me.btnPrintID.Name = "btnPrintID"
+        Me.btnPrintID.Size = New System.Drawing.Size(140, 46)
+        Me.btnPrintID.TabIndex = 34
+        Me.btnPrintID.Text = "PRINT ID"
+        Me.btnPrintID.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1505, 715)
+        Me.ClientSize = New System.Drawing.Size(1505, 1026)
+        Me.Controls.Add(Me.btnPrintID)
         Me.Controls.Add(Me.txtQueueNum)
         Me.Controls.Add(Me.lblQueue)
         Me.Controls.Add(Me.Label11)
@@ -453,4 +464,5 @@ Partial Class Form1
     Friend WithEvents lblQueue As Label
     Friend WithEvents txtQueueNum As TextBox
     Friend WithEvents btnEditImage As Button
+    Friend WithEvents btnPrintID As Button
 End Class

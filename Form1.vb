@@ -175,28 +175,7 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
-        Try
-            With DataGridView1
-                txtQueueNum.Text = .CurrentRow.Cells("queue_ID").Value.ToString
-                txtStudentNum.Text = .CurrentRow.Cells("student_number").Value.ToString
-                txtFname.Text = .CurrentRow.Cells("fname").Value.ToString
-                txtMi.Text = .CurrentRow.Cells("m_i").Value.ToString
-                txtLname.Text = .CurrentRow.Cells("lname").Value.ToString
-                txtCourse.Text = .CurrentRow.Cells("course").Value.ToString
-                txtYearLevel.Text = .CurrentRow.Cells("year_level").Value.ToString
-                txtGuardianName.Text = .CurrentRow.Cells("guardian_name").Value.ToString
-                txtGuardianContNum.Text = .CurrentRow.Cells("guardian_contact_num").Value.ToString
-                txtStudentAddress.Text = .CurrentRow.Cells("student_address").Value.ToString
-                txtStudentBday.Text = .CurrentRow.Cells("student_Birthday").Value.ToString
-                LoadImage() 'View the image to the datagridview
 
-            End With
-
-        Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
 
 
@@ -243,5 +222,46 @@ Public Class Form1
         End With
     End Sub
 
+    Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
+        With FormIDCard
+            .txtStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
+            .txtName.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+                            DataGridView1.CurrentRow.Cells("m_i").Value.ToString & " " &
+                            DataGridView1.CurrentRow.Cells("lname").Value.ToString
+            .Show()
+        End With
+    End Sub
 
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        'Dim item As String
+        Dim i As Integer
+        Try
+            With DataGridView1
+                If e.RowIndex >= 0 Then
+                    i = .CurrentRow.Index
+
+                    txtQueueNum.Text = .Rows(i).Cells("queue_ID").Value.ToString
+                    txtStudentNum.Text = .Rows(i).Cells("student_number").Value.ToString
+                    txtFname.Text = .Rows(i).Cells("fname").Value.ToString
+                    txtMi.Text = .Rows(i).Cells("m_i").Value.ToString
+                    txtLname.Text = .Rows(i).Cells("lname").Value.ToString
+                    txtCourse.Text = .Rows(i).Cells("course").Value.ToString
+                    txtYearLevel.Text = .Rows(i).Cells("year_level").Value.ToString
+                    txtGuardianName.Text = .Rows(i).Cells("guardian_name").Value.ToString
+                    txtGuardianContNum.Text = .Rows(i).Cells("guardian_contact_num").Value.ToString
+                    txtStudentAddress.Text = .Rows(i).Cells("student_address").Value.ToString
+                    txtStudentBday.Text = .Rows(i).Cells("student_Birthday").Value.ToString
+                    LoadImage() 'View the image to the datagridview
+
+                End If
+
+
+
+
+            End With
+
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class
