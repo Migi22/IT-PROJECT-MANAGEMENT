@@ -24,15 +24,15 @@ Partial Class Dashboard
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Dashboard))
         Me.panelLeft = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.panelRight = New System.Windows.Forms.Panel()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnUserManagement = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.btnReports = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.panelRight = New System.Windows.Forms.Panel()
         Me.panelLeft.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -41,7 +41,7 @@ Partial Class Dashboard
         '
         Me.panelLeft.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.panelLeft.Controls.Add(Me.Button6)
-        Me.panelLeft.Controls.Add(Me.Button4)
+        Me.panelLeft.Controls.Add(Me.btnUserManagement)
         Me.panelLeft.Controls.Add(Me.Button3)
         Me.panelLeft.Controls.Add(Me.btnReports)
         Me.panelLeft.Controls.Add(Me.btnHome)
@@ -53,6 +53,38 @@ Partial Class Dashboard
         Me.panelLeft.Name = "panelLeft"
         Me.panelLeft.Size = New System.Drawing.Size(402, 994)
         Me.panelLeft.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(402, 46)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "ID Processing System"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1926, 8)
+        Me.Panel1.TabIndex = 3
+        '
+        'panelRight
+        '
+        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelRight.Location = New System.Drawing.Point(402, 8)
+        Me.panelRight.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.panelRight.Name = "panelRight"
+        Me.panelRight.Size = New System.Drawing.Size(1524, 994)
+        Me.panelRight.TabIndex = 7
         '
         'Button6
         '
@@ -75,26 +107,26 @@ Partial Class Dashboard
         Me.Button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button6.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnUserManagement
         '
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(0, 488)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.Button4.Size = New System.Drawing.Size(402, 69)
-        Me.Button4.TabIndex = 3
-        Me.Button4.Text = "   Manage List"
-        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnUserManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnUserManagement.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnUserManagement.FlatAppearance.BorderSize = 0
+        Me.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUserManagement.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUserManagement.ForeColor = System.Drawing.Color.White
+        Me.btnUserManagement.Image = CType(resources.GetObject("btnUserManagement.Image"), System.Drawing.Image)
+        Me.btnUserManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUserManagement.Location = New System.Drawing.Point(0, 488)
+        Me.btnUserManagement.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnUserManagement.Name = "btnUserManagement"
+        Me.btnUserManagement.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.btnUserManagement.Size = New System.Drawing.Size(402, 69)
+        Me.btnUserManagement.TabIndex = 3
+        Me.btnUserManagement.Text = "   User Management"
+        Me.btnUserManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUserManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnUserManagement.UseVisualStyleBackColor = True
         '
         'Button3
         '
@@ -172,38 +204,6 @@ Partial Class Dashboard
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'Label1
-        '
-        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(402, 46)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "ID Processing System"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1926, 8)
-        Me.Panel1.TabIndex = 3
-        '
-        'panelRight
-        '
-        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelRight.Location = New System.Drawing.Point(402, 8)
-        Me.panelRight.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.panelRight.Name = "panelRight"
-        Me.panelRight.Size = New System.Drawing.Size(1524, 994)
-        Me.panelRight.TabIndex = 7
-        '
         'Dashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -225,7 +225,7 @@ Partial Class Dashboard
     End Sub
 
     Friend WithEvents panelLeft As Panel
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnUserManagement As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents btnReports As Button
     Friend WithEvents btnHome As Button
