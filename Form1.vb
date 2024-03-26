@@ -3,6 +3,9 @@ Imports System.IO
 Imports System.Reflection
 
 Public Class Form1
+    Private username As String = CurrentUser.Username
+    Private action As String
+    Private dateTime As DateTime
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
@@ -34,6 +37,17 @@ Public Class Form1
                         VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
                         '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
                         '" & txtStudentNum.Text & "')")
+
+                Try
+                    'AUDIT
+                    action = "CREATED STUDENT"
+                    dateTime = DateTime.Now
+                    LogAudit(username, action, dateTime)
+                    'END AUDIT
+                Catch ex As Exception
+                    MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+
 
                 ' Reload records after inserting the new record
                 reload_record()

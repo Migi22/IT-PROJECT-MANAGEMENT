@@ -15,11 +15,12 @@ Public Class Form_Login
                     PASSWORD='" & txtPassword.Text & "'")
         If dt.Rows.Count > 0 Then
             With Dashboard
+                CurrentUser.Username = txtUsername.Text
                 .Show()
             End With
             Me.Hide()
         Else
-            MessageBox.Show("Username or Password not found! Attempt: " + attempts, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Username or Password not found! Attempt: " + attempts.ToString(), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
             attempts += 1
         End If
 

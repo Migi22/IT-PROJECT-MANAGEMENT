@@ -2,6 +2,9 @@
     Private Sub Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Load initial form when the Dashboard form loads
         SwitchForm(New Form1())
+
+        ' Set the text of lblCurrentUser to the current username
+        lblCurrentUser.Text = "Welcome, " & CurrentUser.Username
     End Sub
 
     Private Sub SwitchForm(ByVal newPanel As Form)
@@ -37,5 +40,12 @@
     Private Sub Dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Form_Login.Show()
         Hide()
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        CurrentUser.Username = Nothing
+
+        Form_Login.Show()
+        Me.Close()
     End Sub
 End Class
