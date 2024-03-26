@@ -32,6 +32,7 @@ Partial Class Form_Login
         Me.lblPassword = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnX = New System.Windows.Forms.Button()
+        Me.cbShowHide = New System.Windows.Forms.CheckBox()
         Me.panelLeft.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,7 +84,6 @@ Partial Class Form_Login
         Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPassword.Location = New System.Drawing.Point(523, 286)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.Size = New System.Drawing.Size(312, 29)
         Me.txtPassword.TabIndex = 2
         Me.txtPassword.UseSystemPasswordChar = True
@@ -142,10 +142,21 @@ Partial Class Form_Login
         Me.btnX.Text = "X"
         Me.btnX.UseVisualStyleBackColor = True
         '
+        'cbShowHide
+        '
+        Me.cbShowHide.AutoSize = True
+        Me.cbShowHide.Location = New System.Drawing.Point(523, 324)
+        Me.cbShowHide.Name = "cbShowHide"
+        Me.cbShowHide.Size = New System.Drawing.Size(105, 24)
+        Me.cbShowHide.TabIndex = 8
+        Me.cbShowHide.Text = "Show/Hide"
+        Me.cbShowHide.UseVisualStyleBackColor = True
+        '
         'Form_Login
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(909, 522)
+        Me.Controls.Add(Me.cbShowHide)
         Me.Controls.Add(Me.btnX)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblPassword)
@@ -176,4 +187,5 @@ Partial Class Form_Login
     Friend WithEvents lblPassword As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnX As Button
+    Friend WithEvents cbShowHide As CheckBox
 End Class
