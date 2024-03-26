@@ -24,4 +24,9 @@
 
         End With
     End Sub
+
+    Private Sub Dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Form_Login.Show()
+        Hide()
+    End Sub
 End Class

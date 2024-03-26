@@ -164,6 +164,12 @@
     <Compile Include="FormIDCard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form_Login.Designer.vb">
+      <DependentUpon>Form_Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -186,6 +192,12 @@
     <Compile Include="Reports.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="testPrintID.Designer.vb">
+      <DependentUpon>testPrintID.vb</DependentUpon>
+    </Compile>
+    <Compile Include="testPrintID.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="editImage.resx">
@@ -200,6 +212,9 @@
     <EmbeddedResource Include="FormIDCard.resx">
       <DependentUpon>FormIDCard.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Login.resx">
+      <DependentUpon>Form_Login.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -208,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testPrintID.resx">
+      <DependentUpon>testPrintID.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +246,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-opened-folder-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Green Simple Medical ID Card.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -223,7 +223,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
-        With FormIDCard
+        With testPrintID
             .txtStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
             .txtName.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
                             DataGridView1.CurrentRow.Cells("m_i").Value.ToString & " " &

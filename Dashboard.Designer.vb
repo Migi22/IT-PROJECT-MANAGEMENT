@@ -48,9 +48,10 @@ Partial Class Dashboard
         Me.panelLeft.Controls.Add(Me.PictureBox1)
         Me.panelLeft.Controls.Add(Me.Label1)
         Me.panelLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.panelLeft.Location = New System.Drawing.Point(0, 5)
+        Me.panelLeft.Location = New System.Drawing.Point(0, 8)
+        Me.panelLeft.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.panelLeft.Name = "panelLeft"
-        Me.panelLeft.Size = New System.Drawing.Size(268, 646)
+        Me.panelLeft.Size = New System.Drawing.Size(402, 994)
         Me.panelLeft.TabIndex = 4
         '
         'Button6
@@ -63,10 +64,11 @@ Partial Class Dashboard
         Me.Button6.ForeColor = System.Drawing.Color.White
         Me.Button6.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.icons8_opened_folder_24
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(0, 601)
+        Me.Button6.Location = New System.Drawing.Point(0, 925)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"
-        Me.Button6.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(268, 45)
+        Me.Button6.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.Button6.Size = New System.Drawing.Size(402, 69)
         Me.Button6.TabIndex = 5
         Me.Button6.Text = "   Logout"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -83,10 +85,11 @@ Partial Class Dashboard
         Me.Button4.ForeColor = System.Drawing.Color.White
         Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(0, 318)
+        Me.Button4.Location = New System.Drawing.Point(0, 488)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
-        Me.Button4.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Button4.Size = New System.Drawing.Size(268, 45)
+        Me.Button4.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.Button4.Size = New System.Drawing.Size(402, 69)
         Me.Button4.TabIndex = 3
         Me.Button4.Text = "   Manage List"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -103,10 +106,11 @@ Partial Class Dashboard
         Me.Button3.ForeColor = System.Drawing.Color.White
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(0, 273)
+        Me.Button3.Location = New System.Drawing.Point(0, 419)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button3.Name = "Button3"
-        Me.Button3.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Button3.Size = New System.Drawing.Size(268, 45)
+        Me.Button3.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.Button3.Size = New System.Drawing.Size(402, 69)
         Me.Button3.TabIndex = 2
         Me.Button3.Text = "   Audit log"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -123,10 +127,11 @@ Partial Class Dashboard
         Me.btnReports.ForeColor = System.Drawing.Color.White
         Me.btnReports.Image = CType(resources.GetObject("btnReports.Image"), System.Drawing.Image)
         Me.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnReports.Location = New System.Drawing.Point(0, 228)
+        Me.btnReports.Location = New System.Drawing.Point(0, 350)
+        Me.btnReports.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnReports.Name = "btnReports"
-        Me.btnReports.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnReports.Size = New System.Drawing.Size(268, 45)
+        Me.btnReports.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.btnReports.Size = New System.Drawing.Size(402, 69)
         Me.btnReports.TabIndex = 1
         Me.btnReports.Text = "   Reports"
         Me.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -143,10 +148,11 @@ Partial Class Dashboard
         Me.btnHome.ForeColor = System.Drawing.Color.White
         Me.btnHome.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.icons8_opened_folder_24
         Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHome.Location = New System.Drawing.Point(0, 183)
+        Me.btnHome.Location = New System.Drawing.Point(0, 281)
+        Me.btnHome.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnHome.Size = New System.Drawing.Size(268, 45)
+        Me.btnHome.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.btnHome.Size = New System.Drawing.Size(402, 69)
         Me.btnHome.TabIndex = 0
         Me.btnHome.Text = "   Home"
         Me.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -158,9 +164,10 @@ Partial Class Dashboard
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.PictureBox1.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 30)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 46)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(268, 153)
+        Me.PictureBox1.Size = New System.Drawing.Size(402, 235)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
@@ -171,8 +178,9 @@ Partial Class Dashboard
         Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(268, 30)
+        Me.Label1.Size = New System.Drawing.Size(402, 46)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ID Processing System"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -182,27 +190,30 @@ Partial Class Dashboard
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1284, 5)
+        Me.Panel1.Size = New System.Drawing.Size(1926, 8)
         Me.Panel1.TabIndex = 3
         '
         'panelRight
         '
         Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelRight.Location = New System.Drawing.Point(268, 5)
+        Me.panelRight.Location = New System.Drawing.Point(402, 8)
+        Me.panelRight.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.panelRight.Name = "panelRight"
-        Me.panelRight.Size = New System.Drawing.Size(1016, 646)
+        Me.panelRight.Size = New System.Drawing.Size(1524, 994)
         Me.panelRight.TabIndex = 7
         '
         'Dashboard
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1284, 651)
+        Me.ClientSize = New System.Drawing.Size(1926, 1002)
         Me.Controls.Add(Me.panelRight)
         Me.Controls.Add(Me.panelLeft)
         Me.Controls.Add(Me.Panel1)
         Me.IsMdiContainer = True
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Dashboard"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dashboard"
