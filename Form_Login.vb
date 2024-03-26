@@ -19,7 +19,7 @@ Public Class Form_Login
             End With
             Me.Hide()
         Else
-            MessageBox.Show("Username or Password not found!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Username or Password not found! Attempt: " + attempts, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
             attempts += 1
         End If
 
@@ -28,7 +28,7 @@ Public Class Form_Login
         If attempts = 3 Then
             MessageBox.Show("Last chance to enter a correct username and password!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         ElseIf attempts = 4 Then
-            MessageBox.Show("You have exceeded the limit of 3 attempts", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("You have exceeded the limit of 3 attempts, the system will close", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Application.Exit()
         End If
     End Sub
