@@ -2,7 +2,10 @@
 Module AuditLogger
     Public Sub LogAudit(username As String, action As String, dateTime As DateTime)
         Try
-            Dim query As String = "INSERT INTO tbl_audit(username, action, dateTime) VALUES(@username, @action, @dateTime)"
+            Dim query As String = "INSERT INTO tbl_audit(user_ID, action, dateTime) 
+                                    SELECT user_ID, @action, @dateTime 
+                                    FROM tbl_users 
+                                    WHERE username = @username"
 
             ' Create MySqlCommand object and add parameters
             Using cmd As New MySqlCommand(query, strcon)

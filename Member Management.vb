@@ -1,4 +1,10 @@
-﻿Public Class Member_Management
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+
+Public Class Member_Management
+    Private username As String = CurrentUser.Username
+    Private action As String
+    Private dateTime As DateTime
+
     Private Sub Member_Management_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadUser()
 
@@ -16,6 +22,16 @@
         Try
             create("INSERT INTO tbl_users(USERNAME, PASSWORD, ROLE) 
                     VALUES('" & txtUsername.Text & "', '" & txtPassword.Text & "', '" & cbRoleType.Text & "')")
+            'AUDIT
+            Try
+                action = "ADDED NEW USER: " & txtUsername.Text
+                dateTime = DateTime.Now
+                LogAudit(username, Action, DateTime)
+            Catch ex As Exception
+                MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            'END AUDIT
+
             Call Member_Management_Load(sender, e)
             clear()
 
@@ -28,6 +44,17 @@
         Try
             updates("UPDATE tbl_user SET USERNAME='" & txtUsername.Text & "', PASSWORD='" & txtPassword.Text & "', ROLE='" & cbRoleType.Text & "'
                     WHERE user_ID='" & txtID.Text & "'")
+
+            'AUDIT
+            Try
+                action = "UPDATED USER: " & txtUsername.Text
+                dateTime = DateTime.Now
+                LogAudit(username, action, dateTime)
+            Catch ex As Exception
+                MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            'END AUDIT
+
             Call Member_Management_Load(sender, e)
             clear()
         Catch ex As Exception
@@ -38,6 +65,16 @@
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Try
             delete("DELETE FROM tbl_user WHERE user_ID='" & txtID.Text & "'")
+            'AUDIT
+            Try
+                action = "DELETED USER: " & txtUsername.Text
+                dateTime = DateTime.Now
+                LogAudit(username, action, dateTime)
+            Catch ex As Exception
+                MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            'END AUDIT
+
             Call Member_Management_Load(sender, e)
             clear()
         Catch ex As Exception

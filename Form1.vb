@@ -37,10 +37,9 @@ Public Class Form1
                         VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
                         '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
                         '" & txtStudentNum.Text & "')")
-
                 Try
                     'AUDIT
-                    action = "CREATED STUDENT"
+                    action = "CREATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
                     dateTime = DateTime.Now
                     LogAudit(username, action, dateTime)
                     'END AUDIT
@@ -175,6 +174,16 @@ Public Class Form1
 
             reload_record()
 
+            Try
+                'AUDIT
+                action = "UPDATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
+                dateTime = DateTime.Now
+                LogAudit(username, action, dateTime)
+                'END AUDIT
+            Catch ex As Exception
+                MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -184,16 +193,21 @@ Public Class Form1
         Try
             delete("DELETE FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'")
             Call Form1_Load(sender, e)
+
+            'AUDIT
+            Try
+                action = "DELETED STUDENT: " & txtLname.Text & ", " & txtFname.Text
+                dateTime = DateTime.Now
+                LogAudit(username, action, dateTime)
+            Catch ex As Exception
+                MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            'END AUDIT
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
-
-
-
-
 
     Public Sub LoadImage()
         Try
@@ -211,25 +225,10 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub btnDeleteProfile_Click(sender As Object, e As EventArgs)
-        Try
-            If String.IsNullOrEmpty(txtStudentNum.Text) Then
-                MessageBox.Show("You need to select first a student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ElseIf String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                MessageBox.Show("There is no image to delete for this student", "No Image", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Else
-                updates("UPDATE tbl_queue SET image_file_name='' 
-                WHERE student_number='" & txtStudentNum.Text & "'")
-                reload_record() 'Reload the datagrid
-            End If
-        Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
     Private Sub btnEditImage_Click(sender As Object, e As EventArgs) Handles btnEditImage.Click
         With editImage
-            .StudentNumber = txtStudentNum.Text
+            .StudentLastName = txtLname.Text
+            .StudentFirstName = txtFname.Text
             .ReloadFunction = AddressOf reload_record
             .Show()
 
