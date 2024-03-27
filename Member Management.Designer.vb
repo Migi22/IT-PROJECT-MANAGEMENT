@@ -177,7 +177,7 @@ Partial Class Member_Management
         Me.lblMemberManagement.Name = "lblMemberManagement"
         Me.lblMemberManagement.Size = New System.Drawing.Size(678, 70)
         Me.lblMemberManagement.TabIndex = 13
-        Me.lblMemberManagement.Text = "MEMBER MANAGEMENT"
+        Me.lblMemberManagement.Text = "USER MANAGEMENT"
         Me.lblMemberManagement.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Member_Management
