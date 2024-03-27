@@ -31,7 +31,12 @@ Public Class AuditLog
     Private Sub txtSearchAudit_TextChanged(sender As Object, e As EventArgs) Handles txtSearchAudit.TextChanged
         Try
             'NOTE: will add a a dropdown box para naay choices for filtering (Fname, Lname, or student number)
-            reloadtxt("SELECT * FROM tbl_audit WHERE audit_ID LIKE '%" & txtSearchAudit.Text & "%' OR action LIKE '%" & txtSearchAudit.Text & "'")
+            reloadtxt("SELECT a.audit_ID, a.action, DATE(a.dateTime) AS auditDate, " &
+                              "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                              "FROM tbl_audit a " &
+                              "INNER JOIN tbl_users u ON a.user_ID = u.user_ID
+                              WHERE a.action LIKE '%" & txtSearchAudit.Text & "%' ")
+
             If dt.Rows.Count > 0 Then
                 DataGridViewAudits.DataSource = dt
 
