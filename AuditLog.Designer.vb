@@ -39,6 +39,7 @@ Partial Class AuditLog
         Me.lblDateFrom = New System.Windows.Forms.Label()
         Me.lblDateTo = New System.Windows.Forms.Label()
         Me.btnFilter = New System.Windows.Forms.Button()
+        Me.PrintDocumentAudit = New System.Drawing.Printing.PrintDocument()
         Me.leftPanel.SuspendLayout()
         CType(Me.DataGridViewAudits, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -233,6 +234,9 @@ Partial Class AuditLog
         Me.btnFilter.Text = "Filter"
         Me.btnFilter.UseVisualStyleBackColor = False
         '
+        'PrintDocumentAudit
+        '
+        '
         'AuditLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -272,4 +276,5 @@ Partial Class AuditLog
     Friend WithEvents lblDateTo As Label
     Friend WithEvents lblDateFrom As Label
     Friend WithEvents btnFilter As Button
+    Friend WithEvents PrintDocumentAudit As Printing.PrintDocument
 End Class
