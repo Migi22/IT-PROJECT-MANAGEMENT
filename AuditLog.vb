@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Drawing.Printing
+Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class AuditLog
     Private mRow As Integer = 0
@@ -223,6 +224,47 @@ Public Class AuditLog
         newpage = True
         ppd.PrintPreviewControl.StartPage = 0
         ppd.PrintPreviewControl.Zoom = 1.0
+
+    End Sub
+
+    Private Sub ReleaseObject(ByVal obj As Object)
+        Try
+            Runtime.InteropServices.Marshal.ReleaseComObject(obj)
+            obj = Nothing
+
+        Catch ex As Exception
+            obj = Nothing
+        Finally
+            GC.Collect()
+
+        End Try
+
+    End Sub
+
+    Private Sub btnExcel_Click(sender As Object, e As EventArgs) Handles btnExcel.Click
+        Dim xlApplication As Excel.Application
+        Dim xlWorkBook As Excel.Workbook
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim misValue As Object = System.Reflection.Missing.Value
+        Dim i As Integer
+        Dim j As Integer
+
+        xlApplication = New Microsoft.Office.Interop.Excel.ApplicationClass
+        xlApplication.Visible = True
+        xlWorkBook = xlApplication.Workbooks.Add(misValue)
+        xlWorkSheet = xlWorkBook.Sheets("Sheet1")
+
+        'For header
+
+        For i = 1 To DataGridViewAudits.ColumnCount
+            xlWorkSheet.Cells(1, i) = DataGridViewAudits.Columns(i - 1).HeaderText
+
+            'For items
+
+            For j = 1 To DataGridViewAudits.RowCount
+                xlWorkSheet.Cells(j + 1, i) = DataGridViewAudits(i - 1, j - 1).Value
+            Next
+        Next
 
     End Sub
 End Class
