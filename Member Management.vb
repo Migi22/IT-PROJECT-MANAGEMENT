@@ -4,6 +4,7 @@ Public Class Member_Management
     Private username As String = CurrentUser.Username
     Private action As String
     Private dateTime As DateTime
+    Private roleId As Integer = 0
 
     Private Sub Member_Management_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadUser()
@@ -12,21 +13,37 @@ Public Class Member_Management
 
     Public Sub loadUser()
         Try
-            reload("SELECT * FROM tbl_users", DataGridView1)
-        Catch ex As Exception
+            ' Modify your SQL query to fetch the role names instead of role IDs
+            Dim query As String = "SELECT u.user_ID, u.username, u.password, r.role_name " &
+                              "FROM tbl_users u " &
+                              "INNER JOIN tbl_roles r ON u.role_ID = r.role_ID"
 
+            reload(query, DataGridView1)
+        Catch ex As Exception
+            ' Handle exceptions here
         End Try
     End Sub
 
+
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
-            create("INSERT INTO tbl_users(USERNAME, PASSWORD, ROLE) 
-                    VALUES('" & txtUsername.Text & "', '" & txtPassword.Text & "', '" & cbRoleType.Text & "')")
+            'Converts the value
+            If cbRoleType.Text = "Admin" Then
+                roleId = 1
+            ElseIf cbRoleType.Text = "Member" Then
+                roleId = 2
+            End If
+            'End of converting
+
+            'Insert data to the db
+            create("INSERT INTO tbl_users(username, password, role_ID) 
+                    VALUES('" & txtUsername.Text & "', '" & txtPassword.Text & "', '" & roleId & "')")
+
             'AUDIT
             Try
                 action = "ADDED NEW USER: " & txtUsername.Text
                 dateTime = DateTime.Now
-                LogAudit(username, Action, DateTime)
+                LogAudit(username, action, dateTime)
             Catch ex As Exception
                 MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -42,7 +59,14 @@ Public Class Member_Management
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Try
-            updates("UPDATE tbl_user SET USERNAME='" & txtUsername.Text & "', PASSWORD='" & txtPassword.Text & "', ROLE='" & cbRoleType.Text & "'
+            'Converts the value
+            If cbRoleType.Text = "Admin" Then
+                roleId = 1
+            ElseIf cbRoleType.Text = "Member" Then
+                roleId = 2
+            End If
+            'End of converting
+            updates("UPDATE tbl_users SET username='" & txtUsername.Text & "', password='" & txtPassword.Text & "', role_ID='" & roleId & "'
                     WHERE user_ID='" & txtID.Text & "'")
 
             'AUDIT
@@ -64,7 +88,7 @@ Public Class Member_Management
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Try
-            delete("DELETE FROM tbl_user WHERE user_ID='" & txtID.Text & "'")
+            delete("DELETE FROM tbl_users WHERE user_ID='" & txtID.Text & "'")
             'AUDIT
             Try
                 action = "DELETED USER: " & txtUsername.Text
@@ -86,20 +110,17 @@ Public Class Member_Management
         txtUsername.Clear()
         txtPassword.Clear()
         txtID.Clear()
-        cbRoleType.Text = ""
+        cbRoleType.SelectedIndex = -1
     End Sub
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        txtUsername.Clear()
-        txtPassword.Clear()
-        txtID.Clear()
-        cbRoleType.Text = ""
+        clear()
     End Sub
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        txtUsername.Text = DataGridView1.CurrentRow.Cells("USERNAME").Value
-        txtPassword.Text = DataGridView1.CurrentRow.Cells("PASSWORD").Value
         txtID.Text = DataGridView1.CurrentRow.Cells("user_ID").Value
-        cbRoleType.Text = DataGridView1.CurrentRow.Cells("ROLE").Value
+        txtUsername.Text = DataGridView1.CurrentRow.Cells("username").Value
+        txtPassword.Text = DataGridView1.CurrentRow.Cells("password").Value
+        cbRoleType.Text = DataGridView1.CurrentRow.Cells("role_name").Value
 
     End Sub
 End Class
