@@ -103,7 +103,7 @@ Partial Class AuditLog
         '
         'btnAll
         '
-        Me.btnAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAll.Location = New System.Drawing.Point(12, 17)
         Me.btnAll.Name = "btnAll"
@@ -114,7 +114,7 @@ Partial Class AuditLog
         '
         'btnDaily
         '
-        Me.btnDaily.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnDaily.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnDaily.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDaily.Location = New System.Drawing.Point(12, 55)
         Me.btnDaily.Name = "btnDaily"
@@ -125,7 +125,7 @@ Partial Class AuditLog
         '
         'btnWeekly
         '
-        Me.btnWeekly.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnWeekly.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnWeekly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnWeekly.Location = New System.Drawing.Point(12, 93)
         Me.btnWeekly.Name = "btnWeekly"
@@ -136,7 +136,7 @@ Partial Class AuditLog
         '
         'btnMonthly
         '
-        Me.btnMonthly.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnMonthly.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnMonthly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMonthly.Location = New System.Drawing.Point(12, 131)
         Me.btnMonthly.Name = "btnMonthly"
@@ -147,7 +147,7 @@ Partial Class AuditLog
         '
         'btnPrintPreview
         '
-        Me.btnPrintPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnPrintPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPrintPreview.Location = New System.Drawing.Point(12, 440)
         Me.btnPrintPreview.Name = "btnPrintPreview"
@@ -158,7 +158,7 @@ Partial Class AuditLog
         '
         'btnExcel
         '
-        Me.btnExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btnExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExcel.Location = New System.Drawing.Point(12, 496)
         Me.btnExcel.Name = "btnExcel"
@@ -224,7 +224,7 @@ Partial Class AuditLog
         '
         'btnFilter
         '
-        Me.btnFilter.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnFilter.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFilter.ForeColor = System.Drawing.Color.Black
         Me.btnFilter.Location = New System.Drawing.Point(2, 159)

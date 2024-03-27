@@ -120,6 +120,10 @@ Public Class AuditLog
         Dim h As Int32 = 0
         Dim row As DataGridViewRow
 
+        Dim Claret As Color = Color.FromArgb(137, 49, 69) ' RGB values for #892145
+        Dim Sunglow As Color = Color.FromArgb(255, 197, 59) ' RGB values for #FFC53B
+
+
         ' Print the header text for a new page
         ' use a grey bg just like the control
         If newpage Then
@@ -131,7 +135,8 @@ Public Class AuditLog
                 If cell.Visible Then
                     rc = New Rectangle(x, y, cell.Size.Width, cell.Size.Height)
 
-                    e.Graphics.FillRectangle(Brushes.LightGray, rc)
+
+                    e.Graphics.FillRectangle(New SolidBrush(Claret), rc)
                     e.Graphics.DrawRectangle(Pens.Black, rc)
 
                     ' reused in the data pront - should be a function
@@ -149,7 +154,7 @@ Public Class AuditLog
                     End Select
 
                     e.Graphics.DrawString(DataGridViewAudits.Columns(cell.ColumnIndex).HeaderText,
-                                          DataGridViewAudits.Font, Brushes.Black, rc, fmt)
+                                          DataGridViewAudits.Font, New SolidBrush(Sunglow), rc, fmt)
                     x += rc.Width
                     h = Math.Max(h, rc.Height)
                 End If
