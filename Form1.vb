@@ -64,6 +64,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reload_record() 'RELOAD THE DATAGRID VIEW UPON START'
         DoubleBuffer.DoubleBuffered(DataGridView1, True)
+        cmbFilterSearch.SelectedIndex = 0
     End Sub
 
     'FUNCTION THAT RELOAD THE DATAGRIDVIEW'S DATA'
@@ -96,8 +97,28 @@ Public Class Form1
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         Try
-            'NOTE: will add a a dropdown box para naay choices for filtering (Fname, Lname, or student number)
-            reloadtxt("SELECT * FROM tbl_queue WHERE fname LIKE '%" & txtSearch.Text & "%' OR lname LIKE '%" & txtSearch.Text & "'")
+            Dim filterColumn As String = "CONCAT(fname, ' ', lname)" ' as default and for the full name
+
+            ' Determine the filter based on the selected item in cmbFilterSearch
+            Select Case cmbFilterSearch.SelectedItem.ToString()
+                Case "Student Number"
+                    filterColumn = "student_number"
+                Case "First Name"
+                    filterColumn = "fname"
+                Case "Last Name"
+                    filterColumn = "lname"
+                Case "Queue ID"
+                    filterColumn = "queue_id"
+                Case "Full Name"
+                    filterColumn = "CONCAT(fname, ' ', lname)"
+            End Select
+
+            'SQL query based on the selected filter column
+            Dim query As String = "SELECT * FROM tbl_queue WHERE " & filterColumn & " LIKE '%" & txtSearch.Text & "%'"
+
+            'query and reload the data
+            reloadtxt(query)
+
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
 
@@ -273,4 +294,6 @@ Public Class Form1
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
 End Class

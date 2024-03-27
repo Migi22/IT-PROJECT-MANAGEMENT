@@ -56,6 +56,7 @@ Partial Class Form1
         Me.btnEditImage = New System.Windows.Forms.Button()
         Me.picStudentPic = New System.Windows.Forms.PictureBox()
         Me.btnPrintID = New System.Windows.Forms.Button()
+        Me.cmbFilterSearch = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -306,7 +307,7 @@ Partial Class Form1
         Me.txtSearch.Location = New System.Drawing.Point(145, 559)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(1296, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(1106, 26)
         Me.txtSearch.TabIndex = 12
         '
         'OpenFileDialog1
@@ -382,12 +383,23 @@ Partial Class Form1
         Me.btnPrintID.Text = "PRINT ID"
         Me.btnPrintID.UseVisualStyleBackColor = True
         '
+        'cmbFilterSearch
+        '
+        Me.cmbFilterSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbFilterSearch.FormattingEnabled = True
+        Me.cmbFilterSearch.Items.AddRange(New Object() {"Full Name", "Student Number", "First Name", "Last Name", "Queue ID"})
+        Me.cmbFilterSearch.Location = New System.Drawing.Point(1257, 557)
+        Me.cmbFilterSearch.Name = "cmbFilterSearch"
+        Me.cmbFilterSearch.Size = New System.Drawing.Size(184, 28)
+        Me.cmbFilterSearch.TabIndex = 35
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1505, 1026)
+        Me.Controls.Add(Me.cmbFilterSearch)
         Me.Controls.Add(Me.btnPrintID)
         Me.Controls.Add(Me.txtQueueNum)
         Me.Controls.Add(Me.lblQueue)
@@ -466,4 +478,5 @@ Partial Class Form1
     Friend WithEvents txtQueueNum As TextBox
     Friend WithEvents btnEditImage As Button
     Friend WithEvents btnPrintID As Button
+    Friend WithEvents cmbFilterSearch As ComboBox
 End Class

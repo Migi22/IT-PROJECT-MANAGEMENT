@@ -23,8 +23,8 @@ Partial Class Form_Login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panelLeft = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.btnLogin = New System.Windows.Forms.Button()
@@ -48,28 +48,28 @@ Partial Class Form_Login
         Me.panelLeft.Size = New System.Drawing.Size(439, 522)
         Me.panelLeft.TabIndex = 0
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
-        Me.PictureBox1.Location = New System.Drawing.Point(57, 46)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(277, 237)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(73, 286)
+        Me.Label1.Location = New System.Drawing.Point(84, 344)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(244, 62)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "ID PROCESSING" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SYSTEM"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
+        Me.PictureBox1.Location = New System.Drawing.Point(68, 104)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(277, 237)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'txtUsername
         '
@@ -104,7 +104,7 @@ Partial Class Form_Login
         Me.lblUserName.BackColor = System.Drawing.Color.Transparent
         Me.lblUserName.Location = New System.Drawing.Point(519, 183)
         Me.lblUserName.Name = "lblUserName"
-        Me.lblUserName.Size = New System.Drawing.Size(101, 20)
+        Me.lblUserName.Size = New System.Drawing.Size(68, 13)
         Me.lblUserName.TabIndex = 4
         Me.lblUserName.Text = "USERNAME"
         '
@@ -114,7 +114,7 @@ Partial Class Form_Login
         Me.lblPassword.BackColor = System.Drawing.Color.Transparent
         Me.lblPassword.Location = New System.Drawing.Point(519, 263)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(103, 20)
+        Me.lblPassword.Size = New System.Drawing.Size(70, 13)
         Me.lblPassword.TabIndex = 5
         Me.lblPassword.Text = "PASSWORD"
         '
@@ -147,7 +147,7 @@ Partial Class Form_Login
         Me.cbShowHide.AutoSize = True
         Me.cbShowHide.Location = New System.Drawing.Point(523, 324)
         Me.cbShowHide.Name = "cbShowHide"
-        Me.cbShowHide.Size = New System.Drawing.Size(105, 24)
+        Me.cbShowHide.Size = New System.Drawing.Size(80, 17)
         Me.cbShowHide.TabIndex = 8
         Me.cbShowHide.Text = "Show/Hide"
         Me.cbShowHide.UseVisualStyleBackColor = True
