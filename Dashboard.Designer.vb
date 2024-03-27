@@ -25,15 +25,15 @@ Partial Class Dashboard
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Dashboard))
         Me.panelLeft = New System.Windows.Forms.Panel()
         Me.lblCurrentUser = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.panelRight = New System.Windows.Forms.Panel()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnUserManagement = New System.Windows.Forms.Button()
         Me.btnAuditLog = New System.Windows.Forms.Button()
         Me.btnReports = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.panelRight = New System.Windows.Forms.Panel()
         Me.panelLeft.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -69,6 +69,35 @@ Partial Class Dashboard
         Me.lblCurrentUser.TabIndex = 6
         Me.lblCurrentUser.Text = "Currennt User name"
         '
+        'Label1
+        '
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(268, 30)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "ID Processing System"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1284, 5)
+        Me.Panel1.TabIndex = 3
+        '
+        'panelRight
+        '
+        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelRight.Location = New System.Drawing.Point(268, 5)
+        Me.panelRight.Name = "panelRight"
+        Me.panelRight.Size = New System.Drawing.Size(1016, 646)
+        Me.panelRight.TabIndex = 7
+        '
         'btnLogout
         '
         Me.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
@@ -77,7 +106,7 @@ Partial Class Dashboard
         Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogout.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogout.ForeColor = System.Drawing.Color.White
-        Me.btnLogout.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.icons8_opened_folder_24
+        Me.btnLogout.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.logout
         Me.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnLogout.Location = New System.Drawing.Point(0, 601)
         Me.btnLogout.Name = "btnLogout"
@@ -97,7 +126,7 @@ Partial Class Dashboard
         Me.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUserManagement.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUserManagement.ForeColor = System.Drawing.Color.White
-        Me.btnUserManagement.Image = CType(resources.GetObject("btnUserManagement.Image"), System.Drawing.Image)
+        Me.btnUserManagement.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.user_management
         Me.btnUserManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnUserManagement.Location = New System.Drawing.Point(0, 318)
         Me.btnUserManagement.Name = "btnUserManagement"
@@ -117,7 +146,7 @@ Partial Class Dashboard
         Me.btnAuditLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAuditLog.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAuditLog.ForeColor = System.Drawing.Color.White
-        Me.btnAuditLog.Image = CType(resources.GetObject("btnAuditLog.Image"), System.Drawing.Image)
+        Me.btnAuditLog.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.audit_1
         Me.btnAuditLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAuditLog.Location = New System.Drawing.Point(0, 273)
         Me.btnAuditLog.Name = "btnAuditLog"
@@ -157,7 +186,7 @@ Partial Class Dashboard
         Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHome.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHome.ForeColor = System.Drawing.Color.White
-        Me.btnHome.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.icons8_opened_folder_24
+        Me.btnHome.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.home
         Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnHome.Location = New System.Drawing.Point(0, 183)
         Me.btnHome.Name = "btnHome"
@@ -180,35 +209,6 @@ Partial Class Dashboard
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(268, 30)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "ID Processing System"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1284, 5)
-        Me.Panel1.TabIndex = 3
-        '
-        'panelRight
-        '
-        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelRight.Location = New System.Drawing.Point(268, 5)
-        Me.panelRight.Name = "panelRight"
-        Me.panelRight.Size = New System.Drawing.Size(1016, 646)
-        Me.panelRight.TabIndex = 7
         '
         'Dashboard
         '

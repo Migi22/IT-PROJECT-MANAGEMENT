@@ -232,6 +232,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormIDCard.resx">
       <DependentUpon>FormIDCard.vb</DependentUpon>
@@ -280,6 +281,10 @@
   <ItemGroup>
     <Content Include="ipsLogo.ico" />
     <Content Include="ipsLogoMain.ico" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\user management.png" />
+    <None Include="Resources\audit_1.png" />
+    <None Include="Resources\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
