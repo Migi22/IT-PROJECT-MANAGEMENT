@@ -48,4 +48,8 @@
         Form_Login.Show()
         Me.Close()
     End Sub
+
+    Private Sub btnAuditLog_Click(sender As Object, e As EventArgs) Handles btnAuditLog.Click
+        SwitchForm(New AuditLog())
+    End Sub
 End Class

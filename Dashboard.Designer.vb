@@ -27,7 +27,7 @@ Partial Class Dashboard
         Me.lblCurrentUser = New System.Windows.Forms.Label()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnUserManagement = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnAuditLog = New System.Windows.Forms.Button()
         Me.btnReports = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -44,7 +44,7 @@ Partial Class Dashboard
         Me.panelLeft.Controls.Add(Me.lblCurrentUser)
         Me.panelLeft.Controls.Add(Me.btnLogout)
         Me.panelLeft.Controls.Add(Me.btnUserManagement)
-        Me.panelLeft.Controls.Add(Me.Button3)
+        Me.panelLeft.Controls.Add(Me.btnAuditLog)
         Me.panelLeft.Controls.Add(Me.btnReports)
         Me.panelLeft.Controls.Add(Me.btnHome)
         Me.panelLeft.Controls.Add(Me.PictureBox1)
@@ -109,25 +109,25 @@ Partial Class Dashboard
         Me.btnUserManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnUserManagement.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnAuditLog
         '
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(0, 273)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Button3.Size = New System.Drawing.Size(268, 45)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "   Audit log"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnAuditLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnAuditLog.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAuditLog.FlatAppearance.BorderSize = 0
+        Me.btnAuditLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAuditLog.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAuditLog.ForeColor = System.Drawing.Color.White
+        Me.btnAuditLog.Image = CType(resources.GetObject("btnAuditLog.Image"), System.Drawing.Image)
+        Me.btnAuditLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAuditLog.Location = New System.Drawing.Point(0, 273)
+        Me.btnAuditLog.Name = "btnAuditLog"
+        Me.btnAuditLog.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnAuditLog.Size = New System.Drawing.Size(268, 45)
+        Me.btnAuditLog.TabIndex = 2
+        Me.btnAuditLog.Text = "   Audit log"
+        Me.btnAuditLog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAuditLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAuditLog.UseVisualStyleBackColor = True
         '
         'btnReports
         '
@@ -232,7 +232,7 @@ Partial Class Dashboard
 
     Friend WithEvents panelLeft As Panel
     Friend WithEvents btnUserManagement As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnAuditLog As Button
     Friend WithEvents btnReports As Button
     Friend WithEvents btnHome As Button
     Friend WithEvents PictureBox1 As PictureBox

@@ -136,6 +136,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditLog.Designer.vb">
+      <DependentUpon>AuditLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AuditLogger.vb" />
     <Compile Include="CRUD_Connection.vb" />
     <Compile Include="CurrentUser.vb" />
@@ -208,6 +214,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AuditLog.resx">
+      <DependentUpon>AuditLog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editImage.resx">
       <DependentUpon>editImage.vb</DependentUpon>
     </EmbeddedResource>

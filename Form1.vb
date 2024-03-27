@@ -267,10 +267,6 @@ Public Class Form1
                     LoadImage() 'View the image to the datagridview
 
                 End If
-
-
-
-
             End With
 
         Catch ex As Exception
