@@ -218,6 +218,7 @@ Partial Class Dashboard
         Me.Controls.Add(Me.panelRight)
         Me.Controls.Add(Me.panelLeft)
         Me.Controls.Add(Me.Panel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.Name = "Dashboard"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
