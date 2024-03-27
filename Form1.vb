@@ -167,10 +167,10 @@ Public Class Form1
         'End of loop
 
         Try
-            updates("UPDATE tbl_queue SET fname='" & txtFname.Text & "', lname='" & txtLname.Text & "', m_i='" & txtMi.Text & "', course='" & txtCourse.Text & "',
+            updates("UPDATE tbl_queue SET student_number='" & txtStudentNum.Text & "', fname='" & txtFname.Text & "', lname='" & txtLname.Text & "', m_i='" & txtMi.Text & "', course='" & txtCourse.Text & "',
             year_level='" & txtYearLevel.Text & "', guardian_name='" & txtGuardianName.Text & "', guardian_contact_num='" & txtGuardianContNum.Text & "',
             student_address='" & txtStudentAddress.Text & "', student_Birthday='" & txtStudentBday.Text & "'
-            WHERE student_number='" & txtStudentNum.Text & "'")
+            WHERE queue_ID ='" & txtQueueNum.Text & "'")
 
             reload_record()
 

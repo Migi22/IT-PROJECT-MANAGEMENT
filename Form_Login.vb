@@ -2,9 +2,6 @@
 
 Public Class Form_Login
     Dim attempts As Integer = 0
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
 
     Private Sub btnX_Click(sender As Object, e As EventArgs) Handles btnX.Click
         Close()
@@ -19,9 +16,13 @@ Public Class Form_Login
                 .Show()
             End With
             Me.Hide()
+
+            'Will Clear the text box
+            txtPassword.Clear()
+            txtUsername.Clear()
         Else
-            MessageBox.Show("Username or Password not found! Attempt: " + attempts.ToString(), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
             attempts += 1
+            MessageBox.Show("Username or Password not found! Attempt: " + attempts.ToString(), "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
 

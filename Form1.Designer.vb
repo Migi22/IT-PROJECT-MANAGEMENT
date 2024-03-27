@@ -350,6 +350,7 @@ Partial Class Form1
         Me.txtQueueNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQueueNum.Location = New System.Drawing.Point(46, 114)
         Me.txtQueueNum.Name = "txtQueueNum"
+        Me.txtQueueNum.ReadOnly = True
         Me.txtQueueNum.Size = New System.Drawing.Size(301, 26)
         Me.txtQueueNum.TabIndex = 33
         '
