@@ -57,12 +57,14 @@ Partial Class Form1
         Me.picStudentPic = New System.Windows.Forms.PictureBox()
         Me.btnPrintID = New System.Windows.Forms.Button()
         Me.cmbFilterSearch = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(45, 590)
         Me.DataGridView1.Name = "DataGridView1"
@@ -304,10 +306,10 @@ Partial Class Form1
         'txtSearch
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(145, 559)
+        Me.txtSearch.Location = New System.Drawing.Point(150, 559)
         Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(1106, 26)
+        Me.txtSearch.Size = New System.Drawing.Size(931, 26)
         Me.txtSearch.TabIndex = 12
         '
         'OpenFileDialog1
@@ -330,11 +332,11 @@ Partial Class Form1
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(41, 560)
+        Me.Label12.Location = New System.Drawing.Point(40, 560)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(99, 25)
+        Me.Label12.Size = New System.Drawing.Size(105, 25)
         Me.Label12.TabIndex = 22
-        Me.Label12.Text = "SEARCH"
+        Me.Label12.Text = "SEARCH:"
         '
         'lblQueue
         '
@@ -393,12 +395,23 @@ Partial Class Form1
         Me.cmbFilterSearch.Size = New System.Drawing.Size(184, 28)
         Me.cmbFilterSearch.TabIndex = 35
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(1161, 560)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(90, 25)
+        Me.Label13.TabIndex = 36
+        Me.Label13.Text = "FILTER:"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1505, 1026)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.cmbFilterSearch)
         Me.Controls.Add(Me.btnPrintID)
         Me.Controls.Add(Me.txtQueueNum)
@@ -479,4 +492,5 @@ Partial Class Form1
     Friend WithEvents btnEditImage As Button
     Friend WithEvents btnPrintID As Button
     Friend WithEvents cmbFilterSearch As ComboBox
+    Friend WithEvents Label13 As Label
 End Class
