@@ -257,29 +257,25 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
+        Using optionsForm As New Print_ID_Options
+            ' Fill the labels in the options form
+            optionsForm.lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+                                            DataGridView1.CurrentRow.Cells("m_i").Value.ToString
+            optionsForm.lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
+            optionsForm.lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
+                                                    DataGridView1.CurrentRow.Cells("year_level").Value.ToString
+            optionsForm.lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
 
-        With Print_ID_Options
-            'front ID
-            .lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
-                      DataGridView1.CurrentRow.Cells("m_i").Value.ToString
-            .lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
-            .lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
-                          DataGridView1.CurrentRow.Cells("year_level").Value.ToString
-            .lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
-
-            'back ID
-            .lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
-            .lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
-            .lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
-            .lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
-
-            .Show()
-        End With
+            optionsForm.lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
+            optionsForm.lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
+            optionsForm.lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
+            optionsForm.lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
 
 
-
-
+            optionsForm.ShowDialog()
+        End Using
     End Sub
+
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         'Dim item As String
