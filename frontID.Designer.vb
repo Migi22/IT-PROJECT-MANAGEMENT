@@ -43,10 +43,11 @@ Partial Class frontID
         'picIDFormat
         '
         Me.picIDFormat.BackColor = System.Drawing.Color.Transparent
+        Me.picIDFormat.Dock = System.Windows.Forms.DockStyle.Fill
         Me.picIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.Green_Simple_Medical_ID_Card
-        Me.picIDFormat.Location = New System.Drawing.Point(1, -1)
+        Me.picIDFormat.Location = New System.Drawing.Point(0, 0)
         Me.picIDFormat.Name = "picIDFormat"
-        Me.picIDFormat.Size = New System.Drawing.Size(327, 532)
+        Me.picIDFormat.Size = New System.Drawing.Size(330, 532)
         Me.picIDFormat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picIDFormat.TabIndex = 0
         Me.picIDFormat.TabStop = False

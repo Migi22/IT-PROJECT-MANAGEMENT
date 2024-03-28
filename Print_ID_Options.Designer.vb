@@ -24,6 +24,7 @@ Partial Class Print_ID_Options
     Private Sub InitializeComponent()
         Me.lblPrint_Option = New System.Windows.Forms.Label()
         Me.panelFrontID = New System.Windows.Forms.Panel()
+        Me.panelBackID = New System.Windows.Forms.Panel()
         Me.SuspendLayout()
         '
         'lblPrint_Option
@@ -46,11 +47,19 @@ Partial Class Print_ID_Options
         Me.panelFrontID.Size = New System.Drawing.Size(374, 559)
         Me.panelFrontID.TabIndex = 1
         '
+        'panelBackID
+        '
+        Me.panelBackID.Location = New System.Drawing.Point(422, 53)
+        Me.panelBackID.Name = "panelBackID"
+        Me.panelBackID.Size = New System.Drawing.Size(374, 559)
+        Me.panelBackID.TabIndex = 2
+        '
         'Print_ID_Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1283, 726)
+        Me.Controls.Add(Me.panelBackID)
         Me.Controls.Add(Me.panelFrontID)
         Me.Controls.Add(Me.lblPrint_Option)
         Me.Name = "Print_ID_Options"
@@ -61,4 +70,5 @@ Partial Class Print_ID_Options
 
     Friend WithEvents lblPrint_Option As Label
     Friend WithEvents panelFrontID As Panel
+    Friend WithEvents panelBackID As Panel
 End Class
