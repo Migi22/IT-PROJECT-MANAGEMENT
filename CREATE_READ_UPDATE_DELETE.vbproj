@@ -150,12 +150,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AuditLogger.vb" />
-    <Compile Include="backID.Designer.vb">
-      <DependentUpon>backID.vb</DependentUpon>
-    </Compile>
-    <Compile Include="backID.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CRUD_Connection.vb" />
     <Compile Include="CurrentUser.vb" />
     <Compile Include="DB_Connection.vb" />
@@ -225,19 +219,10 @@
     <Compile Include="Reports.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frontID.Designer.vb">
-      <DependentUpon>frontID.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frontID.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AuditLog.resx">
       <DependentUpon>AuditLog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="backID.resx">
-      <DependentUpon>backID.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editImage.resx">
       <DependentUpon>editImage.vb</DependentUpon>
@@ -269,9 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frontID.resx">
-      <DependentUpon>frontID.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

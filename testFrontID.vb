@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Printing
 
-Public Class frontID
+Public Class testFrontID
     Private bitmap As Bitmap
     Private WithEvents ppd As New PrintPreviewDialog
     Private Sub FormIDCard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -47,23 +47,50 @@ Public Class frontID
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        e.Graphics.DrawImage(bitmap, 50, 50)
+        If bitmap IsNot Nothing Then
+            e.Graphics.DrawImage(bitmap, 50, 50)
+        Else
+            ' Handle the case where bitmap is null (optional)
+            e.Graphics.DrawString("Image not available", New Font("Arial", 12), Brushes.Black, New PointF(50, 50))
+        End If
     End Sub
 
     Public Sub Print()
-        Dim panel As Panel = New Panel()
-        Me.Controls.Add(panel)
-        Dim grp As Graphics = panel.CreateGraphics
-        Dim formsize As Size = Me.ClientSize
-        bitmap = New Bitmap(formsize.Width, formsize.Height, grp)
-        grp = Graphics.FromImage(bitmap)
-        Dim panelLocation As Point = PointToScreen(panel.Location)
-        grp.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, formsize)
-        ppd.Document = PrintDocument1
-        ppd.PrintPreviewControl.Zoom = 1.0
-        ppd.ShowDialog()
-        Return
+        Dim panel As Panel = Panel1 ' Directly reference the Panel1 control
+
+        ' Check if Panel1 is not null
+        If panel IsNot Nothing Then
+            Dim formsize As Size = panel.ClientSize
+
+            Using bitmap As New Bitmap(formsize.Width, formsize.Height)
+                Using grp As Graphics = Graphics.FromImage(bitmap)
+                    grp.CopyFromScreen(panel.PointToScreen(Point.Empty), Point.Empty, formsize)
+
+                    ' Debugging: Draw a border around the captured area
+                    Using pen As New Pen(Color.Red, 2)
+                        grp.DrawRectangle(pen, New Rectangle(0, 0, formsize.Width - 1, formsize.Height - 1))
+                    End Using
+
+                    Using ppd As New PrintPreviewDialog()
+                        ppd.Document = PrintDocument1
+
+                        AddHandler PrintDocument1.PrintPage, Sub(sender As Object, e As PrintPageEventArgs)
+                                                                 e.Graphics.DrawImage(bitmap, 50, 50)
+                                                             End Sub
+
+                        ppd.PrintPreviewControl.Zoom = 1.0
+                        ppd.ShowDialog()
+                    End Using
+                End Using
+            End Using
+        Else
+            MessageBox.Show("Panel1 is not found or is null.")
+        End If
     End Sub
+
+
+
+
 
     Private Sub picStudentPic_Click(sender As Object, e As EventArgs) Handles picStudentPic.Click
         Print()

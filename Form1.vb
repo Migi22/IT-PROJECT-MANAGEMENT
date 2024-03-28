@@ -257,31 +257,21 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
-        'The original code
-        'With testPrintID
-        '.txtStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
-        '.txtName.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
-        'DataGridView1.CurrentRow.Cells("m_i").Value.ToString & " " &
-        'DataGridView1.CurrentRow.Cells("lname").Value.ToString
-        '.Show()
-        'End With
-        'ENd of The original code
 
-        'test
         With Print_ID_Options
             'front ID
-            .FMname = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+            .lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
                       DataGridView1.CurrentRow.Cells("m_i").Value.ToString
-            .Lname = DataGridView1.CurrentRow.Cells("lname").Value.ToString
-            .CourseYear = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
+            .lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
+            .lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
                           DataGridView1.CurrentRow.Cells("year_level").Value.ToString
-            .StudentNum = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
+            .lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
 
             'back ID
-            .Birthday = DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
-            .Guardian_Name = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
-            .Guardian_Number = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
-            .Student_Address = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
+            .lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
+            .lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
+            .lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
+            .lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
 
             .Show()
         End With
