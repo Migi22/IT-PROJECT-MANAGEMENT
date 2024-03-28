@@ -1,16 +1,23 @@
 ﻿Imports System.Drawing.Printing
 
-Public Class testPrintID
+Public Class frontID
     Private bitmap As Bitmap
     Private WithEvents ppd As New PrintPreviewDialog
     Private Sub FormIDCard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblName.Parent = picIDFormat
-        lblStudentNum.Parent = picIDFormat
+        'This will make the labels transparent
+        lblFMname.Parent = picIDFormat
+        lblTitleStudentNum.Parent = picIDFormat
+        lblInputLastName.Parent = picIDFormat
+        lblTitleCourseYear.Parent = picIDFormat
+        lblInputCourseYear.Parent = picIDFormat
+        lblTitleStudentNum.Parent = picIDFormat
+        lblInputStudentNum.Parent = picIDFormat
+
 
 
         Dim generator As New MessagingToolkit.Barcode.BarcodeEncoder
         Try
-            picBarcode.Image = New Bitmap(generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, txtStudentNum.Text))
+            picBarcode.Image = New Bitmap(generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, lblInputStudentNum.Text))
         Catch ex As Exception
             picBarcode.Image = Nothing
         End Try
@@ -21,7 +28,7 @@ Public Class testPrintID
 
     Public Sub LoadProfile()
         Try
-            reloadtxt("SELECT * FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'")
+            reloadtxt("SELECT * FROM tbl_queue WHERE student_number='" & lblInputStudentNum.Text & "'")
 
             If dt.Rows.Count > 0 Then
                 If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
@@ -35,7 +42,7 @@ Public Class testPrintID
         End Try
     End Sub
 
-    Private Sub txtStudentNum_TextChanged(sender As Object, e As EventArgs) Handles txtStudentNum.TextChanged
+    Private Sub txtStudentNum_TextChanged(sender As Object, e As EventArgs)
         LoadProfile()
     End Sub
 
@@ -63,5 +70,8 @@ Public Class testPrintID
 
     End Sub
 
-
+    Private Sub lblsToUpper_TextChanged(sender As Object, e As EventArgs) Handles lblFMname.TextChanged, lblInputLastName.TextChanged
+        lblFMname.Text = lblFMname.Text.ToUpper()
+        lblInputLastName.Text = lblInputLastName.Text.ToUpper()
+    End Sub
 End Class

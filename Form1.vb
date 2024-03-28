@@ -257,13 +257,30 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
-        With testPrintID
-            .txtStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
-            .txtName.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
-                            DataGridView1.CurrentRow.Cells("m_i").Value.ToString & " " &
-                            DataGridView1.CurrentRow.Cells("lname").Value.ToString
+        'The original code
+        'With testPrintID
+        '.txtStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
+        '.txtName.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+        'DataGridView1.CurrentRow.Cells("m_i").Value.ToString & " " &
+        'DataGridView1.CurrentRow.Cells("lname").Value.ToString
+        '.Show()
+        'End With
+        'ENd of The original code
+
+        'test
+        With Print_ID_Options
+            .FMname = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+                      DataGridView1.CurrentRow.Cells("m_i").Value.ToString
+            .Lname = DataGridView1.CurrentRow.Cells("lname").Value.ToString
+            .CourseYear = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
+                          DataGridView1.CurrentRow.Cells("year_level").Value.ToString
+            .StudentNum = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
             .Show()
         End With
+
+
+
+
     End Sub
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
