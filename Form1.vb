@@ -1,6 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Reflection
+Imports System.Security.Policy
 
 Public Class Form1
     Private username As String = CurrentUser.Username
@@ -84,8 +85,9 @@ Public Class Form1
                     End If
                 Next
 
+                'Delcaration of column picture
                 Dim img As New DataGridViewImageColumn()
-                img = DataGridView1.Columns(12)
+                img = DataGridView1.Columns(13)
                 img.ImageLayout = DataGridViewImageCellLayout.Stretch
 
             End If
@@ -97,27 +99,7 @@ Public Class Form1
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         Try
-            Dim filterColumn As String = "CONCAT(fname, ' ', lname)" ' as default and for the full name
-
-            ' Determine the filter based on the selected item in cmbFilterSearch
-            Select Case cmbFilterSearch.SelectedItem.ToString()
-                Case "Student Number"
-                    filterColumn = "student_number"
-                Case "First Name"
-                    filterColumn = "fname"
-                Case "Last Name"
-                    filterColumn = "lname"
-                Case "Queue ID"
-                    filterColumn = "queue_id"
-                Case "Full Name"
-                    filterColumn = "CONCAT(fname, ' ', lname)"
-            End Select
-
-            'SQL query based on the selected filter column
-            Dim query As String = "SELECT * FROM tbl_queue WHERE " & filterColumn & " LIKE '%" & txtSearch.Text & "%'"
-
-            'query and reload the data
-            reloadtxt(query)
+            ReloadData()
 
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
@@ -135,33 +117,7 @@ Public Class Form1
                 txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
                 txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
 
-                ' The one to show the student picture
-                If dt.Rows.Count > 0 Then
-                    If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
-                    Else
-                        picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
-                    End If
-                End If
-
-                'Checks if the column Picture already exist. To avoid creating it again after updating picture of student
-                If Not dt.Columns.Contains("Picture") Then
-                    dt.Columns.Add("Picture", GetType(Byte()))
-                End If
-
-                'Add picture of the student to the datagrid
-                For Each row As DataRow In dt.Rows
-                    If row("image_file_name").ToString = "" Then
-                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
-                    Else
-                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
-                    End If
-                Next
-
-                'Property of Picture column on datagridview
-                Dim img As New DataGridViewImageColumn()
-                img = DataGridView1.Columns(12)
-                img.ImageLayout = DataGridViewImageCellLayout.Stretch
+                LoadStudentImage(dt)
 
 
             End If
@@ -173,6 +129,104 @@ Public Class Form1
             da.Dispose()
         End Try
     End Sub
+
+    Private Sub LoadStudentImage(ByVal dt As DataTable)
+        ' The one to show the student picture
+        If dt.Rows.Count > 0 Then
+            If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
+                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+            Else
+                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
+            End If
+        End If
+
+        ' Checks if the column Picture already exists. To avoid creating it again after updating the student's picture
+        If Not dt.Columns.Contains("Picture") Then
+            dt.Columns.Add("Picture", GetType(Byte()))
+        End If
+
+        ' Add the picture of the student to the DataTable
+        For Each row As DataRow In dt.Rows
+            If row("image_file_name").ToString = "" Then
+                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
+            Else
+                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
+            End If
+        Next
+
+        ' Set the properties of the Picture column on the DataGridView
+        Dim img As New DataGridViewImageColumn()
+        img = DataGridView1.Columns(13)
+        img.ImageLayout = DataGridViewImageCellLayout.Stretch
+    End Sub
+
+
+    Private Sub cmbFilterSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFilterSearch.SelectedIndexChanged
+        ' Call the method to reload data based on the selected filter
+        ReloadData()
+    End Sub
+
+    Private Sub ReloadData()
+        Try
+            Dim statusFilter As String = ""
+
+            'Determine the status filter based on the selected item in cmbFilterSearch
+            Select Case cmbFilterSearch.SelectedItem.ToString()
+                Case "On Queue"
+                    statusFilter = "status = 'On Queue'"
+                Case "Lacking"
+                    statusFilter = "status = 'Lacking'"
+                Case "Done"
+                    statusFilter = "status = 'Done'"
+                Case Else
+                    statusFilter = "" ' No specific status filter if a different option is selected
+            End Select
+
+            'Build the dynamic SQL query with the status filter and search text
+            Dim query As String = "SELECT * FROM tbl_queue"
+
+            'Append the status filter to the WHERE clause if a specific status is selected
+            If Not String.IsNullOrEmpty(statusFilter) Then
+                query &= " WHERE " & statusFilter
+            End If
+
+            'Apply additional filter based on the search text (if any)
+            If Not String.IsNullOrEmpty(txtSearch.Text.Trim()) Then
+                Dim filterColumn As String = ""
+                Select Case cmbFilterSearch.SelectedItem.ToString()
+                    Case "Student Number"
+                        filterColumn = "student_number"
+                    Case "First Name"
+                        filterColumn = "fname"
+                    Case "Last Name"
+                        filterColumn = "lname"
+                    Case "Queue ID"
+                        filterColumn = "queue_id"
+                    Case "Full Name"
+                        filterColumn = "CONCAT(fname, ' ', lname)"
+                End Select
+
+                If Not String.IsNullOrEmpty(filterColumn) Then
+                    query &= If(String.IsNullOrEmpty(statusFilter), " WHERE ", " AND ") & filterColumn & " LIKE '%" & txtSearch.Text.Trim() & "%'"
+                End If
+            End If
+
+            'Debugging output to display the constructed SQL query
+            'MessageBox.Show("Generated Query: " & query)
+
+            'Query and reload the data
+            reloadtxt(query)
+
+            'Reload the DataGridView with the filtered results
+            DataGridView1.DataSource = dt
+            LoadStudentImage(dt)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while reloading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
+
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         'Loop method to check individually the text box if it is a blank
@@ -257,28 +311,31 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
+        Using optionsForm As New Print_ID_Options
+            'Fill the labels in the options form
+            optionsForm.lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+                                            DataGridView1.CurrentRow.Cells("m_i").Value.ToString
+            optionsForm.lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
+            optionsForm.lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
+                                                    DataGridView1.CurrentRow.Cells("year_level").Value.ToString
+            optionsForm.lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
 
-        With Print_ID_Options
-            'front ID
-            .lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
-                      DataGridView1.CurrentRow.Cells("m_i").Value.ToString
-            .lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
-            .lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
-                          DataGridView1.CurrentRow.Cells("year_level").Value.ToString
-            .lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
+            optionsForm.lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
+            optionsForm.lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
+            optionsForm.lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
+            optionsForm.lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
 
-            'back ID
-            .lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
-            .lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
-            .lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
-            .lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
+            optionsForm.QueueID = DataGridView1.CurrentRow.Cells("queue_ID").Value.ToString
 
-            .Show()
-        End With
+            AddHandler optionsForm.FormClosedEvent, AddressOf Print_ID_Options_FormClosed
 
+            optionsForm.ShowDialog()
+        End Using
+    End Sub
 
-
-
+    'Reload the DataGridView after Print_ID_Options form is closed
+    Private Sub Print_ID_Options_FormClosed(sender As Object, e As EventArgs)
+        reload_record()
     End Sub
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick

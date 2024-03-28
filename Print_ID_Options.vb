@@ -1,14 +1,13 @@
-﻿Imports System.Drawing.Printing
+﻿Imports System.Data.SqlClient
+Imports System.Drawing.Printing
 
 Public Class Print_ID_Options
-    'back ID
-    Public Birthday As String
-    Public Guardian_Name As String
-    Public Guardian_Number As String
-    Public Student_Address As String
+    Public QueueID As String
 
     Private bitmap As Bitmap
     Private WithEvents ppd As New PrintPreviewDialog
+
+    Public Event FormClosedEvent As EventHandler
 
     Private Sub Print_ID_Options_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Transparent
@@ -103,4 +102,17 @@ Public Class Print_ID_Options
         End Try
     End Sub
 
+    Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
+        Try
+            updates("UPDATE tbl_queue SET status = 'Done' WHERE queue_ID = '" & QueueID & "'")
+            Me.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Print_ID_Options_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        RaiseEvent FormClosedEvent(Me, EventArgs.Empty)
+    End Sub
 End Class

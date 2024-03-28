@@ -390,7 +390,7 @@ Partial Class Form1
         '
         Me.cmbFilterSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFilterSearch.FormattingEnabled = True
-        Me.cmbFilterSearch.Items.AddRange(New Object() {"Full Name", "Student Number", "First Name", "Last Name", "Queue ID"})
+        Me.cmbFilterSearch.Items.AddRange(New Object() {"On Queue", "Lacking", "Done", "Full Name", "Student Number", "First Name", "Last Name", "Queue ID"})
         Me.cmbFilterSearch.Location = New System.Drawing.Point(1257, 557)
         Me.cmbFilterSearch.Name = "cmbFilterSearch"
         Me.cmbFilterSearch.Size = New System.Drawing.Size(184, 28)

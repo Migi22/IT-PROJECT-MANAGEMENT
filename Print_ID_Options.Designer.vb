@@ -48,6 +48,7 @@ Partial Class Print_ID_Options
         Me.lblTitleStudentSig = New System.Windows.Forms.Label()
         Me.lblInputBirthday = New System.Windows.Forms.Label()
         Me.picBackIDFormat = New System.Windows.Forms.PictureBox()
+        Me.btnDone = New System.Windows.Forms.Button()
         Me.panelFrontID.SuspendLayout()
         CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -341,11 +342,21 @@ Partial Class Print_ID_Options
         Me.picBackIDFormat.TabIndex = 11
         Me.picBackIDFormat.TabStop = False
         '
+        'btnDone
+        '
+        Me.btnDone.Location = New System.Drawing.Point(424, 638)
+        Me.btnDone.Name = "btnDone"
+        Me.btnDone.Size = New System.Drawing.Size(114, 51)
+        Me.btnDone.TabIndex = 38
+        Me.btnDone.Text = "Done"
+        Me.btnDone.UseVisualStyleBackColor = True
+        '
         'Print_ID_Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1283, 726)
+        Me.Controls.Add(Me.btnDone)
         Me.Controls.Add(Me.panelBackID)
         Me.Controls.Add(Me.panelFrontID)
         Me.Controls.Add(Me.btnPrintBack)
@@ -393,4 +404,5 @@ Partial Class Print_ID_Options
     Friend WithEvents lblTitleStudentSig As Label
     Friend WithEvents lblInputBirthday As Label
     Friend WithEvents picBackIDFormat As PictureBox
+    Friend WithEvents btnDone As Button
 End Class
