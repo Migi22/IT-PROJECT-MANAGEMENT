@@ -279,7 +279,6 @@
     <None Include="Resources\Green Simple Medical ID Card.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ipsLogo.ico" />
     <Content Include="ipsLogoMain.ico" />
     <None Include="Resources\logout.png" />
     <None Include="Resources\user management.png" />
