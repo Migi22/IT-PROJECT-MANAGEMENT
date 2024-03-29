@@ -14,8 +14,6 @@ Public Class Reports
     Private Sub Reports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statusFilter = ""
 
-        'cmbFilterReport.SelectedIndex = 0
-
         loadReports()
 
 
@@ -23,16 +21,72 @@ Public Class Reports
         cbCourse.SelectedIndex = 0
         cbYear.SelectedIndex = 0
 
-
-
-
     End Sub
 
     Private Sub UpdateFilterInfoLabel(ByVal filterInfo As String)
-        If Not String.IsNullOrEmpty(statusFilter) Then
-            lblFilterInfo.Text &= filterInfo & statusFilter
+
+        If Not String.IsNullOrEmpty(statusFilter) And cbFilterDate.Checked And cbFilterCourseYear.Checked Then
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd") & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
+        ElseIf Not String.IsNullOrEmpty(statusFilter) And cbFilterDate.Checked Then
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd")
+        ElseIf Not String.IsNullOrEmpty(statusFilter) And cbFilterCourseYear.Checked Then
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
+        ElseIf cbFilterDate.Checked And cbFilterCourseYear.Checked Then
+            lblFilterInfo.Text &= filterInfo & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd") & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
+        ElseIf Not String.IsNullOrEmpty(statusFilter) Then
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter
+        ElseIf cbFilterDate.Checked Then
+            lblFilterInfo.Text &= filterInfo & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd")
+        ElseIf cbFilterCourseYear.Checked Then
+            lblFilterInfo.Text &= filterInfo & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
         End If
     End Sub
+
+
+    'Test New
+    Private Sub ApplyFilterDate(ByRef query As String)
+        If cbFilterDate.Checked Then
+            Dim fromDate As String = DTPFrom.Value.ToString("yyyy-MM-dd")
+            Dim toDate As String = DTPTo.Value.ToString("yyyy-MM-dd")
+
+            If String.IsNullOrEmpty(statusFilter) Then
+                query &= " WHERE done_printing_date BETWEEN '" & fromDate & "' AND '" & toDate & "'"
+
+            Else
+                query &= " AND done_printing_date BETWEEN '" & fromDate & "' AND '" & toDate & "'"
+
+            End If
+        End If
+    End Sub
+
+    Private Sub ApplyStatusFilter(ByRef query As String)
+        If Not String.IsNullOrEmpty(statusFilter) Then
+            If Not query.Contains("WHERE") Then
+                query &= " WHERE status = '" & statusFilter & "'"
+
+            Else
+                query &= " AND status = '" & statusFilter & "'"
+
+            End If
+        End If
+    End Sub
+
+    Private Sub ApplyFilterCourseYear(ByRef query As String)
+        If cbFilterCourseYear.Checked Then
+            Dim course As String = cbCourse.SelectedItem.ToString()
+            Dim year As String = cbYear.SelectedItem.ToString()
+
+            If String.IsNullOrEmpty(statusFilter) Then
+                If Not query.Contains("WHERE") Then
+                    query &= " WHERE course = '" & course & "' AND year_level = '" & year & "'"
+                Else
+                    query &= " AND course = '" & course & "' AND year_level = '" & year & "'"
+                End If
+            End If
+        End If
+    End Sub
+
+
 
     Public Sub loadReports()
         Try
@@ -52,35 +106,17 @@ Public Class Reports
         End Try
     End Sub
 
-
-    Private Sub txtSearchReport_TextChanged(sender As Object, e As EventArgs) Handles txtSearchReport.TextChanged
-        Try
-            ReloadData()
-
-            If dt.Rows.Count > 0 Then
-                DataGridViewReports.DataSource = dt
-
-            End If
-
-        Catch ex As Exception
-            MessageBox.Show("An error occurred searching audit: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            strcon.Close()
-            da.Dispose()
-        End Try
-    End Sub
-
     Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
         Try
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+            MessageBox.Show("Query: " & query)
 
             lblFilterInfo.Text = "Showing All records"
-            UpdateFilterInfoLabel(" with Status Filter: ")
-
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue"
-
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " WHERE status = '" & statusFilter & "'"
-            End If
+            UpdateFilterInfoLabel(" with ")
 
             reload(query, DataGridViewReports)
         Catch ex As Exception
@@ -216,6 +252,9 @@ Public Class Reports
             Dim selectedCourse As String = cbCourse.SelectedItem.ToString()
             Dim selectedYear As String = cbYear.SelectedItem.ToString()
 
+            lblFilterInfo.Text = "Showing All records for " & selectedCourse & " " & selectedYear & " YEAR "
+            UpdateFilterInfoLabel(" with Status Filter: ")
+
             ' Assuming reload is a method to reload data into DataGridView
             Dim query As String = $"SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE course = '{selectedCourse}' AND year_level = '{selectedYear}'"
 
@@ -228,6 +267,9 @@ Public Class Reports
             MessageBox.Show("An error occurred on filtering Course and Year: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
+
 
     Private Sub btnPrintPreview_Click(sender As Object, e As EventArgs) Handles btnPrintPreview.Click
         ppd.Document = PrintDocumentAudit
