@@ -13,7 +13,7 @@ Public Class Reports
 
     Private Sub Reports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statusFilter = ""
-
+        lblFilterInfo.Text = "Showing All records"
         loadReports()
 
 
@@ -26,13 +26,13 @@ Public Class Reports
     Private Sub UpdateFilterInfoLabel(ByVal filterInfo As String)
 
         If Not String.IsNullOrEmpty(statusFilter) And cbFilterDate.Checked And cbFilterCourseYear.Checked Then
-            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd") & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & ", Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd") & ", Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
         ElseIf Not String.IsNullOrEmpty(statusFilter) And cbFilterDate.Checked Then
-            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd")
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & ", Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd")
         ElseIf Not String.IsNullOrEmpty(statusFilter) And cbFilterCourseYear.Checked Then
-            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
+            lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter & ", Course Filter: " & cbCourse.SelectedItem.ToString() & ", Year Filter: " & cbYear.SelectedItem.ToString()
         ElseIf cbFilterDate.Checked And cbFilterCourseYear.Checked Then
-            lblFilterInfo.Text &= filterInfo & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd") & " Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
+            lblFilterInfo.Text &= filterInfo & " Date Filter: " & DTPFrom.Value.ToString("yyyy-MM-dd") & " to " & DTPTo.Value.ToString("yyyy-MM-dd") & ", Course Filter: " & cbCourse.SelectedItem.ToString() & " Year Filter: " & cbYear.SelectedItem.ToString()
         ElseIf Not String.IsNullOrEmpty(statusFilter) Then
             lblFilterInfo.Text &= filterInfo & " Status Filter: " & statusFilter
         ElseIf cbFilterDate.Checked Then
@@ -113,10 +113,10 @@ Public Class Reports
             ApplyFilterDate(query)
             ApplyFilterCourseYear(query)
 
-            MessageBox.Show("Query: " & query)
+
 
             lblFilterInfo.Text = "Showing All records"
-            UpdateFilterInfoLabel(" with ")
+            UpdateFilterInfoLabel(" with")
 
             reload(query, DataGridViewReports)
         Catch ex As Exception
@@ -126,95 +126,64 @@ Public Class Reports
 
     Private Sub btnDaily_Click(sender As Object, e As EventArgs) Handles btnDaily.Click
         Try
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE DATE(done_printing_date) = DATE(NOW())"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+
 
             lblFilterInfo.Text = "Showing Daily records"
-            UpdateFilterInfoLabel(" with Status Filter: ")
-
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE done_printing_date = DATE(NOW())"
-
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " AND status = '" & statusFilter & "'"
-            End If
+            UpdateFilterInfoLabel(" with")
 
             reload(query, DataGridViewReports)
         Catch ex As Exception
-            MessageBox.Show("An error occurred on Daily: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
 
     Private Sub btnWeekly_Click(sender As Object, e As EventArgs) Handles btnWeekly.Click
         Try
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE WEEK(done_printing_date) = WEEK(NOW())"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+
 
             lblFilterInfo.Text = "Showing Weekly records"
-            UpdateFilterInfoLabel(" with Status Filter: ")
-
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE WEEK(done_printing_date) = WEEK(NOW())"
-
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " AND status = '" & statusFilter & "'"
-            End If
+            UpdateFilterInfoLabel(" with")
 
             reload(query, DataGridViewReports)
-
         Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub btnMonthly_Click(sender As Object, e As EventArgs) Handles btnMonthly.Click
         Try
 
-            lblFilterInfo.Text = "Showing Monthly records"
-            UpdateFilterInfoLabel(" with Status Filter: ")
-
             Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE MONTH(done_printing_date) = MONTH(NOW())"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
 
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " AND status = '" & statusFilter & "'"
-            End If
+
+
+            lblFilterInfo.Text = "Showing Daily records"
+            UpdateFilterInfoLabel(" with")
 
             reload(query, DataGridViewReports)
-
         Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub btnFilterDate_Click(sender As Object, e As EventArgs) Handles btnFilterDate.Click
-        Try
-
-            lblFilterInfo.Text = "Showing All records from " & DTPFrom.Value.ToString("dd-MM-yyyy") & " and " & DTPTo.Value.ToString("dd-MM-yyyy")
-            UpdateFilterInfoLabel(" with Status Filter: ")
-
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE DATE_FORMAT(done_printing_date, '%Y-%m-%d') BETWEEN '" & DTPFrom.Value.ToString("yyyy-MM-dd") & "' AND '" & DTPTo.Value.ToString("yyyy-MM-dd") & "'"
-
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " AND status = '" & statusFilter & "'"
-            End If
-
-            ' Reload data into DataGridViewAudits using the updated query
-            reload(query, DataGridViewReports)
-        Catch ex As Exception
-            MessageBox.Show("An error occurred on filtering date: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
 
     Private Sub cmbFilterReport_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFilterReport.SelectedIndexChanged
-        ' Call the method to reload data based on the selected filter
-        ReloadData()
 
-        lblFilterInfo.Text = "Showing All records"
-        UpdateFilterInfoLabel(" with Status Filter: ")
 
-    End Sub
-
-    Private Sub ReloadData()
         Try
-
-            'Determine the status filter based on the selected item in cmbFilterSearch
             Select Case cmbFilterReport.SelectedItem.ToString()
                 Case "On Queue"
                     statusFilter = "On Queue"
@@ -227,49 +196,10 @@ Public Class Reports
                 Case Else
                     statusFilter = "" ' No specific status filter if a different option is selected
             End Select
-
-            'Build the dynamic SQL query with the status filter and search text
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue"
-
-            'Append the status filter to the WHERE clause if a specific status is selected
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " WHERE status = '" & statusFilter & "'"
-            End If
-
-            'Query and reload the data
-            reloadtxt(query)
-
-            'Reload the DataGridView with the filtered results
-            DataGridViewReports.DataSource = dt
         Catch ex As Exception
-            MessageBox.Show("An error occurred while reloading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("An error occurred on FilterReport: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub btnFilterCourseYear_Click(sender As Object, e As EventArgs) Handles btnFilterCourseYear.Click
-        Try
-            ' Construct the SQL query based on the selected values from ComboBoxes
-            Dim selectedCourse As String = cbCourse.SelectedItem.ToString()
-            Dim selectedYear As String = cbYear.SelectedItem.ToString()
-
-            lblFilterInfo.Text = "Showing All records for " & selectedCourse & " " & selectedYear & " YEAR "
-            UpdateFilterInfoLabel(" with Status Filter: ")
-
-            ' Assuming reload is a method to reload data into DataGridView
-            Dim query As String = $"SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE course = '{selectedCourse}' AND year_level = '{selectedYear}'"
-
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                query &= " AND status = '" & statusFilter & "'"
-            End If
-
-            reload(query, DataGridViewReports)
-        Catch ex As Exception
-            MessageBox.Show("An error occurred on filtering Course and Year: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-
-
 
     Private Sub btnPrintPreview_Click(sender As Object, e As EventArgs) Handles btnPrintPreview.Click
         ppd.Document = PrintDocumentAudit

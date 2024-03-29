@@ -25,7 +25,7 @@ Partial Class Reports
         Me.PrintDocumentAudit = New System.Drawing.Printing.PrintDocument()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnFilterDate = New System.Windows.Forms.Button()
+        Me.cbFilterDate = New System.Windows.Forms.CheckBox()
         Me.lblDateTo = New System.Windows.Forms.Label()
         Me.lblDateFrom = New System.Windows.Forms.Label()
         Me.DTPTo = New System.Windows.Forms.DateTimePicker()
@@ -40,7 +40,9 @@ Partial Class Reports
         Me.btnAll = New System.Windows.Forms.Button()
         Me.leftPanel = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.btnFilterCourseYear = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cbFilterCourseYear = New System.Windows.Forms.CheckBox()
         Me.cbYear = New System.Windows.Forms.ComboBox()
         Me.cbCourse = New System.Windows.Forms.ComboBox()
         Me.btnNeedVerifications = New System.Windows.Forms.Button()
@@ -49,10 +51,6 @@ Partial Class Reports
         Me.cmbFilterReport = New System.Windows.Forms.ComboBox()
         Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
         Me.lblFilterInfo = New System.Windows.Forms.Label()
-        Me.cbFilterDate = New System.Windows.Forms.CheckBox()
-        Me.cbFilterCourseYear = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewReports, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.leftPanel.SuspendLayout()
@@ -76,7 +74,6 @@ Partial Class Reports
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.cbFilterDate)
-        Me.GroupBox1.Controls.Add(Me.btnFilterDate)
         Me.GroupBox1.Controls.Add(Me.lblDateTo)
         Me.GroupBox1.Controls.Add(Me.lblDateFrom)
         Me.GroupBox1.Controls.Add(Me.DTPTo)
@@ -84,22 +81,21 @@ Partial Class Reports
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(169, 181)
+        Me.GroupBox1.Size = New System.Drawing.Size(169, 141)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "FLITER BY DATE"
         '
-        'btnFilterDate
+        'cbFilterDate
         '
-        Me.btnFilterDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnFilterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFilterDate.ForeColor = System.Drawing.Color.Black
-        Me.btnFilterDate.Location = New System.Drawing.Point(-1, 134)
-        Me.btnFilterDate.Name = "btnFilterDate"
-        Me.btnFilterDate.Size = New System.Drawing.Size(170, 37)
-        Me.btnFilterDate.TabIndex = 4
-        Me.btnFilterDate.Text = "Filter Date"
-        Me.btnFilterDate.UseVisualStyleBackColor = False
+        Me.cbFilterDate.AutoSize = True
+        Me.cbFilterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFilterDate.Location = New System.Drawing.Point(2, 19)
+        Me.cbFilterDate.Name = "cbFilterDate"
+        Me.cbFilterDate.Size = New System.Drawing.Size(63, 20)
+        Me.cbFilterDate.TabIndex = 5
+        Me.cbFilterDate.Text = "Allow"
+        Me.cbFilterDate.UseVisualStyleBackColor = True
         '
         'lblDateTo
         '
@@ -247,28 +243,44 @@ Partial Class Reports
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.cbFilterCourseYear)
-        Me.GroupBox2.Controls.Add(Me.btnFilterCourseYear)
         Me.GroupBox2.Controls.Add(Me.cbYear)
         Me.GroupBox2.Controls.Add(Me.cbCourse)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 417)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 365)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(170, 195)
+        Me.GroupBox2.Size = New System.Drawing.Size(170, 158)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "FILTER BY COURSE && YEAR"
         '
-        'btnFilterCourseYear
+        'Label2
         '
-        Me.btnFilterCourseYear.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnFilterCourseYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFilterCourseYear.ForeColor = System.Drawing.Color.Black
-        Me.btnFilterCourseYear.Location = New System.Drawing.Point(0, 152)
-        Me.btnFilterCourseYear.Name = "btnFilterCourseYear"
-        Me.btnFilterCourseYear.Size = New System.Drawing.Size(170, 37)
-        Me.btnFilterCourseYear.TabIndex = 5
-        Me.btnFilterCourseYear.Text = "Filter Course && Year"
-        Me.btnFilterCourseYear.UseVisualStyleBackColor = False
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(3, 97)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(29, 13)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "Year"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(3, 45)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(40, 13)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Course"
+        '
+        'cbFilterCourseYear
+        '
+        Me.cbFilterCourseYear.AutoSize = True
+        Me.cbFilterCourseYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFilterCourseYear.Location = New System.Drawing.Point(3, 19)
+        Me.cbFilterCourseYear.Name = "cbFilterCourseYear"
+        Me.cbFilterCourseYear.Size = New System.Drawing.Size(63, 20)
+        Me.cbFilterCourseYear.TabIndex = 6
+        Me.cbFilterCourseYear.Text = "Allow"
+        Me.cbFilterCourseYear.UseVisualStyleBackColor = True
         '
         'cbYear
         '
@@ -355,46 +367,6 @@ Partial Class Reports
         Me.lblFilterInfo.TabIndex = 39
         Me.lblFilterInfo.Text = "Showing:"
         '
-        'cbFilterDate
-        '
-        Me.cbFilterDate.AutoSize = True
-        Me.cbFilterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbFilterDate.Location = New System.Drawing.Point(2, 19)
-        Me.cbFilterDate.Name = "cbFilterDate"
-        Me.cbFilterDate.Size = New System.Drawing.Size(63, 20)
-        Me.cbFilterDate.TabIndex = 5
-        Me.cbFilterDate.Text = "Allow"
-        Me.cbFilterDate.UseVisualStyleBackColor = True
-        '
-        'cbFilterCourseYear
-        '
-        Me.cbFilterCourseYear.AutoSize = True
-        Me.cbFilterCourseYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbFilterCourseYear.Location = New System.Drawing.Point(3, 19)
-        Me.cbFilterCourseYear.Name = "cbFilterCourseYear"
-        Me.cbFilterCourseYear.Size = New System.Drawing.Size(63, 20)
-        Me.cbFilterCourseYear.TabIndex = 6
-        Me.cbFilterCourseYear.Text = "Allow"
-        Me.cbFilterCourseYear.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 45)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Course"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 97)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(29, 13)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Year"
-        '
         'Reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -426,7 +398,6 @@ Partial Class Reports
     Friend WithEvents PrintDocumentAudit As Printing.PrintDocument
     Friend WithEvents lblSearch As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents btnFilterDate As Button
     Friend WithEvents lblDateTo As Label
     Friend WithEvents lblDateFrom As Label
     Friend WithEvents DTPTo As DateTimePicker
@@ -445,7 +416,6 @@ Partial Class Reports
     Friend WithEvents Label13 As Label
     Friend WithEvents cmbFilterReport As ComboBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents btnFilterCourseYear As Button
     Friend WithEvents cbYear As ComboBox
     Friend WithEvents cbCourse As ComboBox
     Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
