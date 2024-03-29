@@ -88,13 +88,13 @@ Public Class Form1
 
                 'Delcaration of column picture
                 Dim img As New DataGridViewImageColumn()
-                img = DataGridView1.Columns(13)
+                img = DataGridView1.Columns(14)
                 img.ImageLayout = DataGridViewImageCellLayout.Stretch
 
             End If
 
         Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("An error occurred reload record: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -157,7 +157,7 @@ Public Class Form1
 
         ' Set the properties of the Picture column on the DataGridView
         Dim img As New DataGridViewImageColumn()
-        img = DataGridView1.Columns(13)
+        img = DataGridView1.Columns(14)
         img.ImageLayout = DataGridViewImageCellLayout.Stretch
     End Sub
 

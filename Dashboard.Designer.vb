@@ -25,15 +25,15 @@ Partial Class Dashboard
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Dashboard))
         Me.panelLeft = New System.Windows.Forms.Panel()
         Me.lblCurrentUser = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.panelRight = New System.Windows.Forms.Panel()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnUserManagement = New System.Windows.Forms.Button()
         Me.btnAuditLog = New System.Windows.Forms.Button()
         Me.btnReports = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.panelRight = New System.Windows.Forms.Panel()
         Me.panelLeft.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -68,35 +68,6 @@ Partial Class Dashboard
         Me.lblCurrentUser.Size = New System.Drawing.Size(246, 29)
         Me.lblCurrentUser.TabIndex = 6
         Me.lblCurrentUser.Text = "Currennt User name"
-        '
-        'Label1
-        '
-        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(268, 30)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "ID Processing System"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1284, 5)
-        Me.Panel1.TabIndex = 3
-        '
-        'panelRight
-        '
-        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelRight.Location = New System.Drawing.Point(268, 5)
-        Me.panelRight.Name = "panelRight"
-        Me.panelRight.Size = New System.Drawing.Size(1016, 646)
-        Me.panelRight.TabIndex = 7
         '
         'btnLogout
         '
@@ -209,6 +180,35 @@ Partial Class Dashboard
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(268, 30)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "ID Processing System"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1284, 5)
+        Me.Panel1.TabIndex = 3
+        '
+        'panelRight
+        '
+        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelRight.Location = New System.Drawing.Point(268, 5)
+        Me.panelRight.Name = "panelRight"
+        Me.panelRight.Size = New System.Drawing.Size(1016, 646)
+        Me.panelRight.TabIndex = 7
         '
         'Dashboard
         '
