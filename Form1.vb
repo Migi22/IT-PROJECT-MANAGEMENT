@@ -70,6 +70,7 @@ Public Class Form1
 
     'FUNCTION THAT RELOAD THE DATAGRIDVIEW'S DATA'
     Public Sub reload_record()
+
         Try
             reload("SELECT * FROM tbl_queue", DataGridView1)
 
@@ -174,8 +175,8 @@ Public Class Form1
             Select Case cmbFilterSearch.SelectedItem.ToString()
                 Case "On Queue"
                     statusFilter = "status = 'On Queue'"
-                Case "Lacking"
-                    statusFilter = "status = 'Lacking'"
+                Case "Needs Verification"
+                    statusFilter = "status = 'Needs Verification'"
                 Case "Done"
                     statusFilter = "status = 'Done'"
                 Case Else
@@ -368,5 +369,36 @@ Public Class Form1
         End Try
     End Sub
 
+    Private Sub btnNeedVerify_Click(sender As Object, e As EventArgs) Handles btnNeedVerify.Click
 
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to change the status of this queue?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+
+            Try
+                updates("UPDATE tbl_queue SET status= 'Needs Verification'
+                    WHERE queue_ID ='" & txtQueueNum.Text & "'")
+
+                reload_record()
+
+                MessageBox.Show("Queue status updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Try
+                    'AUDIT
+                    action = "UPDATED STUDENT status (Needs Verification): " & txtLname.Text & ", " & txtFname.Text
+                    dateTime = DateTime.Now
+                    LogAudit(username, action, dateTime)
+                    'END AUDIT
+                Catch ex As Exception
+                    MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+
+            Catch ex As Exception
+                MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+        End If
+
+
+    End Sub
 End Class
