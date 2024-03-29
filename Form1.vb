@@ -41,7 +41,7 @@ Public Class Form1
                 Try
                     'AUDIT
                     action = "CREATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                    dateTime = dateTime.Now
+                    dateTime = DateTime.Now
                     LogAudit(username, action, dateTime)
                     'END AUDIT
                 Catch ex As Exception
@@ -252,7 +252,7 @@ Public Class Form1
             Try
                 'AUDIT
                 action = "UPDATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                dateTime = dateTime.Now
+                dateTime = DateTime.Now
                 LogAudit(username, action, dateTime)
                 'END AUDIT
             Catch ex As Exception
@@ -272,7 +272,7 @@ Public Class Form1
             'AUDIT
             Try
                 action = "DELETED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                dateTime = dateTime.Now
+                dateTime = DateTime.Now
                 LogAudit(username, action, dateTime)
             Catch ex As Exception
                 MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
