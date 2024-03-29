@@ -41,7 +41,7 @@ Public Class Form1
                 Try
                     'AUDIT
                     action = "CREATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                    dateTime = DateTime.Now
+                    dateTime = dateTime.Now
                     LogAudit(username, action, dateTime)
                     'END AUDIT
                 Catch ex As Exception
@@ -252,7 +252,7 @@ Public Class Form1
             Try
                 'AUDIT
                 action = "UPDATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                dateTime = DateTime.Now
+                dateTime = dateTime.Now
                 LogAudit(username, action, dateTime)
                 'END AUDIT
             Catch ex As Exception
@@ -272,7 +272,7 @@ Public Class Form1
             'AUDIT
             Try
                 action = "DELETED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                dateTime = DateTime.Now
+                dateTime = dateTime.Now
                 LogAudit(username, action, dateTime)
             Catch ex As Exception
                 MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -337,6 +337,7 @@ Public Class Form1
     Private Sub Print_ID_Options_FormClosed(sender As Object, e As EventArgs)
         reload_record()
     End Sub
+
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         'Dim item As String
