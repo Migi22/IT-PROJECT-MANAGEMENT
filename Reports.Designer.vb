@@ -25,7 +25,7 @@ Partial Class Reports
         Me.PrintDocumentAudit = New System.Drawing.Printing.PrintDocument()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnFilter = New System.Windows.Forms.Button()
+        Me.btnFilterDate = New System.Windows.Forms.Button()
         Me.lblDateTo = New System.Windows.Forms.Label()
         Me.lblDateFrom = New System.Windows.Forms.Label()
         Me.DTPTo = New System.Windows.Forms.DateTimePicker()
@@ -39,13 +39,20 @@ Partial Class Reports
         Me.btnDaily = New System.Windows.Forms.Button()
         Me.btnAll = New System.Windows.Forms.Button()
         Me.leftPanel = New System.Windows.Forms.Panel()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnFilterCourseYear = New System.Windows.Forms.Button()
+        Me.cbYear = New System.Windows.Forms.ComboBox()
+        Me.cbCourse = New System.Windows.Forms.ComboBox()
         Me.btnNeedVerifications = New System.Windows.Forms.Button()
         Me.lblReports = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cmbFilterReport = New System.Windows.Forms.ComboBox()
+        Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
+        Me.lblFilterInfo = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewReports, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.leftPanel.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'PrintDocumentAudit
@@ -64,7 +71,7 @@ Partial Class Reports
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnFilter)
+        Me.GroupBox1.Controls.Add(Me.btnFilterDate)
         Me.GroupBox1.Controls.Add(Me.lblDateTo)
         Me.GroupBox1.Controls.Add(Me.lblDateFrom)
         Me.GroupBox1.Controls.Add(Me.DTPTo)
@@ -72,22 +79,22 @@ Partial Class Reports
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(154, 202)
+        Me.GroupBox1.Size = New System.Drawing.Size(169, 202)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "FLITER BY DATE"
         '
-        'btnFilter
+        'btnFilterDate
         '
-        Me.btnFilter.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFilter.ForeColor = System.Drawing.Color.Black
-        Me.btnFilter.Location = New System.Drawing.Point(2, 159)
-        Me.btnFilter.Name = "btnFilter"
-        Me.btnFilter.Size = New System.Drawing.Size(152, 37)
-        Me.btnFilter.TabIndex = 4
-        Me.btnFilter.Text = "Filter Date"
-        Me.btnFilter.UseVisualStyleBackColor = False
+        Me.btnFilterDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.btnFilterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFilterDate.ForeColor = System.Drawing.Color.Black
+        Me.btnFilterDate.Location = New System.Drawing.Point(-1, 159)
+        Me.btnFilterDate.Name = "btnFilterDate"
+        Me.btnFilterDate.Size = New System.Drawing.Size(170, 37)
+        Me.btnFilterDate.TabIndex = 4
+        Me.btnFilterDate.Text = "Filter Date"
+        Me.btnFilterDate.UseVisualStyleBackColor = False
         '
         'lblDateTo
         '
@@ -115,7 +122,7 @@ Partial Class Reports
         Me.DTPTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DTPTo.Location = New System.Drawing.Point(-1, 115)
         Me.DTPTo.Name = "DTPTo"
-        Me.DTPTo.Size = New System.Drawing.Size(155, 22)
+        Me.DTPTo.Size = New System.Drawing.Size(170, 22)
         Me.DTPTo.TabIndex = 1
         '
         'DTPFrom
@@ -126,7 +133,7 @@ Partial Class Reports
         Me.DTPFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DTPFrom.Location = New System.Drawing.Point(1, 49)
         Me.DTPFrom.Name = "DTPFrom"
-        Me.DTPFrom.Size = New System.Drawing.Size(153, 22)
+        Me.DTPFrom.Size = New System.Drawing.Size(168, 22)
         Me.DTPFrom.TabIndex = 0
         '
         'txtSearchReport
@@ -143,16 +150,16 @@ Partial Class Reports
         Me.DataGridViewReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewReports.Location = New System.Drawing.Point(220, 124)
         Me.DataGridViewReports.Name = "DataGridViewReports"
-        Me.DataGridViewReports.Size = New System.Drawing.Size(881, 515)
+        Me.DataGridViewReports.Size = New System.Drawing.Size(681, 515)
         Me.DataGridViewReports.TabIndex = 5
         '
         'btnExcel
         '
         Me.btnExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExcel.Location = New System.Drawing.Point(12, 613)
+        Me.btnExcel.Location = New System.Drawing.Point(12, 716)
         Me.btnExcel.Name = "btnExcel"
-        Me.btnExcel.Size = New System.Drawing.Size(155, 32)
+        Me.btnExcel.Size = New System.Drawing.Size(170, 32)
         Me.btnExcel.TabIndex = 5
         Me.btnExcel.Text = "Export Excel"
         Me.btnExcel.UseVisualStyleBackColor = False
@@ -161,9 +168,9 @@ Partial Class Reports
         '
         Me.btnPrintPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrintPreview.Location = New System.Drawing.Point(12, 557)
+        Me.btnPrintPreview.Location = New System.Drawing.Point(12, 660)
         Me.btnPrintPreview.Name = "btnPrintPreview"
-        Me.btnPrintPreview.Size = New System.Drawing.Size(155, 32)
+        Me.btnPrintPreview.Size = New System.Drawing.Size(170, 32)
         Me.btnPrintPreview.TabIndex = 4
         Me.btnPrintPreview.Text = "Print Preview"
         Me.btnPrintPreview.UseVisualStyleBackColor = False
@@ -174,7 +181,7 @@ Partial Class Reports
         Me.btnMonthly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMonthly.Location = New System.Drawing.Point(12, 131)
         Me.btnMonthly.Name = "btnMonthly"
-        Me.btnMonthly.Size = New System.Drawing.Size(155, 32)
+        Me.btnMonthly.Size = New System.Drawing.Size(170, 32)
         Me.btnMonthly.TabIndex = 3
         Me.btnMonthly.Text = "Monthly"
         Me.btnMonthly.UseVisualStyleBackColor = False
@@ -185,7 +192,7 @@ Partial Class Reports
         Me.btnWeekly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnWeekly.Location = New System.Drawing.Point(12, 93)
         Me.btnWeekly.Name = "btnWeekly"
-        Me.btnWeekly.Size = New System.Drawing.Size(155, 32)
+        Me.btnWeekly.Size = New System.Drawing.Size(170, 32)
         Me.btnWeekly.TabIndex = 2
         Me.btnWeekly.Text = "Weekly"
         Me.btnWeekly.UseVisualStyleBackColor = False
@@ -196,7 +203,7 @@ Partial Class Reports
         Me.btnDaily.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDaily.Location = New System.Drawing.Point(12, 55)
         Me.btnDaily.Name = "btnDaily"
-        Me.btnDaily.Size = New System.Drawing.Size(155, 32)
+        Me.btnDaily.Size = New System.Drawing.Size(170, 32)
         Me.btnDaily.TabIndex = 1
         Me.btnDaily.Text = "Daily"
         Me.btnDaily.UseVisualStyleBackColor = False
@@ -207,7 +214,7 @@ Partial Class Reports
         Me.btnAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAll.Location = New System.Drawing.Point(12, 17)
         Me.btnAll.Name = "btnAll"
-        Me.btnAll.Size = New System.Drawing.Size(155, 32)
+        Me.btnAll.Size = New System.Drawing.Size(170, 32)
         Me.btnAll.TabIndex = 0
         Me.btnAll.Text = "All"
         Me.btnAll.UseVisualStyleBackColor = False
@@ -215,6 +222,7 @@ Partial Class Reports
         'leftPanel
         '
         Me.leftPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
+        Me.leftPanel.Controls.Add(Me.GroupBox2)
         Me.leftPanel.Controls.Add(Me.btnNeedVerifications)
         Me.leftPanel.Controls.Add(Me.GroupBox1)
         Me.leftPanel.Controls.Add(Me.btnExcel)
@@ -226,14 +234,62 @@ Partial Class Reports
         Me.leftPanel.Dock = System.Windows.Forms.DockStyle.Left
         Me.leftPanel.Location = New System.Drawing.Point(0, 50)
         Me.leftPanel.Name = "leftPanel"
-        Me.leftPanel.Size = New System.Drawing.Size(191, 674)
+        Me.leftPanel.Size = New System.Drawing.Size(201, 810)
         Me.leftPanel.TabIndex = 6
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btnFilterCourseYear)
+        Me.GroupBox2.Controls.Add(Me.cbYear)
+        Me.GroupBox2.Controls.Add(Me.cbCourse)
+        Me.GroupBox2.ForeColor = System.Drawing.Color.White
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 417)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(170, 183)
+        Me.GroupBox2.TabIndex = 8
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "FILTER BY COURSE && YEAR"
+        '
+        'btnFilterCourseYear
+        '
+        Me.btnFilterCourseYear.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
+        Me.btnFilterCourseYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFilterCourseYear.ForeColor = System.Drawing.Color.Black
+        Me.btnFilterCourseYear.Location = New System.Drawing.Point(0, 140)
+        Me.btnFilterCourseYear.Name = "btnFilterCourseYear"
+        Me.btnFilterCourseYear.Size = New System.Drawing.Size(170, 37)
+        Me.btnFilterCourseYear.TabIndex = 5
+        Me.btnFilterCourseYear.Text = "Filter Course && Year"
+        Me.btnFilterCourseYear.UseVisualStyleBackColor = False
+        '
+        'cbYear
+        '
+        Me.cbYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbYear.FormattingEnabled = True
+        Me.cbYear.Items.AddRange(New Object() {"1", "2", "3", "4"})
+        Me.cbYear.Location = New System.Drawing.Point(1, 99)
+        Me.cbYear.Name = "cbYear"
+        Me.cbYear.Size = New System.Drawing.Size(170, 28)
+        Me.cbYear.Sorted = True
+        Me.cbYear.TabIndex = 1
+        Me.cbYear.Text = "YEAR"
+        '
+        'cbCourse
+        '
+        Me.cbCourse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCourse.FormattingEnabled = True
+        Me.cbCourse.Items.AddRange(New Object() {"BEEd", "BSA", "BSMA", "BSTM", "BSE-CE", "BSE-SE", "BSCrim", "BSIT", "BSEMC", "BSN", "BSP", "BSA", "BSBio", "BSPsych", "BSSW"})
+        Me.cbCourse.Location = New System.Drawing.Point(0, 45)
+        Me.cbCourse.Name = "cbCourse"
+        Me.cbCourse.Size = New System.Drawing.Size(170, 28)
+        Me.cbCourse.TabIndex = 0
+        Me.cbCourse.Text = "COURSE"
         '
         'btnNeedVerifications
         '
         Me.btnNeedVerifications.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnNeedVerifications.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNeedVerifications.Location = New System.Drawing.Point(12, 435)
+        Me.btnNeedVerifications.Location = New System.Drawing.Point(12, 754)
         Me.btnNeedVerifications.Name = "btnNeedVerifications"
         Me.btnNeedVerifications.Size = New System.Drawing.Size(155, 32)
         Me.btnNeedVerifications.TabIndex = 7
@@ -267,17 +323,36 @@ Partial Class Reports
         '
         Me.cmbFilterReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFilterReport.FormattingEnabled = True
-        Me.cmbFilterReport.Items.AddRange(New Object() {"On Queue", "Needs Verification", "Done"})
+        Me.cmbFilterReport.Items.AddRange(New Object() {"No Filter", "On Queue", "Needs Verification", "Done"})
         Me.cmbFilterReport.Location = New System.Drawing.Point(1003, 89)
         Me.cmbFilterReport.Name = "cmbFilterReport"
         Me.cmbFilterReport.Size = New System.Drawing.Size(184, 28)
         Me.cmbFilterReport.TabIndex = 37
+        Me.cmbFilterReport.Text = "No Filter"
+        '
+        'MySqlCommand1
+        '
+        Me.MySqlCommand1.CacheAge = 0
+        Me.MySqlCommand1.Connection = Nothing
+        Me.MySqlCommand1.EnableCaching = False
+        Me.MySqlCommand1.Transaction = Nothing
+        '
+        'lblFilterInfo
+        '
+        Me.lblFilterInfo.AutoSize = True
+        Me.lblFilterInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFilterInfo.Location = New System.Drawing.Point(216, 651)
+        Me.lblFilterInfo.Name = "lblFilterInfo"
+        Me.lblFilterInfo.Size = New System.Drawing.Size(97, 24)
+        Me.lblFilterInfo.TabIndex = 39
+        Me.lblFilterInfo.Text = "Showing:"
         '
         'Reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1433, 724)
+        Me.ClientSize = New System.Drawing.Size(1433, 860)
+        Me.Controls.Add(Me.lblFilterInfo)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.cmbFilterReport)
         Me.Controls.Add(Me.lblSearch)
@@ -293,6 +368,7 @@ Partial Class Reports
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewReports, System.ComponentModel.ISupportInitialize).EndInit()
         Me.leftPanel.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -301,7 +377,7 @@ Partial Class Reports
     Friend WithEvents PrintDocumentAudit As Printing.PrintDocument
     Friend WithEvents lblSearch As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents btnFilter As Button
+    Friend WithEvents btnFilterDate As Button
     Friend WithEvents lblDateTo As Label
     Friend WithEvents lblDateFrom As Label
     Friend WithEvents DTPTo As DateTimePicker
@@ -319,4 +395,10 @@ Partial Class Reports
     Friend WithEvents btnNeedVerifications As Button
     Friend WithEvents Label13 As Label
     Friend WithEvents cmbFilterReport As ComboBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents btnFilterCourseYear As Button
+    Friend WithEvents cbYear As ComboBox
+    Friend WithEvents cbCourse As ComboBox
+    Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
+    Friend WithEvents lblFilterInfo As Label
 End Class
