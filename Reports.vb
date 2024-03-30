@@ -76,7 +76,7 @@ Public Class Reports
             Dim course As String = cbCourse.SelectedItem.ToString()
             Dim year As String = cbYear.SelectedItem.ToString()
 
-            If String.IsNullOrEmpty(statusFilter) Then
+            If Not String.IsNullOrEmpty(statusFilter) Then
                 If Not query.Contains("WHERE") Then
                     query &= " WHERE course = '" & course & "' AND year_level = '" & year & "'"
                 Else
@@ -113,7 +113,7 @@ Public Class Reports
             ApplyFilterDate(query)
             ApplyFilterCourseYear(query)
 
-
+            MessageBox.Show("Query: " & query)
 
             lblFilterInfo.Text = "Showing All records"
             UpdateFilterInfoLabel(" with")

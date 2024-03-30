@@ -45,7 +45,6 @@ Partial Class Reports
         Me.cbFilterCourseYear = New System.Windows.Forms.CheckBox()
         Me.cbYear = New System.Windows.Forms.ComboBox()
         Me.cbCourse = New System.Windows.Forms.ComboBox()
-        Me.btnNeedVerifications = New System.Windows.Forms.Button()
         Me.lblReports = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cmbFilterReport = New System.Windows.Forms.ComboBox()
@@ -224,7 +223,6 @@ Partial Class Reports
         '
         Me.leftPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
         Me.leftPanel.Controls.Add(Me.GroupBox2)
-        Me.leftPanel.Controls.Add(Me.btnNeedVerifications)
         Me.leftPanel.Controls.Add(Me.GroupBox1)
         Me.leftPanel.Controls.Add(Me.btnExcel)
         Me.leftPanel.Controls.Add(Me.btnPrintPreview)
@@ -304,17 +302,6 @@ Partial Class Reports
         Me.cbCourse.Size = New System.Drawing.Size(170, 28)
         Me.cbCourse.TabIndex = 0
         Me.cbCourse.Text = "COURSE"
-        '
-        'btnNeedVerifications
-        '
-        Me.btnNeedVerifications.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnNeedVerifications.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNeedVerifications.Location = New System.Drawing.Point(12, 754)
-        Me.btnNeedVerifications.Name = "btnNeedVerifications"
-        Me.btnNeedVerifications.Size = New System.Drawing.Size(155, 32)
-        Me.btnNeedVerifications.TabIndex = 7
-        Me.btnNeedVerifications.Text = "Need Verifications"
-        Me.btnNeedVerifications.UseVisualStyleBackColor = False
         '
         'lblReports
         '
@@ -412,7 +399,6 @@ Partial Class Reports
     Friend WithEvents btnAll As Button
     Friend WithEvents leftPanel As Panel
     Friend WithEvents lblReports As Label
-    Friend WithEvents btnNeedVerifications As Button
     Friend WithEvents Label13 As Label
     Friend WithEvents cmbFilterReport As ComboBox
     Friend WithEvents GroupBox2 As GroupBox
