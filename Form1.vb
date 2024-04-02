@@ -8,57 +8,79 @@ Public Class Form1
     Private action As String
     Private dateTime As DateTime
 
+    Private isAddingStudent As Boolean = True ' Variable to track the state of the button
+
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If isAddingStudent Then
+            ' Clear textboxes and change button text
+            ClearText()
+            btnSave.Text = "Save Student"
+            isAddingStudent = False
+        Else
+            ' Check if all required fields are filled
+            Dim requiredFields As New List(Of TextBox) From {txtFname, txtLname, txtMi, txtCourse, txtYearLevel, txtGuardianName, txtStudentAddress, txtGuardianContNum, txtStudentBday}
+            Dim requiredFieldNames As New List(Of String) From {"First Name", "Last Name", "Middle Name", "Course", "Year Level", "Guardian's Name", "Student's Address", "Guardian's Contact Number", "Student's Birthday"}
 
-        'Loop method to check individually the text box if it is a blank
-        Dim requiredFields As New List(Of TextBox) From {txtFname, txtLname, txtMi, txtCourse, txtYearLevel, txtGuardianName, txtStudentAddress, txtGuardianContNum, txtStudentBday}
-        Dim requiredFieldNames As New List(Of String) From {"First Name", "Last Name", "Middle Name", "Course", "Year Level", "Guardian's Name", "Student's Address", "Guardian's Contact Number", "Student's Birthday"}
+            For i As Integer = 0 To requiredFields.Count - 1
+                If requiredFields(i).Text = "" Then
+                    MessageBox.Show(requiredFieldNames(i) & " is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Exit Sub
+                End If
+            Next
 
-        For i As Integer = 0 To requiredFields.Count - 1
-            If requiredFields(i).Text = "" Then
-                MessageBox.Show(requiredFieldNames(i) & " is Required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Exit Sub
-            End If
-        Next
-        'End of loop
-
-        Try
-            ' Check if the student number already exists
-            Dim cmdCheck As New MySqlCommand("SELECT COUNT(*) FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'", strcon)
-            strcon.Open()
-            Dim count As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
-            strcon.Close()
-
-            If count > 0 Then
-                MessageBox.Show("Student number already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Else
-                ' Insert the new record into the database
-                create("INSERT INTO tbl_queue(fname, lname, m_i, course, year_level, guardian_name, guardian_contact_num,
-                        student_address, student_Birthday, student_number)
-                        VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "',
-                        '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "',
-                        '" & txtStudentNum.Text & "')")
-                Try
-                    'AUDIT
-                    action = "CREATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
-                    dateTime = DateTime.Now
-                    LogAudit(username, action, dateTime)
-                    'END AUDIT
-                Catch ex As Exception
-                    MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-
-
-                ' Reload records after inserting the new record
-                reload_record()
-            End If
-        Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            If strcon.State = ConnectionState.Open Then
+            Try
+                ' Check if the student number already exists
+                Dim cmdCheck As New MySqlCommand("SELECT COUNT(*) FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'", strcon)
+                strcon.Open()
+                Dim count As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
                 strcon.Close()
-            End If
-        End Try
+
+                If count > 0 Then
+                    MessageBox.Show("Student number already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    ' Insert the new record into the database
+                    create("INSERT INTO tbl_queue(fname, lname, m_i, course, year_level, guardian_name, guardian_contact_num, student_address, student_Birthday, student_number) VALUES('" & txtFname.Text & "', '" & txtLname.Text & "', '" & txtMi.Text & "', '" & txtCourse.Text & "', '" & txtYearLevel.Text & "', '" & txtGuardianName.Text & "', '" & txtGuardianContNum.Text & "', '" & txtStudentAddress.Text & "', '" & txtStudentBday.Text & "', '" & txtStudentNum.Text & "')")
+                    ' Clear textboxes and change button text back to "Add Student"
+                    ClearText()
+                    btnSave.Text = "Add Student"
+                    isAddingStudent = True
+                    Try
+                        'AUDIT
+                        action = "CREATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
+                        dateTime = DateTime.Now
+                        LogAudit(username, action, dateTime)
+                        'END AUDIT
+                    Catch ex As Exception
+                        MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+
+                    ' Reload records after inserting the new record
+                    reload_record()
+                End If
+            Catch ex As Exception
+                MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                If strcon.State = ConnectionState.Open Then
+                    strcon.Close()
+                End If
+            End Try
+        End If
+    End Sub
+
+    Private Sub ClearText()
+        txtQueueNum.Clear()
+        txtFname.Clear()
+        txtLname.Clear()
+        txtMi.Clear()
+        txtCourse.Clear()
+        txtYearLevel.Clear()
+        txtGuardianName.Clear()
+        txtGuardianContNum.Clear()
+        txtStudentAddress.Clear()
+        txtStudentBday.Clear()
+        txtStudentNum.Clear()
+        txtSearch.Clear()
+        picStudentPic.Image = Nothing
 
     End Sub
 

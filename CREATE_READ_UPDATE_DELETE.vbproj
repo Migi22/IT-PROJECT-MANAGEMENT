@@ -280,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ipsLogoMain.ico" />
+    <None Include="Resources\FrontIDJmc.jpg" />
     <None Include="Resources\backID.png" />
     <None Include="Resources\logout.png" />
     <None Include="Resources\user management.png" />

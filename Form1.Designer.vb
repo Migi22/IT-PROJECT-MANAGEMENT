@@ -285,7 +285,7 @@ Partial Class Form1
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(85, 46)
         Me.btnSave.TabIndex = 26
-        Me.btnSave.Text = "Save"
+        Me.btnSave.Text = "Add Student"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'btnUpdate
