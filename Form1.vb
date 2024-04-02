@@ -500,7 +500,6 @@ Public Class Form1
         txtStudentAddress.Enabled = False
         txtStudentBday.Enabled = False
         txtStudentNum.Enabled = False
-        txtSearch.Enabled = False
         btnEditImage.Enabled = False
     End Sub
 
@@ -516,7 +515,6 @@ Public Class Form1
         txtStudentAddress.Enabled = True
         txtStudentBday.Enabled = True
         txtStudentNum.Enabled = True
-        txtSearch.Enabled = True
         btnEditImage.Enabled = True
     End Sub
 
