@@ -114,7 +114,14 @@ Public Class Print_ID_Options
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
         Try
-            updates("UPDATE tbl_queue SET status = 'Done' WHERE queue_ID = '" & QueueID & "'")
+
+            Dim currentDate As Date = Date.Now.Date
+
+            Dim formattedDate As String = currentDate.ToString("yyyy-MM-dd")
+
+            ' Update the database with the status and the current date
+            updates("UPDATE tbl_queue SET status = 'Done', done_printing_date = '" & formattedDate & "' WHERE queue_ID = '" & QueueID & "'")
+
             Me.Close()
 
         Catch ex As Exception
