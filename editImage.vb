@@ -11,15 +11,15 @@ Public Class editImage
     Public QueueID As String
     Public Property ReloadFunction As Action
 
-    Private Sub btnSaveImage_Click(sender As Object, e As EventArgs) Handles btnSaveImage.Click
+    Private Sub btnUpdateImage_Click(sender As Object, e As EventArgs) Handles btnUpdateImage.Click
         Try
             If String.IsNullOrEmpty(txtPhoto.Text) OrElse String.IsNullOrEmpty(StudentLastName) Then
                 MessageBox.Show("You need to select a picture of the student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ElseIf Directory.Exists(Application.StartupPath & "\Profile\" & StudentLastName & ".png") Then
+            ElseIf Directory.Exists(Application.StartupPath & "\Profile\" & QueueID & "_" & StudentLastName & ".png") Then
                 Directory.Delete(StudentLastName)
             Else
-                picBrowserPic.Image.Save(Application.StartupPath & "\Profile\" & StudentLastName & ".png")
-                updates("UPDATE tbl_queue SET image_file_name='" & StudentLastName & ".png' 
+                picBrowserPic.Image.Save(Application.StartupPath & "\Profile\" & QueueID & "_" & StudentLastName & ".png")
+                updates("UPDATE tbl_queue SET image_file_name='" & QueueID & "_" & StudentLastName & ".png' 
                 WHERE queue_ID='" & QueueID & "'")
 
                 'AUDIT
@@ -78,7 +78,7 @@ Public Class editImage
                 MessageBox.Show("There is no image to delete for this student", "No Image", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
                 updates("UPDATE tbl_queue SET image_file_name='' 
-                WHERE student_number='" & StudentLastName & "'")
+                WHERE queue_ID='" & QueueID & "'")
 
                 'AUDIT
                 Try

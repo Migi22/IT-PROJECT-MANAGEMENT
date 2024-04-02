@@ -63,9 +63,17 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        reload_record() 'RELOAD THE DATAGRID VIEW UPON START'
+        reload_record() ' Reload the DataGridView upon form start
         DoubleBuffer.DoubleBuffered(DataGridView1, True)
         cmbFilterSearch.SelectedIndex = 0
+        btnUpdate.Enabled = False
+        btnDelete.Enabled = False
+    End Sub
+
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        btnUpdate.Enabled = True
+        btnDelete.Enabled = True
+        btnEdit.Enabled = False
     End Sub
 
     'FUNCTION THAT RELOAD THE DATAGRIDVIEW'S DATA'
@@ -77,6 +85,19 @@ Public Class Form1
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
 
+                txtQueueNum.Text = dt.Rows(0).Item("queue_ID").ToString
+                txtFname.Text = dt.Rows(0).Item("fname").ToString
+                txtLname.Text = dt.Rows(0).Item("lname").ToString
+                txtMi.Text = dt.Rows(0).Item("m_i").ToString
+                txtCourse.Text = dt.Rows(0).Item("course").ToString
+                txtYearLevel.Text = dt.Rows(0).Item("year_level").ToString
+                txtGuardianName.Text = dt.Rows(0).Item("guardian_name").ToString
+                txtGuardianContNum.Text = dt.Rows(0).Item("guardian_contact_num").ToString
+                txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
+                txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
+                txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
+
+
                 dt.Columns.Add("Picture", GetType(Byte()))
                 For Each row As DataRow In dt.Rows
                     If row("image_file_name").ToString = "" Then
@@ -86,11 +107,13 @@ Public Class Form1
                     End If
                 Next
 
+
+
                 Dim pictureColumn As New DataGridViewImageColumn()
                 pictureColumn = CType(DataGridView1.Columns("Picture"), DataGridViewImageColumn)
                 pictureColumn.ImageLayout = DataGridViewImageCellLayout.Stretch
 
-                ' Declaration of DataGridViewImageColumn for "Signature" column
+
                 Dim signatureColumn As New DataGridViewImageColumn()
                 signatureColumn = CType(DataGridView1.Columns("student_signature"), DataGridViewImageColumn)
                 signatureColumn.ImageLayout = DataGridViewImageCellLayout.Zoom
@@ -265,6 +288,10 @@ Public Class Form1
                 MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
+            btnUpdate.Enabled = False
+            btnDelete.Enabled = False
+            btnEdit.Enabled = True
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -273,8 +300,9 @@ Public Class Form1
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Try
             delete("DELETE FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'")
-            Call Form1_Load(sender, e)
 
+
+            reload_record()
             'AUDIT
             Try
                 action = "DELETED STUDENT: " & txtLname.Text & ", " & txtFname.Text
@@ -285,6 +313,10 @@ Public Class Form1
             End Try
             'END AUDIT
 
+            btnUpdate.Enabled = False
+            btnDelete.Enabled = False
+            btnEdit.Enabled = True
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -292,7 +324,7 @@ Public Class Form1
 
     Public Sub LoadImage()
         Try
-            reloadtxt("SELECT * FROM tbl_queue WHERE student_number='" & txtStudentNum.Text & "'")
+            reloadtxt("SELECT * FROM tbl_queue WHERE queue_ID='" & txtQueueNum.Text & "'")
 
             If dt.Rows.Count > 0 Then
                 If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
@@ -423,4 +455,6 @@ Public Class Form1
 
 
     End Sub
+
+
 End Class

@@ -60,6 +60,7 @@ Partial Class Form1
         Me.cmbFilterSearch = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btnNeedVerify = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -179,7 +180,7 @@ Partial Class Form1
         '
         Me.txtStudentBday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStudentBday.Location = New System.Drawing.Point(382, 114)
-        Me.txtStudentBday.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStudentBday.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentBday.Name = "txtStudentBday"
         Me.txtStudentBday.Size = New System.Drawing.Size(302, 26)
         Me.txtStudentBday.TabIndex = 12
@@ -188,7 +189,7 @@ Partial Class Form1
         '
         Me.txtGuardianContNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGuardianContNum.Location = New System.Drawing.Point(703, 114)
-        Me.txtGuardianContNum.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtGuardianContNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianContNum.Name = "txtGuardianContNum"
         Me.txtGuardianContNum.Size = New System.Drawing.Size(302, 26)
         Me.txtGuardianContNum.TabIndex = 11
@@ -197,7 +198,7 @@ Partial Class Form1
         '
         Me.txtStudentAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStudentAddress.Location = New System.Drawing.Point(45, 357)
-        Me.txtStudentAddress.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStudentAddress.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentAddress.Name = "txtStudentAddress"
         Me.txtStudentAddress.Size = New System.Drawing.Size(639, 26)
         Me.txtStudentAddress.TabIndex = 10
@@ -206,7 +207,7 @@ Partial Class Form1
         '
         Me.txtGuardianName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGuardianName.Location = New System.Drawing.Point(703, 167)
-        Me.txtGuardianName.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtGuardianName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtGuardianName.Name = "txtGuardianName"
         Me.txtGuardianName.Size = New System.Drawing.Size(302, 26)
         Me.txtGuardianName.TabIndex = 9
@@ -215,7 +216,7 @@ Partial Class Form1
         '
         Me.txtYearLevel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtYearLevel.Location = New System.Drawing.Point(382, 231)
-        Me.txtYearLevel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtYearLevel.Margin = New System.Windows.Forms.Padding(2)
         Me.txtYearLevel.Name = "txtYearLevel"
         Me.txtYearLevel.Size = New System.Drawing.Size(302, 26)
         Me.txtYearLevel.TabIndex = 8
@@ -224,7 +225,7 @@ Partial Class Form1
         '
         Me.txtCourse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCourse.Location = New System.Drawing.Point(382, 167)
-        Me.txtCourse.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCourse.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCourse.Name = "txtCourse"
         Me.txtCourse.Size = New System.Drawing.Size(302, 26)
         Me.txtCourse.TabIndex = 7
@@ -233,7 +234,7 @@ Partial Class Form1
         '
         Me.txtLname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLname.Location = New System.Drawing.Point(46, 231)
-        Me.txtLname.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtLname.Margin = New System.Windows.Forms.Padding(2)
         Me.txtLname.Name = "txtLname"
         Me.txtLname.Size = New System.Drawing.Size(302, 26)
         Me.txtLname.TabIndex = 6
@@ -242,7 +243,7 @@ Partial Class Form1
         '
         Me.txtMi.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMi.Location = New System.Drawing.Point(382, 292)
-        Me.txtMi.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtMi.Margin = New System.Windows.Forms.Padding(2)
         Me.txtMi.Name = "txtMi"
         Me.txtMi.Size = New System.Drawing.Size(302, 26)
         Me.txtMi.TabIndex = 5
@@ -251,7 +252,7 @@ Partial Class Form1
         '
         Me.txtFname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFname.Location = New System.Drawing.Point(45, 292)
-        Me.txtFname.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFname.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFname.Name = "txtFname"
         Me.txtFname.Size = New System.Drawing.Size(302, 26)
         Me.txtFname.TabIndex = 13
@@ -260,7 +261,7 @@ Partial Class Form1
         '
         Me.txtStudentNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStudentNum.Location = New System.Drawing.Point(45, 167)
-        Me.txtStudentNum.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtStudentNum.Margin = New System.Windows.Forms.Padding(2)
         Me.txtStudentNum.Name = "txtStudentNum"
         Me.txtStudentNum.Size = New System.Drawing.Size(302, 26)
         Me.txtStudentNum.TabIndex = 4
@@ -289,7 +290,7 @@ Partial Class Form1
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(135, 400)
+        Me.btnUpdate.Location = New System.Drawing.Point(229, 400)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(85, 46)
         Me.btnUpdate.TabIndex = 26
@@ -298,7 +299,7 @@ Partial Class Form1
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(226, 400)
+        Me.btnDelete.Location = New System.Drawing.Point(320, 400)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(85, 46)
         Me.btnDelete.TabIndex = 26
@@ -309,7 +310,7 @@ Partial Class Form1
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearch.Location = New System.Drawing.Point(150, 559)
-        Me.txtSearch.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(931, 26)
         Me.txtSearch.TabIndex = 12
@@ -381,7 +382,7 @@ Partial Class Form1
         'btnPrintID
         '
         Me.btnPrintID.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btnPrintID.Location = New System.Drawing.Point(382, 400)
+        Me.btnPrintID.Location = New System.Drawing.Point(461, 400)
         Me.btnPrintID.Name = "btnPrintID"
         Me.btnPrintID.Size = New System.Drawing.Size(102, 46)
         Me.btnPrintID.TabIndex = 34
@@ -413,12 +414,21 @@ Partial Class Form1
         Me.btnNeedVerify.BackColor = System.Drawing.Color.IndianRed
         Me.btnNeedVerify.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNeedVerify.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.btnNeedVerify.Location = New System.Drawing.Point(504, 400)
+        Me.btnNeedVerify.Location = New System.Drawing.Point(583, 400)
         Me.btnNeedVerify.Name = "btnNeedVerify"
         Me.btnNeedVerify.Size = New System.Drawing.Size(101, 46)
         Me.btnNeedVerify.TabIndex = 37
         Me.btnNeedVerify.Text = "Needs" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Verification"
         Me.btnNeedVerify.UseVisualStyleBackColor = False
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Location = New System.Drawing.Point(136, 400)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(85, 46)
+        Me.btnEdit.TabIndex = 38
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -426,6 +436,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1505, 894)
+        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnNeedVerify)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.cmbFilterSearch)
@@ -511,4 +522,5 @@ Partial Class Form1
     Friend WithEvents cmbFilterSearch As ComboBox
     Friend WithEvents Label13 As Label
     Friend WithEvents btnNeedVerify As Button
+    Friend WithEvents btnEdit As Button
 End Class

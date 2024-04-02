@@ -24,7 +24,7 @@ Partial Class editImage
     Private Sub InitializeComponent()
         Me.txtPhoto = New System.Windows.Forms.TextBox()
         Me.btnDeleteProfile = New System.Windows.Forms.Button()
-        Me.btnSaveImage = New System.Windows.Forms.Button()
+        Me.btnUpdateImage = New System.Windows.Forms.Button()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.picBrowserPic = New System.Windows.Forms.PictureBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -47,14 +47,14 @@ Partial Class editImage
         Me.btnDeleteProfile.Text = "Delete Profile"
         Me.btnDeleteProfile.UseVisualStyleBackColor = True
         '
-        'btnSaveImage
+        'btnUpdateImage
         '
-        Me.btnSaveImage.Location = New System.Drawing.Point(12, 312)
-        Me.btnSaveImage.Name = "btnSaveImage"
-        Me.btnSaveImage.Size = New System.Drawing.Size(208, 48)
-        Me.btnSaveImage.TabIndex = 33
-        Me.btnSaveImage.Text = "Update Profile"
-        Me.btnSaveImage.UseVisualStyleBackColor = True
+        Me.btnUpdateImage.Location = New System.Drawing.Point(12, 312)
+        Me.btnUpdateImage.Name = "btnUpdateImage"
+        Me.btnUpdateImage.Size = New System.Drawing.Size(208, 48)
+        Me.btnUpdateImage.TabIndex = 33
+        Me.btnUpdateImage.Text = "Update Profile"
+        Me.btnUpdateImage.UseVisualStyleBackColor = True
         '
         'btnBrowse
         '
@@ -86,7 +86,7 @@ Partial Class editImage
         Me.ClientSize = New System.Drawing.Size(234, 427)
         Me.Controls.Add(Me.txtPhoto)
         Me.Controls.Add(Me.btnDeleteProfile)
-        Me.Controls.Add(Me.btnSaveImage)
+        Me.Controls.Add(Me.btnUpdateImage)
         Me.Controls.Add(Me.btnBrowse)
         Me.Controls.Add(Me.picBrowserPic)
         Me.Name = "editImage"
@@ -99,7 +99,7 @@ Partial Class editImage
 
     Friend WithEvents txtPhoto As TextBox
     Friend WithEvents btnDeleteProfile As Button
-    Friend WithEvents btnSaveImage As Button
+    Friend WithEvents btnUpdateImage As Button
     Friend WithEvents btnBrowse As Button
     Friend WithEvents picBrowserPic As PictureBox
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
