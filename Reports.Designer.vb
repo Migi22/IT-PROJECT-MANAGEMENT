@@ -23,14 +23,12 @@ Partial Class Reports
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PrintDocumentAudit = New System.Drawing.Printing.PrintDocument()
-        Me.lblSearch = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbFilterDate = New System.Windows.Forms.CheckBox()
         Me.lblDateTo = New System.Windows.Forms.Label()
         Me.lblDateFrom = New System.Windows.Forms.Label()
         Me.DTPTo = New System.Windows.Forms.DateTimePicker()
         Me.DTPFrom = New System.Windows.Forms.DateTimePicker()
-        Me.txtSearchReport = New System.Windows.Forms.TextBox()
         Me.DataGridViewReports = New System.Windows.Forms.DataGridView()
         Me.btnExcel = New System.Windows.Forms.Button()
         Me.btnPrintPreview = New System.Windows.Forms.Button()
@@ -50,6 +48,8 @@ Partial Class Reports
         Me.cmbFilterReport = New System.Windows.Forms.ComboBox()
         Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
         Me.lblFilterInfo = New System.Windows.Forms.Label()
+        Me.lblSearch = New System.Windows.Forms.Label()
+        Me.txtSearchReport = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewReports, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.leftPanel.SuspendLayout()
@@ -58,17 +58,6 @@ Partial Class Reports
         '
         'PrintDocumentAudit
         '
-        '
-        'lblSearch
-        '
-        Me.lblSearch.AutoSize = True
-        Me.lblSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSearch.Location = New System.Drawing.Point(221, 94)
-        Me.lblSearch.Name = "lblSearch"
-        Me.lblSearch.Size = New System.Drawing.Size(75, 24)
-        Me.lblSearch.TabIndex = 8
-        Me.lblSearch.Text = "Search:"
-        Me.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'GroupBox1
         '
@@ -135,14 +124,6 @@ Partial Class Reports
         Me.DTPFrom.Name = "DTPFrom"
         Me.DTPFrom.Size = New System.Drawing.Size(168, 22)
         Me.DTPFrom.TabIndex = 0
-        '
-        'txtSearchReport
-        '
-        Me.txtSearchReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearchReport.Location = New System.Drawing.Point(302, 89)
-        Me.txtSearchReport.Name = "txtSearchReport"
-        Me.txtSearchReport.Size = New System.Drawing.Size(599, 29)
-        Me.txtSearchReport.TabIndex = 9
         '
         'DataGridViewReports
         '
@@ -354,6 +335,25 @@ Partial Class Reports
         Me.lblFilterInfo.TabIndex = 39
         Me.lblFilterInfo.Text = "Showing:"
         '
+        'lblSearch
+        '
+        Me.lblSearch.AutoSize = True
+        Me.lblSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSearch.Location = New System.Drawing.Point(221, 94)
+        Me.lblSearch.Name = "lblSearch"
+        Me.lblSearch.Size = New System.Drawing.Size(75, 24)
+        Me.lblSearch.TabIndex = 8
+        Me.lblSearch.Text = "Search:"
+        Me.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtSearchReport
+        '
+        Me.txtSearchReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearchReport.Location = New System.Drawing.Point(302, 89)
+        Me.txtSearchReport.Name = "txtSearchReport"
+        Me.txtSearchReport.Size = New System.Drawing.Size(599, 29)
+        Me.txtSearchReport.TabIndex = 9
+        '
         'Reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -383,13 +383,11 @@ Partial Class Reports
     End Sub
 
     Friend WithEvents PrintDocumentAudit As Printing.PrintDocument
-    Friend WithEvents lblSearch As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents lblDateTo As Label
     Friend WithEvents lblDateFrom As Label
     Friend WithEvents DTPTo As DateTimePicker
     Friend WithEvents DTPFrom As DateTimePicker
-    Friend WithEvents txtSearchReport As TextBox
     Friend WithEvents DataGridViewReports As DataGridView
     Friend WithEvents btnExcel As Button
     Friend WithEvents btnPrintPreview As Button
@@ -410,4 +408,6 @@ Partial Class Reports
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents cbFilterCourseYear As CheckBox
+    Friend WithEvents lblSearch As Label
+    Friend WithEvents txtSearchReport As TextBox
 End Class

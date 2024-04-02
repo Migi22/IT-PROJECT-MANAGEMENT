@@ -8,6 +8,7 @@ Public Class editImage
     Private dateTime As DateTime
     Public StudentLastName As String
     Public StudentFirstName As String
+    Public QueueID As String
     Public Property ReloadFunction As Action
 
     Private Sub btnSaveImage_Click(sender As Object, e As EventArgs) Handles btnSaveImage.Click
@@ -19,7 +20,7 @@ Public Class editImage
             Else
                 picBrowserPic.Image.Save(Application.StartupPath & "\Profile\" & StudentLastName & ".png")
                 updates("UPDATE tbl_queue SET image_file_name='" & StudentLastName & ".png' 
-                WHERE student_number='" & StudentLastName & "'")
+                WHERE queue_ID='" & QueueID & "'")
 
                 'AUDIT
                 Try

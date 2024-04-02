@@ -86,10 +86,15 @@ Public Class Form1
                     End If
                 Next
 
-                'Delcaration of column picture
-                Dim img As New DataGridViewImageColumn()
-                img = DataGridView1.Columns(14)
-                img.ImageLayout = DataGridViewImageCellLayout.Stretch
+                Dim pictureColumn As New DataGridViewImageColumn()
+                pictureColumn = CType(DataGridView1.Columns("Picture"), DataGridViewImageColumn)
+                pictureColumn.ImageLayout = DataGridViewImageCellLayout.Stretch
+
+                ' Declaration of DataGridViewImageColumn for "Signature" column
+                Dim signatureColumn As New DataGridViewImageColumn()
+                signatureColumn = CType(DataGridView1.Columns("student_signature"), DataGridViewImageColumn)
+                signatureColumn.ImageLayout = DataGridViewImageCellLayout.Zoom
+
 
             End If
 
@@ -157,7 +162,7 @@ Public Class Form1
 
         ' Set the properties of the Picture column on the DataGridView
         Dim img As New DataGridViewImageColumn()
-        img = DataGridView1.Columns(14)
+        img = DataGridView1.Columns(15)
         img.ImageLayout = DataGridViewImageCellLayout.Stretch
     End Sub
 
@@ -306,6 +311,7 @@ Public Class Form1
             .StudentLastName = txtLname.Text
             .StudentFirstName = txtFname.Text
             .ReloadFunction = AddressOf reload_record
+            .QueueID = txtQueueNum.Text
             .Show()
 
         End With
@@ -327,6 +333,22 @@ Public Class Form1
             optionsForm.lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
 
             optionsForm.QueueID = DataGridView1.CurrentRow.Cells("queue_ID").Value.ToString
+
+            ' Retrieve the image data from the "Picture" column of the current row
+            Dim imageData As Byte() = CType(DataGridView1.CurrentRow.Cells("student_signature").Value, Byte())
+            If imageData IsNot Nothing Then
+                ' Create a MemoryStream to hold the image data
+                Using ms As New MemoryStream(imageData)
+                    ' Load the image from the MemoryStream
+                    Dim image As Image = Image.FromStream(ms)
+
+                    ' Display the image in the PictureBox of the options form
+                    optionsForm.picStudentSignature.Image = image
+                End Using
+            Else
+                ' If the image data is null, display a message or handle it as needed
+                MessageBox.Show("No image data available.")
+            End If
 
             AddHandler optionsForm.FormClosedEvent, AddressOf Print_ID_Options_FormClosed
 

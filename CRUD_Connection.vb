@@ -79,7 +79,7 @@ Module CRUD_Connection
                 result = cmd.ExecuteNonQuery
 
                 If result = 0 Then
-                    MessageBox.Show("Data failed to update", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    MessageBox.Show("Data failed to update to the database", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
                     MessageBox.Show("Data has been updated successfully", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     ClearText()

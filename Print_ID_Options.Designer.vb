@@ -228,6 +228,7 @@ Partial Class Print_ID_Options
         Me.picStudentSignature.Location = New System.Drawing.Point(81, 64)
         Me.picStudentSignature.Name = "picStudentSignature"
         Me.picStudentSignature.Size = New System.Drawing.Size(169, 69)
+        Me.picStudentSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picStudentSignature.TabIndex = 21
         Me.picStudentSignature.TabStop = False
         '
