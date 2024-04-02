@@ -196,10 +196,10 @@ Partial Class Print_ID_Options
         'lblFirstSem
         '
         Me.lblFirstSem.BackColor = System.Drawing.Color.Transparent
-        Me.lblFirstSem.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFirstSem.Location = New System.Drawing.Point(78, 351)
+        Me.lblFirstSem.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFirstSem.Location = New System.Drawing.Point(96, 321)
         Me.lblFirstSem.Name = "lblFirstSem"
-        Me.lblFirstSem.Size = New System.Drawing.Size(223, 23)
+        Me.lblFirstSem.Size = New System.Drawing.Size(196, 23)
         Me.lblFirstSem.TabIndex = 19
         Me.lblFirstSem.Text = "1ˢᵗ SEMESTER A.Y. 2023-2024"
         Me.lblFirstSem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -230,7 +230,7 @@ Partial Class Print_ID_Options
         '
         Me.lblStudentAddress.BackColor = System.Drawing.Color.Transparent
         Me.lblStudentAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudentAddress.Location = New System.Drawing.Point(18, 256)
+        Me.lblStudentAddress.Location = New System.Drawing.Point(18, 216)
         Me.lblStudentAddress.Name = "lblStudentAddress"
         Me.lblStudentAddress.Size = New System.Drawing.Size(288, 58)
         Me.lblStudentAddress.TabIndex = 16
@@ -241,7 +241,7 @@ Partial Class Print_ID_Options
         '
         Me.lblInputGuardianNum.BackColor = System.Drawing.Color.Transparent
         Me.lblInputGuardianNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInputGuardianNum.Location = New System.Drawing.Point(93, 219)
+        Me.lblInputGuardianNum.Location = New System.Drawing.Point(93, 188)
         Me.lblInputGuardianNum.Name = "lblInputGuardianNum"
         Me.lblInputGuardianNum.Size = New System.Drawing.Size(133, 23)
         Me.lblInputGuardianNum.TabIndex = 15
@@ -252,7 +252,7 @@ Partial Class Print_ID_Options
         '
         Me.lblGuardianName.BackColor = System.Drawing.Color.Transparent
         Me.lblGuardianName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGuardianName.Location = New System.Drawing.Point(15, 189)
+        Me.lblGuardianName.Location = New System.Drawing.Point(15, 159)
         Me.lblGuardianName.Name = "lblGuardianName"
         Me.lblGuardianName.Size = New System.Drawing.Size(291, 23)
         Me.lblGuardianName.TabIndex = 14
@@ -264,7 +264,7 @@ Partial Class Print_ID_Options
         Me.lblTitleStudentSig.AutoSize = True
         Me.lblTitleStudentSig.BackColor = System.Drawing.Color.Transparent
         Me.lblTitleStudentSig.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitleStudentSig.Location = New System.Drawing.Point(78, 136)
+        Me.lblTitleStudentSig.Location = New System.Drawing.Point(78, 105)
         Me.lblTitleStudentSig.Name = "lblTitleStudentSig"
         Me.lblTitleStudentSig.Size = New System.Drawing.Size(172, 16)
         Me.lblTitleStudentSig.TabIndex = 13
@@ -276,7 +276,7 @@ Partial Class Print_ID_Options
         Me.lblInputBirthday.BackColor = System.Drawing.Color.Transparent
         Me.lblInputBirthday.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInputBirthday.ForeColor = System.Drawing.Color.Black
-        Me.lblInputBirthday.Location = New System.Drawing.Point(12, 28)
+        Me.lblInputBirthday.Location = New System.Drawing.Point(12, 8)
         Me.lblInputBirthday.Name = "lblInputBirthday"
         Me.lblInputBirthday.Size = New System.Drawing.Size(294, 23)
         Me.lblInputBirthday.TabIndex = 12
@@ -295,7 +295,7 @@ Partial Class Print_ID_Options
         'picStudentSignature
         '
         Me.picStudentSignature.BackColor = System.Drawing.Color.Transparent
-        Me.picStudentSignature.Location = New System.Drawing.Point(81, 64)
+        Me.picStudentSignature.Location = New System.Drawing.Point(81, 34)
         Me.picStudentSignature.Name = "picStudentSignature"
         Me.picStudentSignature.Size = New System.Drawing.Size(169, 69)
         Me.picStudentSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -306,16 +306,16 @@ Partial Class Print_ID_Options
         '
         Me.picSchoolLogo.BackColor = System.Drawing.Color.Transparent
         Me.picSchoolLogo.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
-        Me.picSchoolLogo.Location = New System.Drawing.Point(56, 351)
+        Me.picSchoolLogo.Location = New System.Drawing.Point(82, 321)
         Me.picSchoolLogo.Name = "picSchoolLogo"
-        Me.picSchoolLogo.Size = New System.Drawing.Size(25, 23)
+        Me.picSchoolLogo.Size = New System.Drawing.Size(24, 24)
         Me.picSchoolLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picSchoolLogo.TabIndex = 20
         Me.picSchoolLogo.TabStop = False
         '
         'picBackIDFormat
         '
-        Me.picBackIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.backID
+        Me.picBackIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.backIDJmc
         Me.picBackIDFormat.Location = New System.Drawing.Point(0, 0)
         Me.picBackIDFormat.Name = "picBackIDFormat"
         Me.picBackIDFormat.Size = New System.Drawing.Size(330, 532)
@@ -325,6 +325,7 @@ Partial Class Print_ID_Options
         '
         'picBarcode
         '
+        Me.picBarcode.BackColor = System.Drawing.Color.Transparent
         Me.picBarcode.Location = New System.Drawing.Point(26, 437)
         Me.picBarcode.Name = "picBarcode"
         Me.picBarcode.Size = New System.Drawing.Size(278, 43)

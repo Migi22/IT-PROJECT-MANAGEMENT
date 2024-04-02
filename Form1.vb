@@ -90,12 +90,18 @@ Public Class Form1
         cmbFilterSearch.SelectedIndex = 0
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
+
+        DisableTextboxes()
+
+
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         btnUpdate.Enabled = True
         btnDelete.Enabled = True
         btnEdit.Enabled = False
+
+        EnableTextboxes()
     End Sub
 
     'FUNCTION THAT RELOAD THE DATAGRIDVIEW'S DATA'
@@ -310,9 +316,11 @@ Public Class Form1
                 MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
+            'Enable and disable certain buttons and textboxes
             btnUpdate.Enabled = False
             btnDelete.Enabled = False
             btnEdit.Enabled = True
+            DisableTextboxes()
 
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -335,9 +343,11 @@ Public Class Form1
             End Try
             'END AUDIT
 
+            'Enable and disable certain buttons and textboxes
             btnUpdate.Enabled = False
             btnDelete.Enabled = False
             btnEdit.Enabled = True
+            DisableTextboxes()
 
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -476,6 +486,38 @@ Public Class Form1
         End If
 
 
+    End Sub
+
+    Private Sub DisableTextboxes()
+        ' Disable all textboxes
+        txtFname.Enabled = False
+        txtLname.Enabled = False
+        txtMi.Enabled = False
+        txtCourse.Enabled = False
+        txtYearLevel.Enabled = False
+        txtGuardianName.Enabled = False
+        txtGuardianContNum.Enabled = False
+        txtStudentAddress.Enabled = False
+        txtStudentBday.Enabled = False
+        txtStudentNum.Enabled = False
+        txtSearch.Enabled = False
+        btnEditImage.Enabled = False
+    End Sub
+
+    Private Sub EnableTextboxes()
+        ' Enable all textboxes
+        txtFname.Enabled = True
+        txtLname.Enabled = True
+        txtMi.Enabled = True
+        txtCourse.Enabled = True
+        txtYearLevel.Enabled = True
+        txtGuardianName.Enabled = True
+        txtGuardianContNum.Enabled = True
+        txtStudentAddress.Enabled = True
+        txtStudentBday.Enabled = True
+        txtStudentNum.Enabled = True
+        txtSearch.Enabled = True
+        btnEditImage.Enabled = True
     End Sub
 
 

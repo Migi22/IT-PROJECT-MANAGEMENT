@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports MessagingToolkit.Barcode
 
 Public Class Print_ID_Options
     Public QueueID As String
@@ -19,6 +20,7 @@ Public Class Print_ID_Options
         lblInputCourseYear.Parent = picFrontIDFormat
         lblTitleStudentNum.Parent = picFrontIDFormat
         lblInputStudentNum.Parent = picFrontIDFormat
+        picBarcode.Parent = picFrontIDFormat
 
         'Back
         lblInputBirthday.Parent = picBackIDFormat
@@ -39,11 +41,19 @@ Public Class Print_ID_Options
         lblInputLastName.Text = lblInputLastName.Text.ToUpper()
 
         'Barcode
-        Dim generator As New MessagingToolkit.Barcode.BarcodeEncoder
+        Dim generator As New BarcodeEncoder()
         Try
-            picBarcode.Image = New Bitmap(generator.Encode(MessagingToolkit.Barcode.BarcodeFormat.Code128, lblInputStudentNum.Text))
+            ' Encode the barcode
+            Dim barcodeBitmap As Bitmap = generator.Encode(BarcodeFormat.Code128, lblInputStudentNum.Text)
+
+            ' Make the background color transparent (assuming white is the background color)
+            barcodeBitmap.MakeTransparent(Color.White)
+
+            ' Assign the transparent barcode image to the PictureBox
+            picBarcode.Image = barcodeBitmap
         Catch ex As Exception
-            picBarcode.Image = Nothing
+            ' Handle any exceptions
+            MessageBox.Show("Error generating barcode: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         LoadProfile()
@@ -115,4 +125,6 @@ Public Class Print_ID_Options
     Private Sub Print_ID_Options_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         RaiseEvent FormClosedEvent(Me, EventArgs.Empty)
     End Sub
+
+
 End Class
