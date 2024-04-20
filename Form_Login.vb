@@ -11,8 +11,26 @@ Public Class Form_Login
         reloadtxt("SELECT * FROM tbl_users WHERE USERNAME='" & txtUsername.Text & "' AND 
                     PASSWORD='" & txtPassword.Text & "'")
         If dt.Rows.Count > 0 Then
+            Dim isAdmin As Boolean = Convert.ToInt32(dt.Rows(0)("role_ID")) = 1
+
+
             With Dashboard
                 CurrentUser.Username = txtUsername.Text
+                If isAdmin Then
+                    ' If user is an admin
+                    .btnUserManagement.Visible = True
+                    .btnAuditLog.Visible = True
+
+
+                Else
+                    ' If user is not an admin
+                    .btnUserManagement.Visible = False
+                    .btnAuditLog.Visible = False
+
+                End If
+
+
+
                 .Show()
             End With
             Me.Hide()

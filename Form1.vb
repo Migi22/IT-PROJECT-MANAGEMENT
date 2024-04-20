@@ -12,9 +12,12 @@ Public Class Form1
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If isAddingStudent Then
-            ' Clear textboxes and change button text
-            ClearText()
+            ' Clear textboxes, enable buttons and disable some
+            ClearText() ' Clear textboxes and change button text
+            EnableTextboxes()
             btnSave.Text = "Save Student"
+            btnEdit.Enabled = False
+            btnCancel.Visible = True ' Show the Cancel button
             isAddingStudent = False
         Else
             ' Check if all required fields are filled
@@ -67,6 +70,15 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        ClearText()
+        DisableTextboxes()
+        btnSave.Text = "Add Student"
+        isAddingStudent = True
+        btnCancel.Visible = False
+        btnEdit.Enabled = True
+    End Sub
+
     Private Sub ClearText()
         txtQueueNum.Clear()
         txtFname.Clear()
@@ -108,7 +120,7 @@ Public Class Form1
     Public Sub reload_record()
 
         Try
-            reload("SELECT * FROM tbl_queue", DataGridView1)
+            reloadtxtFilterSignature("SELECT * From tbl_queue")
 
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
@@ -135,17 +147,15 @@ Public Class Form1
                     End If
                 Next
 
-
-
+                ' Set the image of the Picture column into zoom
                 Dim pictureColumn As New DataGridViewImageColumn()
                 pictureColumn = CType(DataGridView1.Columns("Picture"), DataGridViewImageColumn)
                 pictureColumn.ImageLayout = DataGridViewImageCellLayout.Stretch
 
-
+                ' Set the image of the student_signature column into zoom
                 Dim signatureColumn As New DataGridViewImageColumn()
                 signatureColumn = CType(DataGridView1.Columns("student_signature"), DataGridViewImageColumn)
                 signatureColumn.ImageLayout = DataGridViewImageCellLayout.Zoom
-
 
             End If
 
@@ -156,7 +166,8 @@ Public Class Form1
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         Try
-            ReloadData()
+            'temporary off
+            ' ReloadData()
 
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
@@ -220,7 +231,9 @@ Public Class Form1
 
     Private Sub cmbFilterSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFilterSearch.SelectedIndexChanged
         ' Call the method to reload data based on the selected filter
-        ReloadData()
+
+        'temporary
+        'ReloadData()
     End Sub
 
     Private Sub ReloadData()
@@ -281,9 +294,6 @@ Public Class Form1
             MessageBox.Show("An error occurred while reloading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
-
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         'Loop method to check individually the text box if it is a blank
@@ -356,7 +366,7 @@ Public Class Form1
 
     Public Sub LoadImage()
         Try
-            reloadtxt("SELECT * FROM tbl_queue WHERE queue_ID='" & txtQueueNum.Text & "'")
+            reloadtxtFilterSignature("SELECT * FROM tbl_queue WHERE queue_ID='" & txtQueueNum.Text & "'")
 
             If dt.Rows.Count > 0 Then
                 If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
@@ -364,7 +374,29 @@ Public Class Form1
                 Else
                     picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
                 End If
+
+                ' Testing 20/4/24
+
+                If dt.Rows.Count > 0 AndAlso Not String.IsNullOrEmpty(dt.Rows(0).Item("student_signature").ToString) Then
+                    Dim imageData As Byte() = DirectCast(dt.Rows(0).Item("student_signature"), Byte())
+
+                    ' Convert byte array to image
+                    Using ms As New System.IO.MemoryStream(imageData)
+                        Dim image As Image = Image.FromStream(ms)
+                        picStudentSignature.Image = image ' Display the image in PictureBox
+                    End Using
+                Else
+                    ' If "student_signature" is null or empty, display a default image
+                    picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Profile\default.png") ' DefaultImage is a placeholder for your default image
+                End If
+
+                ' Testing 20/4/24
+
+
             End If
+
+
+
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

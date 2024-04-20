@@ -42,7 +42,7 @@ Partial Class Member_Management
         'txtID
         '
         Me.txtID.Location = New System.Drawing.Point(54, 140)
-        Me.txtID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtID.Margin = New System.Windows.Forms.Padding(2)
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
         Me.txtID.Size = New System.Drawing.Size(545, 20)
@@ -51,7 +51,7 @@ Partial Class Member_Management
         'txtUsername
         '
         Me.txtUsername.Location = New System.Drawing.Point(54, 188)
-        Me.txtUsername.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtUsername.Margin = New System.Windows.Forms.Padding(2)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(545, 20)
         Me.txtUsername.TabIndex = 1
@@ -59,7 +59,7 @@ Partial Class Member_Management
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(54, 238)
-        Me.txtPassword.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(2)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(545, 20)
         Me.txtPassword.TabIndex = 2
@@ -71,16 +71,17 @@ Partial Class Member_Management
         Me.cbRoleType.FormattingEnabled = True
         Me.cbRoleType.Items.AddRange(New Object() {"Member", "Admin"})
         Me.cbRoleType.Location = New System.Drawing.Point(54, 294)
-        Me.cbRoleType.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbRoleType.Margin = New System.Windows.Forms.Padding(2)
         Me.cbRoleType.Name = "cbRoleType"
         Me.cbRoleType.Size = New System.Drawing.Size(545, 21)
         Me.cbRoleType.TabIndex = 3
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(54, 388)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 28
         Me.DataGridView1.Size = New System.Drawing.Size(544, 237)
@@ -129,7 +130,7 @@ Partial Class Member_Management
         'btnSave
         '
         Me.btnSave.Location = New System.Drawing.Point(54, 326)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(77, 47)
         Me.btnSave.TabIndex = 9
@@ -139,7 +140,7 @@ Partial Class Member_Management
         'btnUpdate
         '
         Me.btnUpdate.Location = New System.Drawing.Point(135, 326)
-        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(2)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(77, 47)
         Me.btnUpdate.TabIndex = 10
@@ -149,7 +150,7 @@ Partial Class Member_Management
         'btnDelete
         '
         Me.btnDelete.Location = New System.Drawing.Point(216, 326)
-        Me.btnDelete.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(2)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(77, 47)
         Me.btnDelete.TabIndex = 11
@@ -159,7 +160,7 @@ Partial Class Member_Management
         'btnClear
         '
         Me.btnClear.Location = New System.Drawing.Point(297, 326)
-        Me.btnClear.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnClear.Margin = New System.Windows.Forms.Padding(2)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(77, 47)
         Me.btnClear.TabIndex = 12
@@ -200,7 +201,7 @@ Partial Class Member_Management
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.txtID)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Member_Management"
         Me.Text = "Member_Management"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
