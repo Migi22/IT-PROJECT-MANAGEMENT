@@ -127,6 +127,7 @@ Partial Class Reports
         '
         'DataGridViewReports
         '
+        Me.DataGridViewReports.AllowUserToAddRows = False
         Me.DataGridViewReports.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridViewReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewReports.Location = New System.Drawing.Point(220, 124)

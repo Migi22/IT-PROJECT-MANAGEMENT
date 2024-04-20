@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 Module CRUD_Connection
     Public result As String
     Public cmd As New MySqlCommand
@@ -112,6 +113,39 @@ Module CRUD_Connection
             da.Dispose()
         End Try
     End Sub
+
+    Public Sub reloadtxtFilterSignature(ByVal sql As String)
+        Try
+            strcon.Open()
+            cmd.Connection = strcon
+            cmd.CommandText = sql
+
+            dt = New DataTable
+            da = New MySqlDataAdapter(sql, strcon)
+            da.Fill(dt)
+
+            ' Load default image as byte array
+            Dim defaultImageBytes As Byte() = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
+
+            ' Check and update "student_signature" column in DataTable
+            For Each row As DataRow In dt.Rows
+                Dim signatureBytes As Byte() = TryCast(row("student_signature"), Byte())
+
+                ' Check if "student_signature" is null or empty
+                If signatureBytes Is Nothing OrElse signatureBytes.Length = 0 Then
+                    row("student_signature") = defaultImageBytes
+                End If
+            Next
+        Catch ex As Exception
+            ' Handle exceptions as needed
+            'MessageBox.Show("An error occurred reloadtext(): " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            strcon.Close()
+            da.Dispose()
+        End Try
+    End Sub
+
+
 
     Public Sub delete(ByVal sql As String)
         Try

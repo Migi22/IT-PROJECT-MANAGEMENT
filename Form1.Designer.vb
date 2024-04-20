@@ -61,13 +61,16 @@ Partial Class Form1
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btnNeedVerify = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
+        Me.picStudentSignature = New System.Windows.Forms.PictureBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(45, 590)
         Me.DataGridView1.Name = "DataGridView1"
@@ -430,12 +433,23 @@ Partial Class Form1
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
         '
+        'picStudentSignature
+        '
+        Me.picStudentSignature.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picStudentSignature.Location = New System.Drawing.Point(1038, 231)
+        Me.picStudentSignature.Name = "picStudentSignature"
+        Me.picStudentSignature.Size = New System.Drawing.Size(161, 138)
+        Me.picStudentSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picStudentSignature.TabIndex = 39
+        Me.picStudentSignature.TabStop = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1505, 894)
+        Me.Controls.Add(Me.picStudentSignature)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnNeedVerify)
         Me.Controls.Add(Me.Label13)
@@ -480,6 +494,7 @@ Partial Class Form1
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -523,4 +538,5 @@ Partial Class Form1
     Friend WithEvents Label13 As Label
     Friend WithEvents btnNeedVerify As Button
     Friend WithEvents btnEdit As Button
+    Friend WithEvents picStudentSignature As PictureBox
 End Class

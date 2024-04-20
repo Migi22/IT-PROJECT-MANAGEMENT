@@ -7,6 +7,8 @@
         lblCurrentUser.Text = "Welcome, " & CurrentUser.Username
     End Sub
 
+
+
     Private Sub SwitchForm(ByVal newPanel As Form)
         ' Dispose of previous form(s)
         For Each control As Control In panelRight.Controls
@@ -52,4 +54,6 @@
     Private Sub btnAuditLog_Click(sender As Object, e As EventArgs) Handles btnAuditLog.Click
         SwitchForm(New AuditLog())
     End Sub
+
+
 End Class

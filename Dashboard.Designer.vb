@@ -65,9 +65,9 @@ Partial Class Dashboard
         Me.lblCurrentUser.Location = New System.Drawing.Point(0, 572)
         Me.lblCurrentUser.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblCurrentUser.Name = "lblCurrentUser"
-        Me.lblCurrentUser.Size = New System.Drawing.Size(246, 29)
+        Me.lblCurrentUser.Size = New System.Drawing.Size(232, 29)
         Me.lblCurrentUser.TabIndex = 6
-        Me.lblCurrentUser.Text = "Currennt User name"
+        Me.lblCurrentUser.Text = "Current User name"
         '
         'btnLogout
         '

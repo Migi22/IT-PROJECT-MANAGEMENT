@@ -113,7 +113,7 @@ Public Class Reports
             ApplyFilterDate(query)
             ApplyFilterCourseYear(query)
 
-            MessageBox.Show("Query: " & query)
+            'MessageBox.Show("Query: " & query)
 
             lblFilterInfo.Text = "Showing All records"
             UpdateFilterInfoLabel(" with")
