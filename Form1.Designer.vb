@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -62,7 +62,8 @@ Partial Class Form1
         Me.btnNeedVerify = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.picStudentSignature = New System.Windows.Forms.PictureBox()
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnCancelSave = New System.Windows.Forms.Button()
+        Me.btnCancelEdit = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -460,17 +461,29 @@ Partial Class Form1
         Me.picStudentSignature.TabIndex = 39
         Me.picStudentSignature.TabStop = False
         '
-        'btnCancel
+        'btnCancelSave
         '
-        Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCancel.Location = New System.Drawing.Point(68, 688)
-        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(128, 71)
-        Me.btnCancel.TabIndex = 40
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        Me.btnCancel.Visible = False
+        Me.btnCancelSave.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnCancelSave.Location = New System.Drawing.Point(68, 688)
+        Me.btnCancelSave.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnCancelSave.Name = "btnCancelSave"
+        Me.btnCancelSave.Size = New System.Drawing.Size(128, 71)
+        Me.btnCancelSave.TabIndex = 40
+        Me.btnCancelSave.Text = "Cancel"
+        Me.btnCancelSave.UseVisualStyleBackColor = False
+        Me.btnCancelSave.Visible = False
+        '
+        'btnCancelEdit
+        '
+        Me.btnCancelEdit.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnCancelEdit.Location = New System.Drawing.Point(204, 688)
+        Me.btnCancelEdit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnCancelEdit.Name = "btnCancelEdit"
+        Me.btnCancelEdit.Size = New System.Drawing.Size(128, 71)
+        Me.btnCancelEdit.TabIndex = 41
+        Me.btnCancelEdit.Text = "Cancel"
+        Me.btnCancelEdit.UseVisualStyleBackColor = False
+        Me.btnCancelEdit.Visible = False
         '
         'Form1
         '
@@ -478,7 +491,8 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(2258, 1100)
-        Me.Controls.Add(Me.btnCancel)
+        Me.Controls.Add(Me.btnCancelEdit)
+        Me.Controls.Add(Me.btnCancelSave)
         Me.Controls.Add(Me.picStudentSignature)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnNeedVerify)
@@ -570,5 +584,6 @@ Partial Class Form1
     Friend WithEvents btnNeedVerify As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents picStudentSignature As PictureBox
-    Friend WithEvents btnCancel As Button
+    Friend WithEvents btnCancelSave As Button
+    Friend WithEvents btnCancelEdit As Button
 End Class

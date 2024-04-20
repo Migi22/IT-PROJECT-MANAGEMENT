@@ -17,7 +17,7 @@ Public Class Form1
             EnableTextboxes()
             btnSave.Text = "Save Student"
             btnEdit.Enabled = False
-            btnCancel.Visible = True ' Show the Cancel button
+            btnCancelSave.Visible = True ' Show the Cancel button
             isAddingStudent = False
         Else
             ' Check if all required fields are filled
@@ -70,14 +70,16 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    Private Sub btnCancelSave_Click(sender As Object, e As EventArgs) Handles btnCancelSave.Click
         ClearText()
         DisableTextboxes()
         btnSave.Text = "Add Student"
         isAddingStudent = True
-        btnCancel.Visible = False
+        btnCancelSave.Visible = False
         btnEdit.Enabled = True
     End Sub
+
+
 
     Private Sub ClearText()
         txtQueueNum.Clear()
@@ -109,12 +111,26 @@ Public Class Form1
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        btnCancelEdit.Visible = True
         btnUpdate.Enabled = True
         btnDelete.Enabled = True
         btnEdit.Enabled = False
+        btnSave.Enabled = False
 
         EnableTextboxes()
     End Sub
+
+    Private Sub btnCancelEdit_Click(sender As Object, e As EventArgs) Handles btnCancelEdit.Click
+        btnCancelEdit.Visible = False
+        btnUpdate.Enabled = False
+        btnDelete.Enabled = False
+        btnEdit.Enabled = True
+        btnSave.Enabled = True
+
+        DisableTextboxes()
+    End Sub
+
+
 
     'FUNCTION THAT RELOAD THE DATAGRIDVIEW'S DATA'
     Public Sub reload_record()
@@ -330,6 +346,7 @@ Public Class Form1
             btnUpdate.Enabled = False
             btnDelete.Enabled = False
             btnEdit.Enabled = True
+            btnSave.Enabled = True
             DisableTextboxes()
 
         Catch ex As Exception
@@ -357,6 +374,7 @@ Public Class Form1
             btnUpdate.Enabled = False
             btnDelete.Enabled = False
             btnEdit.Enabled = True
+            btnSave.Enabled = True
             DisableTextboxes()
 
         Catch ex As Exception
