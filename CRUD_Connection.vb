@@ -138,14 +138,12 @@ Module CRUD_Connection
             Next
         Catch ex As Exception
             ' Handle exceptions as needed
-            'MessageBox.Show("An error occurred reloadtxtFilterSignature(): " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'MessageBox.Show("An error occurred reloadtext(): " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             strcon.Close()
             da.Dispose()
         End Try
     End Sub
-
-
 
     Public Sub delete(ByVal sql As String)
         Try
