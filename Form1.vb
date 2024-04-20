@@ -111,13 +111,18 @@ Public Class Form1
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        btnCancelEdit.Visible = True
-        btnUpdate.Enabled = True
-        btnDelete.Enabled = True
-        btnEdit.Enabled = False
-        btnSave.Enabled = False
+        ' Checks first if the txtQueueNum is empty or not to make sure there is something to edit
+        If txtQueueNum.Text = "" Then
+            MessageBox.Show("Please select first a queue entry before editing.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            btnCancelEdit.Visible = True
+            btnUpdate.Enabled = True
+            btnDelete.Enabled = True
+            btnEdit.Enabled = False
+            btnSave.Enabled = False
 
-        EnableTextboxes()
+            EnableTextboxes()
+        End If
     End Sub
 
     Private Sub btnCancelEdit_Click(sender As Object, e As EventArgs) Handles btnCancelEdit.Click
