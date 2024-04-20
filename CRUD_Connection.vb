@@ -65,9 +65,8 @@ Module CRUD_Connection
         Form1.txtStudentBday.Clear()
         Form1.txtStudentNum.Clear()
         Form1.txtSearch.Clear()
-        'Form1.txtPhoto.Clear()
-        'Form1.picBrowserPic.Image = Nothing
         Form1.picStudentPic.Image = Nothing
+        Form1.picStudentSignature.Image = Nothing
 
     End Sub
 
@@ -94,6 +93,29 @@ Module CRUD_Connection
             da.Dispose()
         End Try
     End Sub
+
+    ' Updates with mysql parameter
+    Public Sub updates(ByVal SQL As String, ByVal ParamArray parameters() As MySqlParameter)
+        Try
+            strcon.Open()
+            Using cmd As New MySqlCommand(SQL, strcon)
+                cmd.Parameters.AddRange(parameters)
+                result = cmd.ExecuteNonQuery()
+
+                If result = 0 Then
+                    MessageBox.Show("Data failed to update to the database", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    'MessageBox.Show("Data has been updated successfully", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ClearText()
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            strcon.Close()
+        End Try
+    End Sub
+
 
     Public Sub reloadtxt(ByVal sql As String)
         Try
@@ -144,6 +166,32 @@ Module CRUD_Connection
             da.Dispose()
         End Try
     End Sub
+
+    Public Sub checkSignature(ByVal sql As String)
+        Try
+            strcon.Open()
+            cmd.Connection = strcon
+            cmd.CommandText = sql
+
+            dt = New DataTable
+            da = New MySqlDataAdapter(sql, strcon)
+            da.Fill(dt)
+
+            ' Check if the DataTable has rows and the "student_signature" is not null or empty
+            If dt.Rows.Count <= 0 OrElse IsDBNull(dt.Rows(0).Item("student_signature")) OrElse DirectCast(dt.Rows(0).Item("student_signature"), Byte()).Length <= 0 Then
+                MessageBox.Show("There is no image to save", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Catch ex As Exception
+            ' Handle exceptions as needed
+            'MessageBox.Show("An error occurred reloadtext(): " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            strcon.Close()
+            da.Dispose()
+        End Try
+    End Sub
+
+
 
     Public Sub delete(ByVal sql As String)
         Try

@@ -64,6 +64,7 @@ Partial Class Form1
         Me.picStudentSignature = New System.Windows.Forms.PictureBox()
         Me.btnCancelSave = New System.Windows.Forms.Button()
         Me.btnCancelEdit = New System.Windows.Forms.Button()
+        Me.btnEditSignature = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,7 +75,7 @@ Partial Class Form1
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(68, 908)
+        Me.DataGridView1.Location = New System.Drawing.Point(68, 894)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersWidth = 62
@@ -485,12 +486,23 @@ Partial Class Form1
         Me.btnCancelEdit.UseVisualStyleBackColor = False
         Me.btnCancelEdit.Visible = False
         '
+        'btnEditSignature
+        '
+        Me.btnEditSignature.Location = New System.Drawing.Point(1805, 497)
+        Me.btnEditSignature.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnEditSignature.Name = "btnEditSignature"
+        Me.btnEditSignature.Size = New System.Drawing.Size(128, 71)
+        Me.btnEditSignature.TabIndex = 42
+        Me.btnEditSignature.Text = "Edit Signature"
+        Me.btnEditSignature.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(2258, 1100)
+        Me.Controls.Add(Me.btnEditSignature)
         Me.Controls.Add(Me.btnCancelEdit)
         Me.Controls.Add(Me.btnCancelSave)
         Me.Controls.Add(Me.picStudentSignature)
@@ -586,4 +598,5 @@ Partial Class Form1
     Friend WithEvents picStudentSignature As PictureBox
     Friend WithEvents btnCancelSave As Button
     Friend WithEvents btnCancelEdit As Button
+    Friend WithEvents btnEditSignature As Button
 End Class

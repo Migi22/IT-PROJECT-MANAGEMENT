@@ -18,6 +18,7 @@ Public Class Form1
             btnSave.Text = "Save Student"
             btnEdit.Enabled = False
             btnCancelSave.Visible = True ' Show the Cancel button
+            btnEditSignature.Enabled = True
             isAddingStudent = False
         Else
             ' Check if all required fields are filled
@@ -47,6 +48,7 @@ Public Class Form1
                     ClearText()
                     btnSave.Text = "Add Student"
                     isAddingStudent = True
+
                     Try
                         'AUDIT
                         action = "CREATED STUDENT: " & txtLname.Text & ", " & txtFname.Text
@@ -77,6 +79,7 @@ Public Class Form1
         isAddingStudent = True
         btnCancelSave.Visible = False
         btnEdit.Enabled = True
+        btnEditSignature.Enabled = False
     End Sub
 
 
@@ -104,6 +107,7 @@ Public Class Form1
         cmbFilterSearch.SelectedIndex = 0
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
+        btnEditSignature.Enabled = False
 
         DisableTextboxes()
 
@@ -120,6 +124,7 @@ Public Class Form1
             btnDelete.Enabled = True
             btnEdit.Enabled = False
             btnSave.Enabled = False
+            btnEditSignature.Enabled = True
 
             EnableTextboxes()
         End If
@@ -131,6 +136,7 @@ Public Class Form1
         btnDelete.Enabled = False
         btnEdit.Enabled = True
         btnSave.Enabled = True
+        btnEditSignature.Enabled = False
 
         DisableTextboxes()
     End Sub
@@ -352,6 +358,8 @@ Public Class Form1
             btnDelete.Enabled = False
             btnEdit.Enabled = True
             btnSave.Enabled = True
+            btnCancelEdit.Visible = False
+            btnEditSignature.Enabled = False
             DisableTextboxes()
 
         Catch ex As Exception
@@ -380,6 +388,8 @@ Public Class Form1
             btnDelete.Enabled = False
             btnEdit.Enabled = True
             btnSave.Enabled = True
+            btnCancelEdit.Visible = False
+            btnEditSignature.Enabled = False
             DisableTextboxes()
 
         Catch ex As Exception
@@ -431,7 +441,18 @@ Public Class Form1
             .StudentFirstName = txtFname.Text
             .ReloadFunction = AddressOf reload_record
             .QueueID = txtQueueNum.Text
-            .Show()
+            .ShowDialog()
+
+        End With
+    End Sub
+
+    Private Sub btnEditSignature_Click(sender As Object, e As EventArgs) Handles btnEditSignature.Click
+        With editSignature
+            .StudentLastName = txtLname.Text
+            .StudentFirstName = txtFname.Text
+            .ReloadFunction = AddressOf reload_record
+            .QueueID = txtQueueNum.Text
+            .ShowDialog()
 
         End With
     End Sub
@@ -572,6 +593,5 @@ Public Class Form1
         txtStudentNum.Enabled = True
         btnEditImage.Enabled = True
     End Sub
-
 
 End Class

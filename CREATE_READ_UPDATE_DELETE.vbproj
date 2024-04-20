@@ -160,6 +160,12 @@
     <Compile Include="editImage.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="editSignature.Designer.vb">
+      <DependentUpon>editSignature.vb</DependentUpon>
+    </Compile>
+    <Compile Include="editSignature.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editImage.resx">
       <DependentUpon>editImage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editSignature.resx">
+      <DependentUpon>editSignature.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

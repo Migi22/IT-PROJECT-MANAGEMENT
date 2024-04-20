@@ -1,6 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
-Imports System.IO
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+﻿Imports System.IO
 
 Public Class editImage
     Private username As String = CurrentUser.Username
@@ -97,4 +95,5 @@ Public Class editImage
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 End Class
