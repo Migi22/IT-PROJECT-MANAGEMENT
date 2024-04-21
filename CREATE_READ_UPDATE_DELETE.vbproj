@@ -152,6 +152,7 @@
     <Compile Include="AuditLogger.vb" />
     <Compile Include="CRUD_Connection.vb" />
     <Compile Include="CurrentUser.vb" />
+    <Compile Include="DataGridViewUtils.vb" />
     <Compile Include="DB_Connection.vb" />
     <Compile Include="DoubleBuffer.vb" />
     <Compile Include="editImage.Designer.vb">

@@ -69,9 +69,9 @@ Partial Class Reports
         Me.GroupBox1.Controls.Add(Me.DTPTo)
         Me.GroupBox1.Controls.Add(Me.DTPFrom)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 255)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(169, 141)
+        Me.GroupBox1.Size = New System.Drawing.Size(190, 181)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "FLITER BY DATE"
@@ -80,28 +80,30 @@ Partial Class Reports
         '
         Me.cbFilterDate.AutoSize = True
         Me.cbFilterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbFilterDate.Location = New System.Drawing.Point(2, 19)
+        Me.cbFilterDate.Location = New System.Drawing.Point(4, 19)
         Me.cbFilterDate.Name = "cbFilterDate"
-        Me.cbFilterDate.Size = New System.Drawing.Size(63, 20)
+        Me.cbFilterDate.Size = New System.Drawing.Size(69, 20)
         Me.cbFilterDate.TabIndex = 5
-        Me.cbFilterDate.Text = "Allow"
+        Me.cbFilterDate.Text = "Check"
         Me.cbFilterDate.UseVisualStyleBackColor = True
         '
         'lblDateTo
         '
         Me.lblDateTo.AutoSize = True
-        Me.lblDateTo.Location = New System.Drawing.Point(-1, 83)
+        Me.lblDateTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDateTo.Location = New System.Drawing.Point(6, 116)
         Me.lblDateTo.Name = "lblDateTo"
-        Me.lblDateTo.Size = New System.Drawing.Size(46, 13)
+        Me.lblDateTo.Size = New System.Drawing.Size(61, 18)
         Me.lblDateTo.TabIndex = 3
         Me.lblDateTo.Text = "Date To"
         '
         'lblDateFrom
         '
         Me.lblDateFrom.AutoSize = True
-        Me.lblDateFrom.Location = New System.Drawing.Point(-1, 42)
+        Me.lblDateFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDateFrom.Location = New System.Drawing.Point(7, 51)
         Me.lblDateFrom.Name = "lblDateFrom"
-        Me.lblDateFrom.Size = New System.Drawing.Size(56, 13)
+        Me.lblDateFrom.Size = New System.Drawing.Size(79, 18)
         Me.lblDateFrom.TabIndex = 2
         Me.lblDateFrom.Text = "Date From"
         '
@@ -109,32 +111,31 @@ Partial Class Reports
         '
         Me.DTPTo.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DTPTo.CustomFormat = "dd-MM-yyyy"
-        Me.DTPTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DTPTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DTPTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTPTo.Location = New System.Drawing.Point(-1, 99)
+        Me.DTPTo.Location = New System.Drawing.Point(0, 137)
         Me.DTPTo.Name = "DTPTo"
-        Me.DTPTo.Size = New System.Drawing.Size(170, 22)
+        Me.DTPTo.Size = New System.Drawing.Size(191, 26)
         Me.DTPTo.TabIndex = 1
         '
         'DTPFrom
         '
         Me.DTPFrom.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DTPFrom.CustomFormat = "dd-MM-yyyy"
-        Me.DTPFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DTPFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DTPFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTPFrom.Location = New System.Drawing.Point(1, 58)
+        Me.DTPFrom.Location = New System.Drawing.Point(2, 72)
         Me.DTPFrom.Name = "DTPFrom"
-        Me.DTPFrom.Size = New System.Drawing.Size(168, 22)
+        Me.DTPFrom.Size = New System.Drawing.Size(189, 26)
         Me.DTPFrom.TabIndex = 0
         '
         'DataGridViewReports
         '
         Me.DataGridViewReports.AllowUserToAddRows = False
         Me.DataGridViewReports.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.DataGridViewReports.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
@@ -143,24 +144,25 @@ Partial Class Reports
         Me.DataGridViewReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewReports.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridViewReports.Location = New System.Drawing.Point(220, 124)
+        Me.DataGridViewReports.Location = New System.Drawing.Point(242, 136)
         Me.DataGridViewReports.Name = "DataGridViewReports"
-        Me.DataGridViewReports.Size = New System.Drawing.Size(831, 515)
+        Me.DataGridViewReports.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewReports.Size = New System.Drawing.Size(1147, 515)
         Me.DataGridViewReports.TabIndex = 5
         '
         'btnExcel
         '
         Me.btnExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExcel.Location = New System.Drawing.Point(12, 716)
+        Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExcel.Location = New System.Drawing.Point(18, 737)
         Me.btnExcel.Name = "btnExcel"
-        Me.btnExcel.Size = New System.Drawing.Size(170, 32)
+        Me.btnExcel.Size = New System.Drawing.Size(190, 42)
         Me.btnExcel.TabIndex = 5
         Me.btnExcel.Text = "Export Excel"
         Me.btnExcel.UseVisualStyleBackColor = False
@@ -168,10 +170,10 @@ Partial Class Reports
         'btnPrintPreview
         '
         Me.btnPrintPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrintPreview.Location = New System.Drawing.Point(12, 660)
+        Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrintPreview.Location = New System.Drawing.Point(18, 681)
         Me.btnPrintPreview.Name = "btnPrintPreview"
-        Me.btnPrintPreview.Size = New System.Drawing.Size(170, 32)
+        Me.btnPrintPreview.Size = New System.Drawing.Size(190, 42)
         Me.btnPrintPreview.TabIndex = 4
         Me.btnPrintPreview.Text = "Print Preview"
         Me.btnPrintPreview.UseVisualStyleBackColor = False
@@ -179,10 +181,10 @@ Partial Class Reports
         'btnMonthly
         '
         Me.btnMonthly.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnMonthly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMonthly.Location = New System.Drawing.Point(12, 131)
+        Me.btnMonthly.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMonthly.Location = New System.Drawing.Point(18, 167)
         Me.btnMonthly.Name = "btnMonthly"
-        Me.btnMonthly.Size = New System.Drawing.Size(170, 32)
+        Me.btnMonthly.Size = New System.Drawing.Size(190, 42)
         Me.btnMonthly.TabIndex = 3
         Me.btnMonthly.Text = "Monthly"
         Me.btnMonthly.UseVisualStyleBackColor = False
@@ -190,10 +192,10 @@ Partial Class Reports
         'btnWeekly
         '
         Me.btnWeekly.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnWeekly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnWeekly.Location = New System.Drawing.Point(12, 93)
+        Me.btnWeekly.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnWeekly.Location = New System.Drawing.Point(18, 119)
         Me.btnWeekly.Name = "btnWeekly"
-        Me.btnWeekly.Size = New System.Drawing.Size(170, 32)
+        Me.btnWeekly.Size = New System.Drawing.Size(190, 42)
         Me.btnWeekly.TabIndex = 2
         Me.btnWeekly.Text = "Weekly"
         Me.btnWeekly.UseVisualStyleBackColor = False
@@ -201,10 +203,10 @@ Partial Class Reports
         'btnDaily
         '
         Me.btnDaily.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnDaily.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDaily.Location = New System.Drawing.Point(12, 55)
+        Me.btnDaily.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDaily.Location = New System.Drawing.Point(18, 71)
         Me.btnDaily.Name = "btnDaily"
-        Me.btnDaily.Size = New System.Drawing.Size(170, 32)
+        Me.btnDaily.Size = New System.Drawing.Size(190, 42)
         Me.btnDaily.TabIndex = 1
         Me.btnDaily.Text = "Daily"
         Me.btnDaily.UseVisualStyleBackColor = False
@@ -212,10 +214,10 @@ Partial Class Reports
         'btnAll
         '
         Me.btnAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAll.Location = New System.Drawing.Point(12, 17)
+        Me.btnAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAll.Location = New System.Drawing.Point(18, 23)
         Me.btnAll.Name = "btnAll"
-        Me.btnAll.Size = New System.Drawing.Size(170, 32)
+        Me.btnAll.Size = New System.Drawing.Size(190, 42)
         Me.btnAll.TabIndex = 0
         Me.btnAll.Text = "All"
         Me.btnAll.UseVisualStyleBackColor = False
@@ -234,7 +236,7 @@ Partial Class Reports
         Me.leftPanel.Dock = System.Windows.Forms.DockStyle.Left
         Me.leftPanel.Location = New System.Drawing.Point(0, 50)
         Me.leftPanel.Name = "leftPanel"
-        Me.leftPanel.Size = New System.Drawing.Size(201, 810)
+        Me.leftPanel.Size = New System.Drawing.Size(236, 810)
         Me.leftPanel.TabIndex = 6
         '
         'GroupBox2
@@ -245,9 +247,9 @@ Partial Class Reports
         Me.GroupBox2.Controls.Add(Me.cbYear)
         Me.GroupBox2.Controls.Add(Me.cbCourse)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 365)
+        Me.GroupBox2.Location = New System.Drawing.Point(18, 473)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(170, 158)
+        Me.GroupBox2.Size = New System.Drawing.Size(190, 169)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "FILTER BY COURSE && YEAR"
@@ -255,18 +257,20 @@ Partial Class Reports
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 97)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(7, 110)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(29, 13)
+        Me.Label2.Size = New System.Drawing.Size(38, 18)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Year"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 45)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(7, 45)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 13)
+        Me.Label1.Size = New System.Drawing.Size(57, 18)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Course"
         '
@@ -276,9 +280,9 @@ Partial Class Reports
         Me.cbFilterCourseYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbFilterCourseYear.Location = New System.Drawing.Point(3, 19)
         Me.cbFilterCourseYear.Name = "cbFilterCourseYear"
-        Me.cbFilterCourseYear.Size = New System.Drawing.Size(63, 20)
+        Me.cbFilterCourseYear.Size = New System.Drawing.Size(69, 20)
         Me.cbFilterCourseYear.TabIndex = 6
-        Me.cbFilterCourseYear.Text = "Allow"
+        Me.cbFilterCourseYear.Text = "Check"
         Me.cbFilterCourseYear.UseVisualStyleBackColor = True
         '
         'cbYear
@@ -286,9 +290,9 @@ Partial Class Reports
         Me.cbYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbYear.FormattingEnabled = True
         Me.cbYear.Items.AddRange(New Object() {"1", "2", "3", "4"})
-        Me.cbYear.Location = New System.Drawing.Point(0, 112)
+        Me.cbYear.Location = New System.Drawing.Point(0, 131)
         Me.cbYear.Name = "cbYear"
-        Me.cbYear.Size = New System.Drawing.Size(170, 28)
+        Me.cbYear.Size = New System.Drawing.Size(190, 28)
         Me.cbYear.Sorted = True
         Me.cbYear.TabIndex = 1
         Me.cbYear.Text = "YEAR"
@@ -298,9 +302,9 @@ Partial Class Reports
         Me.cbCourse.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCourse.FormattingEnabled = True
         Me.cbCourse.Items.AddRange(New Object() {"BEEd", "BSA", "BSMA", "BSTM", "BSE-CE", "BSE-SE", "BSCrim", "BSIT", "BSEMC", "BSN", "BSP", "BSA", "BSBio", "BSPsych", "BSSW"})
-        Me.cbCourse.Location = New System.Drawing.Point(0, 61)
+        Me.cbCourse.Location = New System.Drawing.Point(0, 66)
         Me.cbCourse.Name = "cbCourse"
-        Me.cbCourse.Size = New System.Drawing.Size(170, 28)
+        Me.cbCourse.Size = New System.Drawing.Size(190, 28)
         Me.cbCourse.TabIndex = 0
         Me.cbCourse.Text = "COURSE"
         '
@@ -321,7 +325,7 @@ Partial Class Reports
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(771, 93)
+        Me.Label13.Location = New System.Drawing.Point(853, 105)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(90, 25)
         Me.Label13.TabIndex = 38
@@ -332,9 +336,9 @@ Partial Class Reports
         Me.cmbFilterReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFilterReport.FormattingEnabled = True
         Me.cmbFilterReport.Items.AddRange(New Object() {"No Filter", "On Queue", "Needs Verification", "Done"})
-        Me.cmbFilterReport.Location = New System.Drawing.Point(867, 90)
+        Me.cmbFilterReport.Location = New System.Drawing.Point(949, 102)
         Me.cmbFilterReport.Name = "cmbFilterReport"
-        Me.cmbFilterReport.Size = New System.Drawing.Size(184, 28)
+        Me.cmbFilterReport.Size = New System.Drawing.Size(216, 28)
         Me.cmbFilterReport.TabIndex = 37
         Me.cmbFilterReport.Text = "No Filter"
         '
@@ -349,7 +353,7 @@ Partial Class Reports
         '
         Me.lblFilterInfo.AutoSize = True
         Me.lblFilterInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFilterInfo.Location = New System.Drawing.Point(216, 651)
+        Me.lblFilterInfo.Location = New System.Drawing.Point(261, 663)
         Me.lblFilterInfo.Name = "lblFilterInfo"
         Me.lblFilterInfo.Size = New System.Drawing.Size(97, 24)
         Me.lblFilterInfo.TabIndex = 39
@@ -359,7 +363,7 @@ Partial Class Reports
         '
         Me.lblSearch.AutoSize = True
         Me.lblSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSearch.Location = New System.Drawing.Point(221, 94)
+        Me.lblSearch.Location = New System.Drawing.Point(266, 106)
         Me.lblSearch.Name = "lblSearch"
         Me.lblSearch.Size = New System.Drawing.Size(75, 24)
         Me.lblSearch.TabIndex = 8
@@ -369,9 +373,9 @@ Partial Class Reports
         'txtSearchReport
         '
         Me.txtSearchReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearchReport.Location = New System.Drawing.Point(302, 89)
+        Me.txtSearchReport.Location = New System.Drawing.Point(347, 101)
         Me.txtSearchReport.Name = "txtSearchReport"
-        Me.txtSearchReport.Size = New System.Drawing.Size(463, 29)
+        Me.txtSearchReport.Size = New System.Drawing.Size(495, 29)
         Me.txtSearchReport.TabIndex = 9
         '
         'Reports

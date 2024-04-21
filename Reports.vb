@@ -76,14 +76,14 @@ Public Class Reports
             Dim course As String = cbCourse.SelectedItem.ToString()
             Dim year As String = cbYear.SelectedItem.ToString()
 
-            If Not String.IsNullOrEmpty(statusFilter) Then
-                If Not query.Contains("WHERE") Then
-                    query &= " WHERE course = '" & course & "' AND year_level = '" & year & "'"
-                Else
-                    query &= " AND course = '" & course & "' AND year_level = '" & year & "'"
-                End If
+
+            If Not query.Contains("WHERE") Then
+                query &= " WHERE course = '" & course & "' AND year_level = '" & year & "'"
+            Else
+                query &= " AND course = '" & course & "' AND year_level = '" & year & "'"
             End If
         End If
+
     End Sub
 
 
@@ -117,7 +117,7 @@ Public Class Reports
 
             lblFilterInfo.Text = "Showing All records"
             UpdateFilterInfoLabel(" with")
-
+            MessageBox.Show(query) 'debug
             reload(query, DataGridViewReports)
         Catch ex As Exception
             MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -202,11 +202,13 @@ Public Class Reports
     End Sub
 
     Private Sub btnPrintPreview_Click(sender As Object, e As EventArgs) Handles btnPrintPreview.Click
+        PrintDocumentAudit.DefaultPageSettings.Landscape = True
         ppd.Document = PrintDocumentAudit
         ppd.ShowDialog()
     End Sub
 
     Private Sub PrintDocumentAudit_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocumentAudit.PrintPage
+
         ' sets it to show '...' for long text'
         Dim fmt As StringFormat = New StringFormat(StringFormatFlags.LineLimit)
         fmt.LineAlignment = StringAlignment.Center

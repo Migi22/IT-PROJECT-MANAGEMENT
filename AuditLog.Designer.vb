@@ -71,7 +71,7 @@ Partial Class AuditLog
         Me.leftPanel.Dock = System.Windows.Forms.DockStyle.Left
         Me.leftPanel.Location = New System.Drawing.Point(0, 50)
         Me.leftPanel.Name = "leftPanel"
-        Me.leftPanel.Size = New System.Drawing.Size(191, 589)
+        Me.leftPanel.Size = New System.Drawing.Size(236, 589)
         Me.leftPanel.TabIndex = 1
         '
         'GroupBox1
@@ -82,9 +82,9 @@ Partial Class AuditLog
         Me.GroupBox1.Controls.Add(Me.DTPTo)
         Me.GroupBox1.Controls.Add(Me.DTPFrom)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 242)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(154, 202)
+        Me.GroupBox1.Size = New System.Drawing.Size(190, 202)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "FLITER BY DATE"
@@ -92,11 +92,11 @@ Partial Class AuditLog
         'btnFilter
         '
         Me.btnFilter.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
         Me.btnFilter.ForeColor = System.Drawing.Color.Black
         Me.btnFilter.Location = New System.Drawing.Point(2, 159)
         Me.btnFilter.Name = "btnFilter"
-        Me.btnFilter.Size = New System.Drawing.Size(152, 37)
+        Me.btnFilter.Size = New System.Drawing.Size(188, 37)
         Me.btnFilter.TabIndex = 4
         Me.btnFilter.Text = "Filter"
         Me.btnFilter.UseVisualStyleBackColor = False
@@ -104,18 +104,20 @@ Partial Class AuditLog
         'lblDateTo
         '
         Me.lblDateTo.AutoSize = True
-        Me.lblDateTo.Location = New System.Drawing.Point(-1, 99)
+        Me.lblDateTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        Me.lblDateTo.Location = New System.Drawing.Point(6, 100)
         Me.lblDateTo.Name = "lblDateTo"
-        Me.lblDateTo.Size = New System.Drawing.Size(46, 13)
+        Me.lblDateTo.Size = New System.Drawing.Size(61, 18)
         Me.lblDateTo.TabIndex = 3
         Me.lblDateTo.Text = "Date To"
         '
         'lblDateFrom
         '
         Me.lblDateFrom.AutoSize = True
-        Me.lblDateFrom.Location = New System.Drawing.Point(-1, 33)
+        Me.lblDateFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        Me.lblDateFrom.Location = New System.Drawing.Point(6, 34)
         Me.lblDateFrom.Name = "lblDateFrom"
-        Me.lblDateFrom.Size = New System.Drawing.Size(56, 13)
+        Me.lblDateFrom.Size = New System.Drawing.Size(79, 18)
         Me.lblDateFrom.TabIndex = 2
         Me.lblDateFrom.Text = "Date From"
         '
@@ -123,31 +125,31 @@ Partial Class AuditLog
         '
         Me.DTPTo.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DTPTo.CustomFormat = "dd-MM-yyyy"
-        Me.DTPTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DTPTo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.DTPTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTPTo.Location = New System.Drawing.Point(-1, 115)
+        Me.DTPTo.Location = New System.Drawing.Point(0, 120)
         Me.DTPTo.Name = "DTPTo"
-        Me.DTPTo.Size = New System.Drawing.Size(155, 22)
+        Me.DTPTo.Size = New System.Drawing.Size(190, 26)
         Me.DTPTo.TabIndex = 1
         '
         'DTPFrom
         '
         Me.DTPFrom.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DTPFrom.CustomFormat = "dd-MM-yyyy"
-        Me.DTPFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DTPFrom.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.DTPFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DTPFrom.Location = New System.Drawing.Point(1, 49)
+        Me.DTPFrom.Location = New System.Drawing.Point(1, 58)
         Me.DTPFrom.Name = "DTPFrom"
-        Me.DTPFrom.Size = New System.Drawing.Size(153, 22)
+        Me.DTPFrom.Size = New System.Drawing.Size(189, 26)
         Me.DTPFrom.TabIndex = 0
         '
         'btnExcel
         '
         Me.btnExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExcel.Location = New System.Drawing.Point(12, 496)
+        Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.btnExcel.Location = New System.Drawing.Point(17, 532)
         Me.btnExcel.Name = "btnExcel"
-        Me.btnExcel.Size = New System.Drawing.Size(155, 32)
+        Me.btnExcel.Size = New System.Drawing.Size(190, 42)
         Me.btnExcel.TabIndex = 5
         Me.btnExcel.Text = "Export Excel"
         Me.btnExcel.UseVisualStyleBackColor = False
@@ -155,10 +157,10 @@ Partial Class AuditLog
         'btnPrintPreview
         '
         Me.btnPrintPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrintPreview.Location = New System.Drawing.Point(12, 440)
+        Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.btnPrintPreview.Location = New System.Drawing.Point(17, 476)
         Me.btnPrintPreview.Name = "btnPrintPreview"
-        Me.btnPrintPreview.Size = New System.Drawing.Size(155, 32)
+        Me.btnPrintPreview.Size = New System.Drawing.Size(190, 42)
         Me.btnPrintPreview.TabIndex = 4
         Me.btnPrintPreview.Text = "Print Preview"
         Me.btnPrintPreview.UseVisualStyleBackColor = False
@@ -166,10 +168,10 @@ Partial Class AuditLog
         'btnMonthly
         '
         Me.btnMonthly.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnMonthly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMonthly.Location = New System.Drawing.Point(12, 131)
+        Me.btnMonthly.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.btnMonthly.Location = New System.Drawing.Point(15, 164)
         Me.btnMonthly.Name = "btnMonthly"
-        Me.btnMonthly.Size = New System.Drawing.Size(155, 32)
+        Me.btnMonthly.Size = New System.Drawing.Size(190, 42)
         Me.btnMonthly.TabIndex = 3
         Me.btnMonthly.Text = "Monthly"
         Me.btnMonthly.UseVisualStyleBackColor = False
@@ -177,10 +179,10 @@ Partial Class AuditLog
         'btnWeekly
         '
         Me.btnWeekly.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnWeekly.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnWeekly.Location = New System.Drawing.Point(12, 93)
+        Me.btnWeekly.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.btnWeekly.Location = New System.Drawing.Point(15, 116)
         Me.btnWeekly.Name = "btnWeekly"
-        Me.btnWeekly.Size = New System.Drawing.Size(155, 32)
+        Me.btnWeekly.Size = New System.Drawing.Size(190, 42)
         Me.btnWeekly.TabIndex = 2
         Me.btnWeekly.Text = "Weekly"
         Me.btnWeekly.UseVisualStyleBackColor = False
@@ -188,10 +190,10 @@ Partial Class AuditLog
         'btnDaily
         '
         Me.btnDaily.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnDaily.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDaily.Location = New System.Drawing.Point(12, 55)
+        Me.btnDaily.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.btnDaily.Location = New System.Drawing.Point(15, 68)
         Me.btnDaily.Name = "btnDaily"
-        Me.btnDaily.Size = New System.Drawing.Size(155, 32)
+        Me.btnDaily.Size = New System.Drawing.Size(190, 42)
         Me.btnDaily.TabIndex = 1
         Me.btnDaily.Text = "Daily"
         Me.btnDaily.UseVisualStyleBackColor = False
@@ -199,10 +201,10 @@ Partial Class AuditLog
         'btnAll
         '
         Me.btnAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
-        Me.btnAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAll.Location = New System.Drawing.Point(12, 17)
+        Me.btnAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.btnAll.Location = New System.Drawing.Point(15, 20)
         Me.btnAll.Name = "btnAll"
-        Me.btnAll.Size = New System.Drawing.Size(155, 32)
+        Me.btnAll.Size = New System.Drawing.Size(190, 42)
         Me.btnAll.TabIndex = 0
         Me.btnAll.Text = "All"
         Me.btnAll.UseVisualStyleBackColor = False
@@ -211,7 +213,7 @@ Partial Class AuditLog
         '
         Me.DataGridViewAudits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridViewAudits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewAudits.Location = New System.Drawing.Point(220, 124)
+        Me.DataGridViewAudits.Location = New System.Drawing.Point(263, 108)
         Me.DataGridViewAudits.Name = "DataGridViewAudits"
         Me.DataGridViewAudits.Size = New System.Drawing.Size(881, 515)
         Me.DataGridViewAudits.TabIndex = 1
@@ -220,7 +222,7 @@ Partial Class AuditLog
         '
         Me.lblSearch.AutoSize = True
         Me.lblSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSearch.Location = New System.Drawing.Point(216, 94)
+        Me.lblSearch.Location = New System.Drawing.Point(248, 82)
         Me.lblSearch.Name = "lblSearch"
         Me.lblSearch.Size = New System.Drawing.Size(80, 24)
         Me.lblSearch.TabIndex = 3
@@ -229,7 +231,7 @@ Partial Class AuditLog
         'txtSearchAudit
         '
         Me.txtSearchAudit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearchAudit.Location = New System.Drawing.Point(290, 89)
+        Me.txtSearchAudit.Location = New System.Drawing.Point(322, 77)
         Me.txtSearchAudit.Name = "txtSearchAudit"
         Me.txtSearchAudit.Size = New System.Drawing.Size(811, 29)
         Me.txtSearchAudit.TabIndex = 4

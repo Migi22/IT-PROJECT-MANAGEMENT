@@ -152,6 +152,8 @@ Public Class Form1
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
 
+                form1DTG(DataGridView1) ' Formats the cells for the Datagridview1
+
                 txtQueueNum.Text = dt.Rows(0).Item("queue_ID").ToString
                 txtFname.Text = dt.Rows(0).Item("fname").ToString
                 txtLname.Text = dt.Rows(0).Item("lname").ToString
