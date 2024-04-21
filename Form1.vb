@@ -194,7 +194,7 @@ Public Class Form1
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         Try
             'temporary off
-            ' ReloadData()
+            ReloadData()
 
             If dt.Rows.Count > 0 Then
                 DataGridView1.DataSource = dt
@@ -260,59 +260,47 @@ Public Class Form1
         ' Call the method to reload data based on the selected filter
 
         'temporary
-        'ReloadData()
+        ReloadData()
     End Sub
 
     Private Sub ReloadData()
         Try
+            'Build the dynamic SQL query with the status filter and search text
+            Dim query As String = "SELECT * FROM tbl_queue"
             Dim statusFilter As String = ""
 
             'Determine the status filter based on the selected item in cmbFilterSearch
             Select Case cmbFilterSearch.SelectedItem.ToString()
                 Case "On Queue"
-                    statusFilter = "status = 'On Queue'"
+                    statusFilter = "status = 'On Queue' AND CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
                 Case "Needs Verification"
-                    statusFilter = "status = 'Needs Verification'"
+                    statusFilter = "status = 'Needs Verification' AND CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
                 Case "Done"
-                    statusFilter = "status = 'Done'"
+                    statusFilter = "status = 'Done' AND CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
+                Case "Student Number"
+                    statusFilter = "student_number LIKE '%" & txtSearch.Text.Trim() & "%'"
+                Case "First Name"
+                    statusFilter = "fname LIKE '%" & txtSearch.Text.Trim() & "%'"
+                Case "Last Name"
+                    statusFilter = "lname LIKE '%" & txtSearch.Text.Trim() & "%'"
+                Case "Queue ID"
+                    statusFilter = "queue_id = '" & txtSearch.Text.Trim() & "'"
+                Case "Full Name"
+                    statusFilter = "CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
                 Case Else
                     statusFilter = "" ' No specific status filter if a different option is selected
             End Select
-
-            'Build the dynamic SQL query with the status filter and search text
-            Dim query As String = "SELECT * FROM tbl_queue"
 
             'Append the status filter to the WHERE clause if a specific status is selected
             If Not String.IsNullOrEmpty(statusFilter) Then
                 query &= " WHERE " & statusFilter
             End If
 
-            'Apply additional filter based on the search text (if any)
-            If Not String.IsNullOrEmpty(txtSearch.Text.Trim()) Then
-                Dim filterColumn As String = ""
-                Select Case cmbFilterSearch.SelectedItem.ToString()
-                    Case "Student Number"
-                        filterColumn = "student_number"
-                    Case "First Name"
-                        filterColumn = "fname"
-                    Case "Last Name"
-                        filterColumn = "lname"
-                    Case "Queue ID"
-                        filterColumn = "queue_id"
-                    Case "Full Name"
-                        filterColumn = "CONCAT(fname, ' ', lname)"
-                End Select
-
-                If Not String.IsNullOrEmpty(filterColumn) Then
-                    query &= If(String.IsNullOrEmpty(statusFilter), " WHERE ", " AND ") & filterColumn & " LIKE '%" & txtSearch.Text.Trim() & "%'"
-                End If
-            End If
-
             'Debugging output to display the constructed SQL query
             'MessageBox.Show("Generated Query: " & query)
 
             'Query and reload the data
-            reloadtxt(query)
+            reloadtxtFilterSignature(query)
 
             'Reload the DataGridView with the filtered results
             DataGridView1.DataSource = dt
@@ -458,6 +446,11 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
+        If Not ValidateData() Then
+            MessageBox.Show("Some data is missing or empty. Please fill in all required fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return ' Exit the method without showing the options form
+        End If
+
         Using optionsForm As New Print_ID_Options
             'Fill the labels in the options form
             optionsForm.lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
@@ -495,6 +488,17 @@ Public Class Form1
             optionsForm.ShowDialog()
         End Using
     End Sub
+    ' Function to check if there is a null or empty details that needed for ID processing
+    Private Function ValidateData() As Boolean
+        ' Validate that all required data is present
+        Dim requiredFields As String() = {"fname", "lname", "course", "year_level", "student_number", "student_Birthday", "guardian_name", "guardian_contact_num", "student_address"}
+        For Each field As String In requiredFields
+            If String.IsNullOrEmpty(DataGridView1.CurrentRow.Cells(field).Value?.ToString()) Then
+                Return False ' Return false if any required field is empty
+            End If
+        Next
+        Return True ' Return true if all required fields are filled
+    End Function
 
     'Reload the DataGridView after Print_ID_Options form is closed
     Private Sub Print_ID_Options_FormClosed(sender As Object, e As EventArgs)
