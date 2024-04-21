@@ -22,6 +22,8 @@ Partial Class Reports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PrintDocumentAudit = New System.Drawing.Printing.PrintDocument()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbFilterDate = New System.Windows.Forms.CheckBox()
@@ -129,10 +131,27 @@ Partial Class Reports
         '
         Me.DataGridViewReports.AllowUserToAddRows = False
         Me.DataGridViewReports.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridViewReports.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewReports.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewReports.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewReports.Location = New System.Drawing.Point(220, 124)
         Me.DataGridViewReports.Name = "DataGridViewReports"
-        Me.DataGridViewReports.Size = New System.Drawing.Size(681, 515)
+        Me.DataGridViewReports.Size = New System.Drawing.Size(831, 515)
         Me.DataGridViewReports.TabIndex = 5
         '
         'btnExcel
@@ -302,7 +321,7 @@ Partial Class Reports
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(907, 92)
+        Me.Label13.Location = New System.Drawing.Point(771, 93)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(90, 25)
         Me.Label13.TabIndex = 38
@@ -313,7 +332,7 @@ Partial Class Reports
         Me.cmbFilterReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFilterReport.FormattingEnabled = True
         Me.cmbFilterReport.Items.AddRange(New Object() {"No Filter", "On Queue", "Needs Verification", "Done"})
-        Me.cmbFilterReport.Location = New System.Drawing.Point(1003, 89)
+        Me.cmbFilterReport.Location = New System.Drawing.Point(867, 90)
         Me.cmbFilterReport.Name = "cmbFilterReport"
         Me.cmbFilterReport.Size = New System.Drawing.Size(184, 28)
         Me.cmbFilterReport.TabIndex = 37
@@ -352,7 +371,7 @@ Partial Class Reports
         Me.txtSearchReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearchReport.Location = New System.Drawing.Point(302, 89)
         Me.txtSearchReport.Name = "txtSearchReport"
-        Me.txtSearchReport.Size = New System.Drawing.Size(599, 29)
+        Me.txtSearchReport.Size = New System.Drawing.Size(463, 29)
         Me.txtSearchReport.TabIndex = 9
         '
         'Reports
