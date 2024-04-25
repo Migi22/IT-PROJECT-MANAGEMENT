@@ -9,15 +9,17 @@ Public Class AuditLog
 
 
     Private Sub AuditLog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         loadAudits()
         DoubleBuffer.DoubleBuffered(DataGridViewAudits, True)
     End Sub
 
     Public Sub loadAudits()
         Try
+
             ' Modify your SQL query to fetch the date and time components separately
             Dim query As String = "SELECT a.audit_ID, a.action, DATE(a.dateTime) AS auditDate, " &
-                              "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                              "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.username " &
                               "FROM tbl_audit a " &
                               "INNER JOIN tbl_users u ON a.user_ID = u.user_ID"
 
@@ -25,6 +27,8 @@ Public Class AuditLog
         Catch ex As Exception
             ' Handle exceptions here
         End Try
+
+        auditDTG(DataGridViewAudits)
     End Sub
 
 
@@ -32,7 +36,7 @@ Public Class AuditLog
         Try
             'NOTE: will add a a dropdown box para naay choices for filtering (Fname, Lname, or student number)
             reloadtxt("SELECT a.audit_ID, a.action, DATE(a.dateTime) AS auditDate, " &
-                              "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                              "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.username " &
                               "FROM tbl_audit a " &
                               "INNER JOIN tbl_users u ON a.user_ID = u.user_ID
                               WHERE a.action LIKE '%" & txtSearchAudit.Text & "%' ")
@@ -61,7 +65,7 @@ Public Class AuditLog
     Private Sub btnDaily_Click(sender As Object, e As EventArgs) Handles btnDaily.Click
         Try
             reload("SELECT a.audit_ID, a.action, DATE(a.dateTime) AS auditDate, " &
-                   "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                   "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.username " &
                    "FROM tbl_audit a " &
                    "INNER JOIN tbl_users u ON a.user_ID = u.user_ID
                     WHERE DATE(dateTime)=DATE(NOW())", DataGridViewAudits)
@@ -74,7 +78,7 @@ Public Class AuditLog
     Private Sub btnWeekly_Click(sender As Object, e As EventArgs) Handles btnWeekly.Click
         Try
             reload("SELECT a.audit_ID, a.action, DATE(a.dateTime) AS auditDate, " &
-                   "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                   "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.username " &
                    "FROM tbl_audit a " &
                    "INNER JOIN tbl_users u ON a.user_ID = u.user_ID
                     WHERE WEEK(dateTime)=WEEK(NOW())", DataGridViewAudits)
@@ -86,7 +90,7 @@ Public Class AuditLog
     Private Sub btnMonthly_Click(sender As Object, e As EventArgs) Handles btnMonthly.Click
         Try
             reload("SELECT a.audit_ID, a.action, DATE(a.dateTime) AS auditDate, " &
-                   "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                   "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.username " &
                    "FROM tbl_audit a " &
                    "INNER JOIN tbl_users u ON a.user_ID = u.user_ID
                    WHERE MONTH(dateTime)=MONTH(NOW())", DataGridViewAudits)
@@ -98,7 +102,7 @@ Public Class AuditLog
     Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
         Try
             Dim query As String = "SELECT a.audit_ID, a.action, DATE_FORMAT(a.dateTime, '%d/%m/%Y') AS auditDate, " &
-                                  "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.user_ID, u.username " &
+                                  "TIME_FORMAT(a.dateTime, '%h:%i:%s %p') AS auditTime, u.username " &
                                   "FROM tbl_audit a " &
                                   "INNER JOIN tbl_users u ON a.user_ID = u.user_ID " &
                                   "WHERE DATE_FORMAT(a.dateTime, '%Y-%m-%d') BETWEEN '" & DTPFrom.Value.ToString("yyyy-MM-dd") & "' AND '" & DTPTo.Value.ToString("yyyy-MM-dd") & "'"

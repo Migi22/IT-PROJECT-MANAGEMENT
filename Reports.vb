@@ -20,6 +20,7 @@ Public Class Reports
         DoubleBuffer.DoubleBuffered(DataGridViewReports, True)
         cbCourse.SelectedIndex = 0
         cbYear.SelectedIndex = 0
+        cbQuickFilter.SelectedIndex = 0
 
     End Sub
 

@@ -52,6 +52,7 @@ Partial Class Reports
         Me.lblFilterInfo = New System.Windows.Forms.Label()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.txtSearchReport = New System.Windows.Forms.TextBox()
+        Me.cbQuickFilter = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewReports, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.leftPanel.SuspendLayout()
@@ -69,7 +70,7 @@ Partial Class Reports
         Me.GroupBox1.Controls.Add(Me.DTPTo)
         Me.GroupBox1.Controls.Add(Me.DTPFrom)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 275)
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 299)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(190, 181)
         Me.GroupBox1.TabIndex = 6
@@ -160,7 +161,7 @@ Partial Class Reports
         '
         Me.btnExcel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExcel.Location = New System.Drawing.Point(18, 737)
+        Me.btnExcel.Location = New System.Drawing.Point(18, 761)
         Me.btnExcel.Name = "btnExcel"
         Me.btnExcel.Size = New System.Drawing.Size(190, 42)
         Me.btnExcel.TabIndex = 5
@@ -171,7 +172,7 @@ Partial Class Reports
         '
         Me.btnPrintPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.btnPrintPreview.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrintPreview.Location = New System.Drawing.Point(18, 681)
+        Me.btnPrintPreview.Location = New System.Drawing.Point(18, 705)
         Me.btnPrintPreview.Name = "btnPrintPreview"
         Me.btnPrintPreview.Size = New System.Drawing.Size(190, 42)
         Me.btnPrintPreview.TabIndex = 4
@@ -225,6 +226,7 @@ Partial Class Reports
         'leftPanel
         '
         Me.leftPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
+        Me.leftPanel.Controls.Add(Me.cbQuickFilter)
         Me.leftPanel.Controls.Add(Me.GroupBox2)
         Me.leftPanel.Controls.Add(Me.GroupBox1)
         Me.leftPanel.Controls.Add(Me.btnExcel)
@@ -247,7 +249,7 @@ Partial Class Reports
         Me.GroupBox2.Controls.Add(Me.cbYear)
         Me.GroupBox2.Controls.Add(Me.cbCourse)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 493)
+        Me.GroupBox2.Location = New System.Drawing.Point(18, 517)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(190, 169)
         Me.GroupBox2.TabIndex = 8
@@ -378,6 +380,16 @@ Partial Class Reports
         Me.txtSearchReport.Size = New System.Drawing.Size(495, 29)
         Me.txtSearchReport.TabIndex = 9
         '
+        'cbQuickFilter
+        '
+        Me.cbQuickFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbQuickFilter.FormattingEnabled = True
+        Me.cbQuickFilter.Items.AddRange(New Object() {"All", "Daily", "Weekly", "Monthly"})
+        Me.cbQuickFilter.Location = New System.Drawing.Point(18, 241)
+        Me.cbQuickFilter.Name = "cbQuickFilter"
+        Me.cbQuickFilter.Size = New System.Drawing.Size(191, 33)
+        Me.cbQuickFilter.TabIndex = 9
+        '
         'Reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -434,4 +446,5 @@ Partial Class Reports
     Friend WithEvents cbFilterCourseYear As CheckBox
     Friend WithEvents lblSearch As Label
     Friend WithEvents txtSearchReport As TextBox
+    Friend WithEvents cbQuickFilter As ComboBox
 End Class
