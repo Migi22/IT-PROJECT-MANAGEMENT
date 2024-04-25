@@ -69,7 +69,7 @@ Partial Class Reports
         Me.GroupBox1.Controls.Add(Me.DTPTo)
         Me.GroupBox1.Controls.Add(Me.DTPFrom)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 255)
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 275)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(190, 181)
         Me.GroupBox1.TabIndex = 6
@@ -247,7 +247,7 @@ Partial Class Reports
         Me.GroupBox2.Controls.Add(Me.cbYear)
         Me.GroupBox2.Controls.Add(Me.cbCourse)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 473)
+        Me.GroupBox2.Location = New System.Drawing.Point(18, 493)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(190, 169)
         Me.GroupBox2.TabIndex = 8
