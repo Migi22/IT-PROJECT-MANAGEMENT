@@ -117,7 +117,7 @@ Public Class Reports
 
             lblFilterInfo.Text = "Showing All records"
             UpdateFilterInfoLabel(" with")
-            MessageBox.Show(query) 'debug
+            'MessageBox.Show(query) 'debug
             reload(query, DataGridViewReports)
         Catch ex As Exception
             MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
