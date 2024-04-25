@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -63,15 +64,20 @@ Partial Class Form1
         Me.btnPrintID = New System.Windows.Forms.Button()
         Me.cmbFilterSearch = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.btnNeedVerify = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.picStudentSignature = New System.Windows.Forms.PictureBox()
         Me.btnCancelSave = New System.Windows.Forms.Button()
         Me.btnCancelEdit = New System.Windows.Forms.Button()
         Me.btnEditSignature = New System.Windows.Forms.Button()
+        Me.SelectStatus = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.OnQueueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NeedsVerificationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnChangeStatus = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SelectStatus.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -454,18 +460,6 @@ Partial Class Form1
         Me.Label13.TabIndex = 36
         Me.Label13.Text = "FILTER:"
         '
-        'btnNeedVerify
-        '
-        Me.btnNeedVerify.BackColor = System.Drawing.Color.IndianRed
-        Me.btnNeedVerify.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNeedVerify.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.btnNeedVerify.Location = New System.Drawing.Point(1024, 476)
-        Me.btnNeedVerify.Name = "btnNeedVerify"
-        Me.btnNeedVerify.Size = New System.Drawing.Size(153, 62)
-        Me.btnNeedVerify.TabIndex = 37
-        Me.btnNeedVerify.Text = "Needs" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Verification"
-        Me.btnNeedVerify.UseVisualStyleBackColor = False
-        '
         'btnEdit
         '
         Me.btnEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -518,18 +512,57 @@ Partial Class Form1
         Me.btnEditSignature.Text = "Edit Signature"
         Me.btnEditSignature.UseVisualStyleBackColor = True
         '
+        'SelectStatus
+        '
+        Me.SelectStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OnQueueToolStripMenuItem, Me.NeedsVerificationToolStripMenuItem, Me.DoneToolStripMenuItem})
+        Me.SelectStatus.Name = "SelectStatus"
+        Me.SelectStatus.Size = New System.Drawing.Size(170, 70)
+        '
+        'OnQueueToolStripMenuItem
+        '
+        Me.OnQueueToolStripMenuItem.BackColor = System.Drawing.Color.White
+        Me.OnQueueToolStripMenuItem.Name = "OnQueueToolStripMenuItem"
+        Me.OnQueueToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.OnQueueToolStripMenuItem.Text = "On Queue"
+        '
+        'NeedsVerificationToolStripMenuItem
+        '
+        Me.NeedsVerificationToolStripMenuItem.BackColor = System.Drawing.Color.White
+        Me.NeedsVerificationToolStripMenuItem.Name = "NeedsVerificationToolStripMenuItem"
+        Me.NeedsVerificationToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.NeedsVerificationToolStripMenuItem.Text = "Needs Verification"
+        '
+        'DoneToolStripMenuItem
+        '
+        Me.DoneToolStripMenuItem.BackColor = System.Drawing.Color.White
+        Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.DoneToolStripMenuItem.Text = "Done"
+        '
+        'btnChangeStatus
+        '
+        Me.btnChangeStatus.BackColor = System.Drawing.Color.IndianRed
+        Me.btnChangeStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangeStatus.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.btnChangeStatus.Location = New System.Drawing.Point(1024, 476)
+        Me.btnChangeStatus.Name = "btnChangeStatus"
+        Me.btnChangeStatus.Size = New System.Drawing.Size(153, 62)
+        Me.btnChangeStatus.TabIndex = 44
+        Me.btnChangeStatus.Text = "Change Status"
+        Me.btnChangeStatus.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1655, 1017)
+        Me.Controls.Add(Me.btnChangeStatus)
         Me.Controls.Add(Me.btnEditSignature)
         Me.Controls.Add(Me.btnCancelEdit)
         Me.Controls.Add(Me.btnCancelSave)
         Me.Controls.Add(Me.picStudentSignature)
         Me.Controls.Add(Me.btnEdit)
-        Me.Controls.Add(Me.btnNeedVerify)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.cmbFilterSearch)
         Me.Controls.Add(Me.btnPrintID)
@@ -573,6 +606,7 @@ Partial Class Form1
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SelectStatus.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -614,10 +648,14 @@ Partial Class Form1
     Friend WithEvents btnPrintID As Button
     Friend WithEvents cmbFilterSearch As ComboBox
     Friend WithEvents Label13 As Label
-    Friend WithEvents btnNeedVerify As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents picStudentSignature As PictureBox
     Friend WithEvents btnCancelSave As Button
     Friend WithEvents btnCancelEdit As Button
     Friend WithEvents btnEditSignature As Button
+    Friend WithEvents SelectStatus As ContextMenuStrip
+    Friend WithEvents OnQueueToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NeedsVerificationToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DoneToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btnChangeStatus As Button
 End Class

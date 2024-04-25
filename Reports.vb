@@ -22,7 +22,115 @@ Public Class Reports
         cbYear.SelectedIndex = 0
         cbQuickFilter.SelectedIndex = 0
 
+        DTPFrom.Enabled = False
+        DTPTo.Enabled = False
+
     End Sub
+
+    Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
+
+        Dim selectedFilter As String = cbQuickFilter.SelectedItem.ToString()
+
+
+        Select Case selectedFilter
+            Case "All"
+                'Filter All
+                FilterAll()
+            Case "Today"
+                'Filter This day
+                FilterToday()
+            Case "This Week"
+                'Filter This Week
+                FilterThisWeek()
+            Case "This Month"
+                'Filter This Month
+                FilterThisMonth()
+        End Select
+    End Sub
+
+
+    Private Sub FilterAll()
+        Try
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+            'MessageBox.Show("Query: " & query)
+
+            lblFilterInfo.Text = "Showing All records"
+            UpdateFilterInfoLabel(" with")
+            'MessageBox.Show(query) 'debug
+            reload(query, DataGridViewReports)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        'MessageBox.Show("Filtering for All")
+    End Sub
+
+    Private Sub FilterToday()
+        Try
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE DATE(done_printing_date) = DATE(NOW())"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+
+
+            lblFilterInfo.Text = "Showing Today records"
+            UpdateFilterInfoLabel(" with")
+
+            reload(query, DataGridViewReports)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        'MessageBox.Show("Filtering for Daily")
+    End Sub
+
+    Private Sub FilterThisWeek()
+        Try
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE WEEK(done_printing_date) = WEEK(NOW())"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+
+
+            lblFilterInfo.Text = "Showing This Week records"
+            UpdateFilterInfoLabel(" with")
+
+            reload(query, DataGridViewReports)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        'MessageBox.Show("Filtering for Monthly")
+    End Sub
+
+    Private Sub FilterThisMonth()
+        Try
+
+            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE MONTH(done_printing_date) = MONTH(NOW())"
+            ApplyStatusFilter(query)
+            ApplyFilterDate(query)
+            ApplyFilterCourseYear(query)
+
+
+
+            lblFilterInfo.Text = "Showing This Month records"
+            UpdateFilterInfoLabel(" with")
+
+            reload(query, DataGridViewReports)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        'MessageBox.Show("Filtering for Monthly")
+    End Sub
+
+
 
     Private Sub UpdateFilterInfoLabel(ByVal filterInfo As String)
 
@@ -87,8 +195,6 @@ Public Class Reports
 
     End Sub
 
-
-
     Public Sub loadReports()
         Try
             lblFilterInfo.Text = "Showing All records"
@@ -104,80 +210,6 @@ Public Class Reports
             reload(query, DataGridViewReports)
         Catch ex As Exception
             MessageBox.Show("An error occurred while loading reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub btnAll_Click(sender As Object, e As EventArgs) Handles btnAll.Click
-        Try
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue"
-            ApplyStatusFilter(query)
-            ApplyFilterDate(query)
-            ApplyFilterCourseYear(query)
-
-            'MessageBox.Show("Query: " & query)
-
-            lblFilterInfo.Text = "Showing All records"
-            UpdateFilterInfoLabel(" with")
-            'MessageBox.Show(query) 'debug
-            reload(query, DataGridViewReports)
-        Catch ex As Exception
-            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub btnDaily_Click(sender As Object, e As EventArgs) Handles btnDaily.Click
-        Try
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE DATE(done_printing_date) = DATE(NOW())"
-            ApplyStatusFilter(query)
-            ApplyFilterDate(query)
-            ApplyFilterCourseYear(query)
-
-
-
-            lblFilterInfo.Text = "Showing Daily records"
-            UpdateFilterInfoLabel(" with")
-
-            reload(query, DataGridViewReports)
-        Catch ex As Exception
-            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
-
-    Private Sub btnWeekly_Click(sender As Object, e As EventArgs) Handles btnWeekly.Click
-        Try
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE WEEK(done_printing_date) = WEEK(NOW())"
-            ApplyStatusFilter(query)
-            ApplyFilterDate(query)
-            ApplyFilterCourseYear(query)
-
-
-
-            lblFilterInfo.Text = "Showing Weekly records"
-            UpdateFilterInfoLabel(" with")
-
-            reload(query, DataGridViewReports)
-        Catch ex As Exception
-            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub btnMonthly_Click(sender As Object, e As EventArgs) Handles btnMonthly.Click
-        Try
-
-            Dim query As String = "SELECT student_number, fname, lname, m_i, course, year_level, status, done_printing_date FROM tbl_queue WHERE MONTH(done_printing_date) = MONTH(NOW())"
-            ApplyStatusFilter(query)
-            ApplyFilterDate(query)
-            ApplyFilterCourseYear(query)
-
-
-
-            lblFilterInfo.Text = "Showing Daily records"
-            UpdateFilterInfoLabel(" with")
-
-            reload(query, DataGridViewReports)
-        Catch ex As Exception
-            MessageBox.Show("An error occurred while loading ALL reports: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -367,5 +399,19 @@ Public Class Reports
 
     End Sub
 
-
+    Private Sub cbFilterDate_CheckedChanged(sender As Object, e As EventArgs) Handles cbFilterDate.CheckedChanged
+        ' Check if the CheckBox is checked
+        If cbFilterDate.Checked Then
+            ' Enable the DateTimePicker controls
+            DTPFrom.Enabled = True
+            DTPTo.Enabled = True
+            cbQuickFilter.Enabled = False
+            cbQuickFilter.SelectedIndex = 0
+        Else
+            ' Disable the DateTimePicker controls
+            DTPFrom.Enabled = False
+            DTPTo.Enabled = False
+            cbQuickFilter.Enabled = True
+        End If
+    End Sub
 End Class

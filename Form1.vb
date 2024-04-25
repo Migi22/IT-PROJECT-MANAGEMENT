@@ -537,24 +537,38 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub btnNeedVerify_Click(sender As Object, e As EventArgs) Handles btnNeedVerify.Click
+    Private Sub btnChangeStatus_Click(sender As Object, e As EventArgs) Handles btnChangeStatus.Click
+        ' Show the ContextMenuStrip at the location of the button
+        SelectStatus.Show(btnChangeStatus, 0, btnChangeStatus.Height)
+    End Sub
 
-        Dim result As DialogResult = MessageBox.Show("Are you sure you want to change the status of this queue?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+    ' Next line of codes are for the btnChangeStatus
+
+    Private Sub OnQueueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnQueueToolStripMenuItem.Click
+        ChangeStatus("On Queue")
+    End Sub
+
+    Private Sub NeedsVerificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NeedsVerificationToolStripMenuItem.Click
+        ChangeStatus("Needs Verification")
+    End Sub
+
+    Private Sub ChangeStatus(newStatus As String)
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to change the status of this queue to " & newStatus & "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If result = DialogResult.Yes Then
-
             Try
-                updates("UPDATE tbl_queue SET status= 'Needs Verification'
-                    WHERE queue_ID ='" & txtQueueNum.Text & "'")
+                ' Perform the status update
+                updates("UPDATE tbl_queue SET status = '" & newStatus & "' WHERE queue_ID ='" & txtQueueNum.Text & "'")
 
+                ' Reload the record
                 reload_record()
 
-                MessageBox.Show("Queue status updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Queue status updated successfully to " & newStatus & ".", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Try
                     'AUDIT
-                    action = "UPDATED STUDENT status (Needs Verification): " & txtLname.Text & ", " & txtFname.Text
-                    dateTime = DateTime.Now
+                    Dim action As String = "UPDATED STUDENT status (" & newStatus & "): " & txtLname.Text & ", " & txtFname.Text
+                    Dim dateTime As DateTime = DateTime.Now
                     LogAudit(username, action, dateTime)
                     'END AUDIT
                 Catch ex As Exception
@@ -564,11 +578,10 @@ Public Class Form1
             Catch ex As Exception
                 MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-
         End If
-
-
     End Sub
+
+    'End of btnChangeStatus
 
     Private Sub DisableTextboxes()
         ' Disable all textboxes
@@ -599,5 +612,8 @@ Public Class Form1
         txtStudentNum.Enabled = True
         btnEditImage.Enabled = True
     End Sub
+
+
+
 
 End Class
