@@ -175,7 +175,7 @@ Partial Class AuditLog
         Me.btnMonthly.Name = "btnMonthly"
         Me.btnMonthly.Size = New System.Drawing.Size(190, 42)
         Me.btnMonthly.TabIndex = 3
-        Me.btnMonthly.Text = "Monthly"
+        Me.btnMonthly.Text = "This Month"
         Me.btnMonthly.UseVisualStyleBackColor = False
         '
         'btnWeekly
@@ -186,7 +186,7 @@ Partial Class AuditLog
         Me.btnWeekly.Name = "btnWeekly"
         Me.btnWeekly.Size = New System.Drawing.Size(190, 42)
         Me.btnWeekly.TabIndex = 2
-        Me.btnWeekly.Text = "Weekly"
+        Me.btnWeekly.Text = "This Week"
         Me.btnWeekly.UseVisualStyleBackColor = False
         '
         'btnDaily
@@ -197,7 +197,7 @@ Partial Class AuditLog
         Me.btnDaily.Name = "btnDaily"
         Me.btnDaily.Size = New System.Drawing.Size(190, 42)
         Me.btnDaily.TabIndex = 1
-        Me.btnDaily.Text = "Daily"
+        Me.btnDaily.Text = "Today"
         Me.btnDaily.UseVisualStyleBackColor = False
         '
         'btnAll
@@ -253,7 +253,7 @@ Partial Class AuditLog
         Me.txtSearchAudit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearchAudit.Location = New System.Drawing.Point(322, 77)
         Me.txtSearchAudit.Name = "txtSearchAudit"
-        Me.txtSearchAudit.Size = New System.Drawing.Size(811, 29)
+        Me.txtSearchAudit.Size = New System.Drawing.Size(822, 29)
         Me.txtSearchAudit.TabIndex = 4
         '
         'PrintDocumentAudit
