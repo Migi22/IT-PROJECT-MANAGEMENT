@@ -10,6 +10,19 @@ Public Class Form1
 
     Private isAddingStudent As Boolean = True ' Variable to track the state of the button
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        reload_record() ' Reload the DataGridView upon form start
+        DoubleBuffer.DoubleBuffered(DataGridView1, True)
+        cmbFilterSearch.SelectedIndex = 0
+        btnUpdate.Enabled = False
+        btnDelete.Enabled = False
+        btnEditSignature.Enabled = False
+
+        DisableTextboxes()
+
+
+    End Sub
+
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If isAddingStudent Then
             ' Clear textboxes, enable buttons and disable some
@@ -101,18 +114,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        reload_record() ' Reload the DataGridView upon form start
-        DoubleBuffer.DoubleBuffered(DataGridView1, True)
-        cmbFilterSearch.SelectedIndex = 0
-        btnUpdate.Enabled = False
-        btnDelete.Enabled = False
-        btnEditSignature.Enabled = False
 
-        DisableTextboxes()
-
-
-    End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         ' Checks first if the txtQueueNum is empty or not to make sure there is something to edit
