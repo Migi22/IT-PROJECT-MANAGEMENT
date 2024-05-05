@@ -70,7 +70,7 @@ Partial Class Form1
         Me.btnCancelEdit = New System.Windows.Forms.Button()
         Me.btnEditSignature = New System.Windows.Forms.Button()
         Me.SelectStatus = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.OnQueueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerifiedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NeedsVerificationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnChangeStatus = New System.Windows.Forms.Button()
@@ -377,7 +377,7 @@ Partial Class Form1
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(1550, 52)
         Me.Label11.TabIndex = 31
-        Me.Label11.Text = "LISTT OF RECORDS"
+        Me.Label11.Text = "LIST OF RECORDS"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label12
@@ -444,7 +444,7 @@ Partial Class Form1
         '
         Me.cmbFilterSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFilterSearch.FormattingEnabled = True
-        Me.cmbFilterSearch.Items.AddRange(New Object() {"On Queue", "Needs Verification", "Done", "Full Name", "Student Number", "First Name", "Last Name", "Queue ID"})
+        Me.cmbFilterSearch.Items.AddRange(New Object() {"Needs Verification", "Verified", "Done", "Full Name", "Student Number", "First Name", "Last Name", "Queue ID"})
         Me.cmbFilterSearch.Location = New System.Drawing.Point(1259, 654)
         Me.cmbFilterSearch.Name = "cmbFilterSearch"
         Me.cmbFilterSearch.Size = New System.Drawing.Size(334, 28)
@@ -515,16 +515,16 @@ Partial Class Form1
         'SelectStatus
         '
         Me.SelectStatus.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SelectStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OnQueueToolStripMenuItem, Me.NeedsVerificationToolStripMenuItem, Me.DoneToolStripMenuItem})
+        Me.SelectStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VerifiedToolStripMenuItem, Me.NeedsVerificationToolStripMenuItem, Me.DoneToolStripMenuItem})
         Me.SelectStatus.Name = "SelectStatus"
         Me.SelectStatus.Size = New System.Drawing.Size(239, 94)
         '
-        'OnQueueToolStripMenuItem
+        'VerifiedToolStripMenuItem
         '
-        Me.OnQueueToolStripMenuItem.BackColor = System.Drawing.Color.White
-        Me.OnQueueToolStripMenuItem.Name = "OnQueueToolStripMenuItem"
-        Me.OnQueueToolStripMenuItem.Size = New System.Drawing.Size(238, 30)
-        Me.OnQueueToolStripMenuItem.Text = "On Queue"
+        Me.VerifiedToolStripMenuItem.BackColor = System.Drawing.Color.White
+        Me.VerifiedToolStripMenuItem.Name = "VerifiedToolStripMenuItem"
+        Me.VerifiedToolStripMenuItem.Size = New System.Drawing.Size(238, 30)
+        Me.VerifiedToolStripMenuItem.Text = "Verified"
         '
         'NeedsVerificationToolStripMenuItem
         '
@@ -655,7 +655,7 @@ Partial Class Form1
     Friend WithEvents btnCancelEdit As Button
     Friend WithEvents btnEditSignature As Button
     Friend WithEvents SelectStatus As ContextMenuStrip
-    Friend WithEvents OnQueueToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VerifiedToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NeedsVerificationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DoneToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btnChangeStatus As Button

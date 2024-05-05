@@ -273,8 +273,8 @@ Public Class Form1
 
             'Determine the status filter based on the selected item in cmbFilterSearch
             Select Case cmbFilterSearch.SelectedItem.ToString()
-                Case "On Queue"
-                    statusFilter = "status = 'On Queue' AND CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
+                Case "Verified"
+                    statusFilter = "status = 'Verified' AND CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
                 Case "Needs Verification"
                     statusFilter = "status = 'Needs Verification' AND CONCAT(fname, ' ', lname) LIKE '%" & txtSearch.Text.Trim() & "%'"
                 Case "Done"
@@ -562,13 +562,16 @@ Public Class Form1
     End Sub
 
     ' Next line of codes are for the btnChangeStatus
-
-    Private Sub OnQueueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnQueueToolStripMenuItem.Click
-        ChangeStatus("On Queue")
+    Private Sub VerifiedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerifiedToolStripMenuItem.Click
+        ChangeStatus("Verified")
     End Sub
 
     Private Sub NeedsVerificationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NeedsVerificationToolStripMenuItem.Click
         ChangeStatus("Needs Verification")
+    End Sub
+
+    Private Sub DoneToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DoneToolStripMenuItem.Click
+        ChangeStatus("Done")
     End Sub
 
     Private Sub ChangeStatus(newStatus As String)
@@ -631,8 +634,4 @@ Public Class Form1
         txtStudentNum.Enabled = True
         btnEditImage.Enabled = True
     End Sub
-
-
-
-
 End Class
