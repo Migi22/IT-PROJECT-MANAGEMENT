@@ -33,38 +33,34 @@ Partial Class editImage
         '
         'txtPhoto
         '
-        Me.txtPhoto.Location = New System.Drawing.Point(18, 357)
-        Me.txtPhoto.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtPhoto.Location = New System.Drawing.Point(12, 232)
         Me.txtPhoto.Name = "txtPhoto"
-        Me.txtPhoto.Size = New System.Drawing.Size(310, 26)
+        Me.txtPhoto.Size = New System.Drawing.Size(208, 20)
         Me.txtPhoto.TabIndex = 35
         '
         'btnDeleteProfile
         '
-        Me.btnDeleteProfile.Location = New System.Drawing.Point(18, 563)
-        Me.btnDeleteProfile.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnDeleteProfile.Location = New System.Drawing.Point(12, 366)
         Me.btnDeleteProfile.Name = "btnDeleteProfile"
-        Me.btnDeleteProfile.Size = New System.Drawing.Size(312, 74)
+        Me.btnDeleteProfile.Size = New System.Drawing.Size(208, 48)
         Me.btnDeleteProfile.TabIndex = 32
         Me.btnDeleteProfile.Text = "Delete Profile"
         Me.btnDeleteProfile.UseVisualStyleBackColor = True
         '
         'btnUpdateImage
         '
-        Me.btnUpdateImage.Location = New System.Drawing.Point(18, 480)
-        Me.btnUpdateImage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnUpdateImage.Location = New System.Drawing.Point(12, 312)
         Me.btnUpdateImage.Name = "btnUpdateImage"
-        Me.btnUpdateImage.Size = New System.Drawing.Size(312, 74)
+        Me.btnUpdateImage.Size = New System.Drawing.Size(208, 48)
         Me.btnUpdateImage.TabIndex = 33
         Me.btnUpdateImage.Text = "Update Profile"
         Me.btnUpdateImage.UseVisualStyleBackColor = True
         '
         'btnBrowse
         '
-        Me.btnBrowse.Location = New System.Drawing.Point(18, 397)
-        Me.btnBrowse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnBrowse.Location = New System.Drawing.Point(12, 258)
         Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(312, 74)
+        Me.btnBrowse.Size = New System.Drawing.Size(208, 48)
         Me.btnBrowse.TabIndex = 34
         Me.btnBrowse.Text = "Browse"
         Me.btnBrowse.UseVisualStyleBackColor = True
@@ -76,25 +72,23 @@ Partial Class editImage
         'picBrowserPic
         '
         Me.picBrowserPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picBrowserPic.Location = New System.Drawing.Point(18, 55)
-        Me.picBrowserPic.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.picBrowserPic.Location = New System.Drawing.Point(12, 36)
         Me.picBrowserPic.Name = "picBrowserPic"
-        Me.picBrowserPic.Size = New System.Drawing.Size(311, 276)
+        Me.picBrowserPic.Size = New System.Drawing.Size(208, 180)
         Me.picBrowserPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBrowserPic.TabIndex = 31
         Me.picBrowserPic.TabStop = False
         '
         'editImage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(351, 657)
+        Me.ClientSize = New System.Drawing.Size(234, 427)
         Me.Controls.Add(Me.txtPhoto)
         Me.Controls.Add(Me.btnDeleteProfile)
         Me.Controls.Add(Me.btnUpdateImage)
         Me.Controls.Add(Me.btnBrowse)
         Me.Controls.Add(Me.picBrowserPic)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "editImage"
         Me.Text = "Edit Image"
         CType(Me.picBrowserPic, System.ComponentModel.ISupportInitialize).EndInit()

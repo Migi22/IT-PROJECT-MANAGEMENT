@@ -19,8 +19,6 @@ Public Class Form1
         btnEditSignature.Enabled = False
         reload_record() ' Reload the DataGridView upon form start
         DisableTextboxes()
-
-
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -95,26 +93,15 @@ Public Class Form1
         btnEditSignature.Enabled = False
     End Sub
 
-
-
+    ' Clear Textboxes
     Private Sub ClearText()
-        txtQueueNum.Clear()
-        txtFname.Clear()
-        txtLname.Clear()
-        txtMi.Clear()
-        txtCourse.Clear()
-        txtYearLevel.Clear()
-        txtGuardianName.Clear()
-        txtGuardianContNum.Clear()
-        txtStudentAddress.Clear()
-        txtStudentBday.Clear()
-        txtStudentNum.Clear()
-        txtSearch.Clear()
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox Then
+                CType(ctrl, TextBox).Clear()
+            End If
+        Next
         picStudentPic.Image = Nothing
-
     End Sub
-
-
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         ' Checks first if the txtQueueNum is empty or not to make sure there is something to edit
@@ -167,8 +154,6 @@ Public Class Form1
                 txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
                 txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
                 txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
-                LoadImage()
-
 
                 ' Set the image of the Picture column into zoom
                 Dim pictureColumn As New DataGridViewImageColumn()
@@ -184,6 +169,31 @@ Public Class Form1
 
         Catch ex As Exception
             MessageBox.Show("An error occurred reload record: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    ' Reload The TextBoxes Without updating DataGridView
+    Public Sub reload_TextBoxes()
+        Dim i As Integer
+        Try
+            With DataGridView1
+                i = .CurrentRow.Index
+                txtQueueNum.Text = .Rows(i).Cells("queue_ID").Value.ToString
+                txtStudentNum.Text = .Rows(i).Cells("student_number").Value.ToString
+                txtFname.Text = .Rows(i).Cells("fname").Value.ToString
+                txtMi.Text = .Rows(i).Cells("m_i").Value.ToString
+                txtLname.Text = .Rows(i).Cells("lname").Value.ToString
+                txtCourse.Text = .Rows(i).Cells("course").Value.ToString
+                txtYearLevel.Text = .Rows(i).Cells("year_level").Value.ToString
+                txtGuardianName.Text = .Rows(i).Cells("guardian_name").Value.ToString
+                txtGuardianContNum.Text = .Rows(i).Cells("guardian_contact_num").Value.ToString
+                txtStudentAddress.Text = .Rows(i).Cells("student_address").Value.ToString
+                txtStudentBday.Text = .Rows(i).Cells("student_Birthday").Value.ToString
+                LoadImage()
+            End With
+
+        Catch ex As Exception
+            MessageBox.Show("An error occurred on refreshing TextBoxes and Pictures: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -220,51 +230,6 @@ Public Class Form1
             da.Dispose()
         End Try
     End Sub
-
-    Private Sub LoadStudentImage(ByVal dt As DataTable)
-        ' The one to show the student picture
-        If dt.Rows.Count > 0 Then
-            If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
-            Else
-                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
-            End If
-        End If
-
-        ' Checks if the column Picture already exists. To avoid creating it again after updating the student's picture
-        If Not dt.Columns.Contains("Picture") Then
-            dt.Columns.Add("Picture", GetType(Byte()))
-        End If
-
-        ' Add the picture of the student to the DataTable
-        For Each row As DataRow In dt.Rows
-            If row("image_file_name").ToString = "" Then
-                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
-            Else
-                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
-            End If
-        Next
-
-        ' Testing May 5 2024, This is for Signature
-        If dt.Rows.Count > 0 AndAlso Not String.IsNullOrEmpty(dt.Rows(0).Item("student_signature").ToString) Then
-            Dim imageData As Byte() = DirectCast(dt.Rows(0).Item("student_signature"), Byte())
-
-            ' Convert byte array to image
-            Using ms As New System.IO.MemoryStream(imageData)
-                Dim image As Image = Image.FromStream(ms)
-                picStudentSignature.Image = image ' Display the image in PictureBox
-            End Using
-        Else
-            ' If "student_signature" is null or empty, display a default image
-            picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Profile\default.png") ' DefaultImage is a placeholder for your default image
-        End If
-
-        ' Set the properties of the Picture column on the DataGridView
-        Dim img As New DataGridViewImageColumn()
-        img = DataGridView1.Columns(15)
-        img.ImageLayout = DataGridViewImageCellLayout.Stretch
-    End Sub
-
 
     Private Sub cmbFilterSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFilterSearch.SelectedIndexChanged
         ' Call the method to reload data based on the selected filter
@@ -395,6 +360,52 @@ Public Class Form1
         End Try
     End Sub
 
+    ' Load Student Pictures with paraameter DataTable
+    Private Sub LoadStudentImage(ByVal dt As DataTable)
+        ' The one to show the student picture
+        If dt.Rows.Count > 0 Then
+            If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
+                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+            Else
+                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
+            End If
+        End If
+
+        ' Checks if the column Picture already exists. To avoid creating it again after updating the student's picture
+        If Not dt.Columns.Contains("Picture") Then
+            dt.Columns.Add("Picture", GetType(Byte()))
+        End If
+
+        ' Add the picture of the student to the DataTable
+        For Each row As DataRow In dt.Rows
+            If row("image_file_name").ToString = "" Then
+                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
+            Else
+                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
+            End If
+        Next
+
+        ' Testing May 5 2024, This is for Signature
+        If dt.Rows.Count > 0 AndAlso Not String.IsNullOrEmpty(dt.Rows(0).Item("student_signature").ToString) Then
+            Dim imageData As Byte() = DirectCast(dt.Rows(0).Item("student_signature"), Byte())
+
+            ' Convert byte array to image
+            Using ms As New System.IO.MemoryStream(imageData)
+                Dim image As Image = Image.FromStream(ms)
+                picStudentSignature.Image = image ' Display the image in PictureBox
+            End Using
+        Else
+            ' If "student_signature" is null or empty, display a default image
+            picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Profile\default.png") ' DefaultImage is a placeholder for your default image
+        End If
+
+        ' Set the properties of the Picture column on the DataGridView
+        Dim img As New DataGridViewImageColumn()
+        img = DataGridView1.Columns(15)
+        img.ImageLayout = DataGridViewImageCellLayout.Stretch
+    End Sub
+
+    ' Load Image of the student both Picture and Signature with no Parameters
     Public Sub LoadImage()
         Try
             reloadtxtFilterSignature("SELECT * FROM tbl_queue WHERE queue_ID='" & txtQueueNum.Text & "'")
@@ -425,9 +436,6 @@ Public Class Form1
 
 
             End If
-
-
-
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -437,7 +445,7 @@ Public Class Form1
         With editImage
             .StudentLastName = txtLname.Text
             .StudentFirstName = txtFname.Text
-            .ReloadFunction = AddressOf reload_record
+            .ReloadFunction = AddressOf reload_TextBoxes
             .QueueID = txtQueueNum.Text
             .ShowDialog()
 
@@ -448,7 +456,7 @@ Public Class Form1
         With editSignature
             .StudentLastName = txtLname.Text
             .StudentFirstName = txtFname.Text
-            .ReloadFunction = AddressOf reload_record
+            .ReloadFunction = AddressOf reload_TextBoxes
             .QueueID = txtQueueNum.Text
             .ShowDialog()
 
@@ -554,7 +562,7 @@ Public Class Form1
                     txtGuardianContNum.Text = .Rows(i).Cells("guardian_contact_num").Value.ToString
                     txtStudentAddress.Text = .Rows(i).Cells("student_address").Value.ToString
                     txtStudentBday.Text = .Rows(i).Cells("student_Birthday").Value.ToString
-                    LoadImage() 'View the image to the datagridview
+                    LoadImage()
 
                 End If
             End With
