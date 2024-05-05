@@ -514,29 +514,30 @@ Partial Class Form1
         '
         'SelectStatus
         '
+        Me.SelectStatus.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SelectStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OnQueueToolStripMenuItem, Me.NeedsVerificationToolStripMenuItem, Me.DoneToolStripMenuItem})
         Me.SelectStatus.Name = "SelectStatus"
-        Me.SelectStatus.Size = New System.Drawing.Size(170, 70)
+        Me.SelectStatus.Size = New System.Drawing.Size(239, 94)
         '
         'OnQueueToolStripMenuItem
         '
         Me.OnQueueToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.OnQueueToolStripMenuItem.Name = "OnQueueToolStripMenuItem"
-        Me.OnQueueToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.OnQueueToolStripMenuItem.Size = New System.Drawing.Size(238, 30)
         Me.OnQueueToolStripMenuItem.Text = "On Queue"
         '
         'NeedsVerificationToolStripMenuItem
         '
         Me.NeedsVerificationToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.NeedsVerificationToolStripMenuItem.Name = "NeedsVerificationToolStripMenuItem"
-        Me.NeedsVerificationToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.NeedsVerificationToolStripMenuItem.Size = New System.Drawing.Size(238, 30)
         Me.NeedsVerificationToolStripMenuItem.Text = "Needs Verification"
         '
         'DoneToolStripMenuItem
         '
         Me.DoneToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
-        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(238, 30)
         Me.DoneToolStripMenuItem.Text = "Done"
         '
         'btnChangeStatus

@@ -91,7 +91,7 @@ Partial Class Form_Login
         '
         'btnLogin
         '
-        Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogin.Location = New System.Drawing.Point(523, 363)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(312, 44)
@@ -103,9 +103,10 @@ Partial Class Form_Login
         '
         Me.lblUserName.AutoSize = True
         Me.lblUserName.BackColor = System.Drawing.Color.Transparent
-        Me.lblUserName.Location = New System.Drawing.Point(519, 183)
+        Me.lblUserName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUserName.Location = New System.Drawing.Point(519, 179)
         Me.lblUserName.Name = "lblUserName"
-        Me.lblUserName.Size = New System.Drawing.Size(68, 13)
+        Me.lblUserName.Size = New System.Drawing.Size(117, 24)
         Me.lblUserName.TabIndex = 4
         Me.lblUserName.Text = "USERNAME"
         '
@@ -113,9 +114,10 @@ Partial Class Form_Login
         '
         Me.lblPassword.AutoSize = True
         Me.lblPassword.BackColor = System.Drawing.Color.Transparent
-        Me.lblPassword.Location = New System.Drawing.Point(519, 263)
+        Me.lblPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPassword.Location = New System.Drawing.Point(519, 259)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(70, 13)
+        Me.lblPassword.Size = New System.Drawing.Size(118, 24)
         Me.lblPassword.TabIndex = 5
         Me.lblPassword.Text = "PASSWORD"
         '
@@ -146,9 +148,10 @@ Partial Class Form_Login
         'cbShowHide
         '
         Me.cbShowHide.AutoSize = True
-        Me.cbShowHide.Location = New System.Drawing.Point(523, 324)
+        Me.cbShowHide.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbShowHide.Location = New System.Drawing.Point(523, 321)
         Me.cbShowHide.Name = "cbShowHide"
-        Me.cbShowHide.Size = New System.Drawing.Size(80, 17)
+        Me.cbShowHide.Size = New System.Drawing.Size(122, 28)
         Me.cbShowHide.TabIndex = 8
         Me.cbShowHide.Text = "Show/Hide"
         Me.cbShowHide.UseVisualStyleBackColor = True

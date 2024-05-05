@@ -453,6 +453,10 @@ Public Class Form1
             Return ' Exit the method without showing the options form
         End If
 
+        If isDoneOrNeedVerify() Then
+            Return ' Exit the method without showing the options form
+        End If
+
         Using optionsForm As New Print_ID_Options
             'Fill the labels in the options form
             optionsForm.lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
@@ -501,6 +505,21 @@ Public Class Form1
         Next
         Return True ' Return true if all required fields are filled
     End Function
+    ' Check if the status is Done or Needs Verification
+    Private Function isDoneOrNeedVerify() As Boolean
+        Dim status As String = DataGridView1.CurrentRow.Cells("status").Value.ToString()
+
+        If status.Equals("Done") Then
+            MessageBox.Show("Cannot Print because the Status is Done.", "Status Check", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return True ' Return true if Done
+        ElseIf status.Equals("Needs Verification") Then
+            MessageBox.Show("Cannot Print because the status needs verification.", "Status Check", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return True ' Return true if Needs Verification
+        End If
+
+        Return False ' Return false if status is neither Done nor Needs Verification
+    End Function
+
 
     'Reload the DataGridView after Print_ID_Options form is closed
     Private Sub Print_ID_Options_FormClosed(sender As Object, e As EventArgs)
