@@ -35,13 +35,14 @@ Partial Class Reports
         Me.btnPrintPreview = New System.Windows.Forms.Button()
         Me.leftPanel = New System.Windows.Forms.Panel()
         Me.btnFilter = New System.Windows.Forms.Button()
-        Me.cbQuickFilter = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cbFilterCourseYear = New System.Windows.Forms.CheckBox()
         Me.cbYear = New System.Windows.Forms.ComboBox()
         Me.cbCourse = New System.Windows.Forms.ComboBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbQuickFilter = New System.Windows.Forms.ComboBox()
         Me.lblReports = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.cmbFilterReport = New System.Windows.Forms.ComboBox()
@@ -49,7 +50,6 @@ Partial Class Reports
         Me.lblFilterInfo = New System.Windows.Forms.Label()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.txtSearchReport = New System.Windows.Forms.TextBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.DataGridViewReports, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.leftPanel.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -187,16 +187,6 @@ Partial Class Reports
         Me.btnFilter.Text = "Filter"
         Me.btnFilter.UseVisualStyleBackColor = False
         '
-        'cbQuickFilter
-        '
-        Me.cbQuickFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbQuickFilter.FormattingEnabled = True
-        Me.cbQuickFilter.Items.AddRange(New Object() {"All", "Today", "This Week", "This Month"})
-        Me.cbQuickFilter.Location = New System.Drawing.Point(1, 33)
-        Me.cbQuickFilter.Name = "cbQuickFilter"
-        Me.cbQuickFilter.Size = New System.Drawing.Size(198, 33)
-        Me.cbQuickFilter.TabIndex = 9
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label2)
@@ -266,6 +256,33 @@ Partial Class Reports
         Me.cbCourse.TabIndex = 0
         Me.cbCourse.Text = "COURSE"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cbFilterDate)
+        Me.GroupBox1.Controls.Add(Me.cbQuickFilter)
+        Me.GroupBox1.Controls.Add(Me.lblDateTo)
+        Me.GroupBox1.Controls.Add(Me.lblDateFrom)
+        Me.GroupBox1.Controls.Add(Me.DTPTo)
+        Me.GroupBox1.Controls.Add(Me.DTPFrom)
+        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GroupBox1.ForeColor = System.Drawing.Color.White
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 26)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(199, 232)
+        Me.GroupBox1.TabIndex = 6
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "FLITER BY DATE"
+        '
+        'cbQuickFilter
+        '
+        Me.cbQuickFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbQuickFilter.FormattingEnabled = True
+        Me.cbQuickFilter.Items.AddRange(New Object() {"All", "Today", "This Week", "This Month"})
+        Me.cbQuickFilter.Location = New System.Drawing.Point(1, 33)
+        Me.cbQuickFilter.Name = "cbQuickFilter"
+        Me.cbQuickFilter.Size = New System.Drawing.Size(198, 33)
+        Me.cbQuickFilter.TabIndex = 9
+        '
         'lblReports
         '
         Me.lblReports.BackColor = System.Drawing.Color.FromArgb(CType(CType(137, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(69, Byte), Integer))
@@ -293,7 +310,7 @@ Partial Class Reports
         '
         Me.cmbFilterReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFilterReport.FormattingEnabled = True
-        Me.cmbFilterReport.Items.AddRange(New Object() {"No Filter", "On Queue", "Needs Verification", "Done"})
+        Me.cmbFilterReport.Items.AddRange(New Object() {"No Filter", "Verified", "Needs Verification", "Done"})
         Me.cmbFilterReport.Location = New System.Drawing.Point(949, 102)
         Me.cmbFilterReport.Name = "cmbFilterReport"
         Me.cmbFilterReport.Size = New System.Drawing.Size(216, 28)
@@ -335,23 +352,6 @@ Partial Class Reports
         Me.txtSearchReport.Name = "txtSearchReport"
         Me.txtSearchReport.Size = New System.Drawing.Size(495, 29)
         Me.txtSearchReport.TabIndex = 9
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.cbFilterDate)
-        Me.GroupBox1.Controls.Add(Me.cbQuickFilter)
-        Me.GroupBox1.Controls.Add(Me.lblDateTo)
-        Me.GroupBox1.Controls.Add(Me.lblDateFrom)
-        Me.GroupBox1.Controls.Add(Me.DTPTo)
-        Me.GroupBox1.Controls.Add(Me.DTPFrom)
-        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 26)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(199, 232)
-        Me.GroupBox1.TabIndex = 6
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "FLITER BY DATE"
         '
         'Reports
         '

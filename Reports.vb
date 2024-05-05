@@ -218,8 +218,8 @@ Public Class Reports
 
         Try
             Select Case cmbFilterReport.SelectedItem.ToString()
-                Case "On Queue"
-                    statusFilter = "On Queue"
+                Case "Verified"
+                    statusFilter = "Verified"
                 Case "Needs Verification"
                     statusFilter = "Needs Verification"
                 Case "Done"
