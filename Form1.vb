@@ -11,13 +11,13 @@ Public Class Form1
     Private isAddingStudent As Boolean = True ' Variable to track the state of the button
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        reload_record() ' Reload the DataGridView upon form start
+
         DoubleBuffer.DoubleBuffered(DataGridView1, True)
         cmbFilterSearch.SelectedIndex = 0
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
         btnEditSignature.Enabled = False
-
+        reload_record() ' Reload the DataGridView upon form start
         DisableTextboxes()
 
 
@@ -149,10 +149,10 @@ Public Class Form1
     Public Sub reload_record()
 
         Try
-            reloadtxtFilterSignature("SELECT * From tbl_queue")
-
+            'reloadtxtFilterSignature("SELECT * From tbl_queue")
+            ReloadData()
             If dt.Rows.Count > 0 Then
-                DataGridView1.DataSource = dt
+                'DataGridView1.DataSource = dt
 
                 form1DTG(DataGridView1) ' Formats the cells for the Datagridview1
 
@@ -167,16 +167,8 @@ Public Class Form1
                 txtStudentAddress.Text = dt.Rows(0).Item("student_address").ToString
                 txtStudentBday.Text = dt.Rows(0).Item("student_Birthday").ToString
                 txtStudentNum.Text = dt.Rows(0).Item("student_number").ToString
+                LoadImage()
 
-
-                dt.Columns.Add("Picture", GetType(Byte()))
-                For Each row As DataRow In dt.Rows
-                    If row("image_file_name").ToString = "" Then
-                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
-                    Else
-                        row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
-                    End If
-                Next
 
                 ' Set the image of the Picture column into zoom
                 Dim pictureColumn As New DataGridViewImageColumn()
@@ -252,6 +244,20 @@ Public Class Form1
                 row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
             End If
         Next
+
+        ' Testing May 5 2024, This is for Signature
+        If dt.Rows.Count > 0 AndAlso Not String.IsNullOrEmpty(dt.Rows(0).Item("student_signature").ToString) Then
+            Dim imageData As Byte() = DirectCast(dt.Rows(0).Item("student_signature"), Byte())
+
+            ' Convert byte array to image
+            Using ms As New System.IO.MemoryStream(imageData)
+                Dim image As Image = Image.FromStream(ms)
+                picStudentSignature.Image = image ' Display the image in PictureBox
+            End Using
+        Else
+            ' If "student_signature" is null or empty, display a default image
+            picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Profile\default.png") ' DefaultImage is a placeholder for your default image
+        End If
 
         ' Set the properties of the Picture column on the DataGridView
         Dim img As New DataGridViewImageColumn()
