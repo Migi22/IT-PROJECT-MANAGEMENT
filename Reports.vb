@@ -214,8 +214,6 @@ Public Class Reports
     End Sub
 
     Private Sub cmbFilterReport_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFilterReport.SelectedIndexChanged
-
-
         Try
             Select Case cmbFilterReport.SelectedItem.ToString()
                 Case "Verified"
@@ -414,4 +412,6 @@ Public Class Reports
             cbQuickFilter.Enabled = True
         End If
     End Sub
+
+
 End Class

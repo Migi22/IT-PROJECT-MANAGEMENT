@@ -396,7 +396,7 @@ Public Class Form1
             End Using
         Else
             ' If "student_signature" is null or empty, display a default image
-            picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Profile\default.png") ' DefaultImage is a placeholder for your default image
+            picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Default\NoSignature.jpg") ' DefaultImage is a placeholder for your default image
         End If
 
         ' Set the properties of the Picture column on the DataGridView
@@ -601,7 +601,7 @@ Public Class Form1
                 ' Reload the record
                 reload_record()
 
-                MessageBox.Show("Queue status updated successfully to " & newStatus & ".", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Status updated successfully to " & newStatus & ".", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Try
                     'AUDIT
