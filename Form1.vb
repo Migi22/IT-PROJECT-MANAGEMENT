@@ -365,7 +365,7 @@ Public Class Form1
         ' The one to show the student picture
         If dt.Rows.Count > 0 Then
             If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+                picStudentPic.ImageLocation = Path.Combine(Application.StartupPath, "Resources", "default.png")
             Else
                 picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
             End If
@@ -379,7 +379,7 @@ Public Class Form1
         ' Add the picture of the student to the DataTable
         For Each row As DataRow In dt.Rows
             If row("image_file_name").ToString = "" Then
-                row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\default.png")
+                row("Picture") = File.ReadAllBytes(System.IO.Path.Combine(Application.StartupPath, "Resources", "default.png"))
             Else
                 row("Picture") = File.ReadAllBytes(Application.StartupPath & "\Profile\" & Path.GetFileName(row("image_file_name").ToString()))
             End If
@@ -396,7 +396,7 @@ Public Class Form1
             End Using
         Else
             ' If "student_signature" is null or empty, display a default image
-            picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Default\NoSignature.jpg") ' DefaultImage is a placeholder for your default image
+            picStudentSignature.Image = Image.FromFile(System.IO.Path.Combine(Application.StartupPath, "Resources", "NoSignature.jpg")) ' DefaultImage is a placeholder for your default image
         End If
 
         ' Set the properties of the Picture column on the DataGridView
@@ -412,7 +412,7 @@ Public Class Form1
 
             If dt.Rows.Count > 0 Then
                 If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                    picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+                    picStudentPic.ImageLocation = System.IO.Path.Combine(Application.StartupPath, "Resources", "default.png")
                 Else
                     picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
                 End If
@@ -429,7 +429,7 @@ Public Class Form1
                     End Using
                 Else
                     ' If "student_signature" is null or empty, display a default image
-                    picStudentSignature.Image = Image.FromFile(Application.StartupPath & "\Profile\default.png") ' DefaultImage is a placeholder for your default image
+                    picStudentSignature.Image = Image.FromFile(System.IO.Path.Combine(Application.StartupPath, "Resources", "default.png")) ' DefaultImage is a placeholder for your default image
                 End If
 
                 ' Testing 20/4/24

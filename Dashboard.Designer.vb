@@ -77,7 +77,7 @@ Partial Class Dashboard
         Me.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogout.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogout.ForeColor = System.Drawing.Color.White
-        Me.btnLogout.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.logout
+        Me.btnLogout.Image = Global.ID_Processing_System.My.Resources.Resources.logout
         Me.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnLogout.Location = New System.Drawing.Point(0, 586)
         Me.btnLogout.Name = "btnLogout"
@@ -97,7 +97,7 @@ Partial Class Dashboard
         Me.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUserManagement.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUserManagement.ForeColor = System.Drawing.Color.White
-        Me.btnUserManagement.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.user_management
+        Me.btnUserManagement.Image = Global.ID_Processing_System.My.Resources.Resources.user_management
         Me.btnUserManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnUserManagement.Location = New System.Drawing.Point(0, 430)
         Me.btnUserManagement.Name = "btnUserManagement"
@@ -117,7 +117,7 @@ Partial Class Dashboard
         Me.btnAuditLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAuditLog.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAuditLog.ForeColor = System.Drawing.Color.White
-        Me.btnAuditLog.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.audit_1
+        Me.btnAuditLog.Image = Global.ID_Processing_System.My.Resources.Resources.audit_1
         Me.btnAuditLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAuditLog.Location = New System.Drawing.Point(0, 374)
         Me.btnAuditLog.Name = "btnAuditLog"
@@ -157,7 +157,7 @@ Partial Class Dashboard
         Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHome.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHome.ForeColor = System.Drawing.Color.White
-        Me.btnHome.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.home
+        Me.btnHome.Image = Global.ID_Processing_System.My.Resources.Resources.home
         Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnHome.Location = New System.Drawing.Point(0, 262)
         Me.btnHome.Name = "btnHome"
@@ -173,7 +173,7 @@ Partial Class Dashboard
         '
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PictureBox1.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
+        Me.PictureBox1.Image = Global.ID_Processing_System.My.Resources.Resources.jmc_logo
         Me.PictureBox1.Location = New System.Drawing.Point(0, 54)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(292, 208)

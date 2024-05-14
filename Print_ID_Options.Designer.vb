@@ -201,7 +201,7 @@ Partial Class Print_ID_Options
         '
         'picFrontIDFormat
         '
-        Me.picFrontIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.test1_FrontID
+        Me.picFrontIDFormat.Image = Global.ID_Processing_System.My.Resources.Resources.test1_FrontID
         Me.picFrontIDFormat.Location = New System.Drawing.Point(0, 0)
         Me.picFrontIDFormat.Name = "picFrontIDFormat"
         Me.picFrontIDFormat.Size = New System.Drawing.Size(330, 532)
@@ -240,7 +240,7 @@ Partial Class Print_ID_Options
         'picSchoolLogo
         '
         Me.picSchoolLogo.BackColor = System.Drawing.Color.Transparent
-        Me.picSchoolLogo.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
+        Me.picSchoolLogo.Image = Global.ID_Processing_System.My.Resources.Resources.jmc_logo
         Me.picSchoolLogo.Location = New System.Drawing.Point(82, 321)
         Me.picSchoolLogo.Name = "picSchoolLogo"
         Me.picSchoolLogo.Size = New System.Drawing.Size(24, 24)
@@ -340,7 +340,7 @@ Partial Class Print_ID_Options
         '
         'picBackIDFormat
         '
-        Me.picBackIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.backIDJmc
+        Me.picBackIDFormat.Image = Global.ID_Processing_System.My.Resources.Resources.backIDJmc
         Me.picBackIDFormat.Location = New System.Drawing.Point(0, 0)
         Me.picBackIDFormat.Name = "picBackIDFormat"
         Me.picBackIDFormat.Size = New System.Drawing.Size(330, 532)

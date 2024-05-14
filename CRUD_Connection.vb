@@ -147,7 +147,7 @@ Module CRUD_Connection
             da.Fill(dt)
 
             ' Load default image as byte array
-            Dim defaultImageBytes As Byte() = File.ReadAllBytes(Application.StartupPath & "\Default\NoSignature.jpg")
+            Dim defaultImageBytes As Byte() = File.ReadAllBytes(System.IO.Path.Combine(Application.StartupPath, "Resources", "NoSignature.jpg"))
 
             ' Check and update "student_signature" column in DataTable
             For Each row As DataRow In dt.Rows
