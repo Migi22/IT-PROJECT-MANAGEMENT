@@ -5,6 +5,11 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CREATE_READ_UPDATE_DELETE", "CREATE_READ_UPDATE_DELETE.vbproj", "{80C5206D-01EF-47A6-BBB9-D546940382FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{460FE15D-3768-4E71-93B7-EB1BACAA339B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Pictures\delete later\test1-FrontID.jpg = ..\..\..\Pictures\delete later\test1-FrontID.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

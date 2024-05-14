@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Drawing.Printing
+Imports Google.Protobuf.WellKnownTypes
 Imports MessagingToolkit.Barcode
 
 Public Class Print_ID_Options
@@ -21,6 +22,7 @@ Public Class Print_ID_Options
         lblTitleStudentNum.Parent = picFrontIDFormat
         lblInputStudentNum.Parent = picFrontIDFormat
         picBarcode.Parent = picFrontIDFormat
+        picStudentPic.Parent = picFrontIDFormat
 
         'Back
         lblInputBirthday.Parent = picBackIDFormat
@@ -44,7 +46,7 @@ Public Class Print_ID_Options
         Dim generator As New BarcodeEncoder()
         Try
             ' Encode the barcode
-            Dim barcodeBitmap As Bitmap = generator.Encode(BarcodeFormat.Code128, lblInputStudentNum.Text)
+            Dim barcodeBitmap As Bitmap = generator.Encode(BarcodeFormat.Code39, lblInputStudentNum.Text)
 
             ' Make the background color transparent (assuming white is the background color)
             barcodeBitmap.MakeTransparent(Color.White)
@@ -75,42 +77,92 @@ Public Class Print_ID_Options
         End Try
     End Sub
 
-    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        If bitmap IsNot Nothing Then
-            e.Graphics.DrawImage(bitmap, 50, 50)
-        Else
-            MessageBox.Show("Error: Bitmap object is null.")
-        End If
-    End Sub
+
 
     Private Sub btnPrintBack_Click(sender As Object, e As EventArgs) Handles btnPrintBack.Click
-        PrintID(panelBackID)
+        ' Open the PrintDialog to allow the user to select a printer
+        Dim pd As New PrintDialog()
+        If pd.ShowDialog() = DialogResult.OK Then
+            ' User selected a printer, proceed with printing
+            PrintID(panelBackID, pd.PrinterSettings)
+        End If
+
+        'PrintID(panelBackID)
     End Sub
 
     Private Sub btnPrintFront_Click(sender As Object, e As EventArgs) Handles btnPrintFront.Click
-        PrintID(panelFrontID)
+
+
+        ' Open the PrintDialog to allow the user to select a printer
+        Dim pd As New PrintDialog()
+        If pd.ShowDialog() = DialogResult.OK Then
+            ' User selected a printer, proceed with printing
+            PrintID(panelFrontID, pd.PrinterSettings)
+        End If
+
     End Sub
 
-    Public Sub PrintID(panel As Panel)
+    Public Sub PrintID(panel As Panel, printerSettings As PrinterSettings)
         Try
+            ' Desired physical dimensions in inches
+            Dim desiredWidthInches As Double = 2.14
+            Dim desiredHeightInches As Double = 3.376
+
+            ' Create a bitmap with the dimensions of the panel
             Using bitmap As New Bitmap(panel.ClientSize.Width, panel.ClientSize.Height)
+                ' Create a graphics object from the bitmap
                 Using grp As Graphics = Graphics.FromImage(bitmap)
-                    Dim panelLocation As Point = PointToScreen(panel.Location)
-                    grp.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, panel.ClientSize)
+                    ' Clear the graphics with a white background
+                    grp.Clear(Color.White)
+
+                    ' Draw the panel content onto the bitmap
+                    panel.DrawToBitmap(bitmap, panel.ClientRectangle)
+
+                    ' Assign the bitmap to the class-level variable
+                    Me.bitmap = bitmap
+
+                    ' Debug output
+                    Debug.WriteLine("Panel Width: " & panel.ClientSize.Width & " pixels")
+                    Debug.WriteLine("Panel Height: " & panel.ClientSize.Height & " pixels")
+                    Debug.WriteLine("Desired Width: " & desiredWidthInches & " inches")
+                    Debug.WriteLine("Desired Height: " & desiredHeightInches & " inches")
+
+                    ' Set up the print preview
+                    ppd.Document = PrintDocument1
+                    PrintDocument1.PrinterSettings = printerSettings
+                    ppd.PrintPreviewControl.Zoom = 1.0
+                    ppd.ShowDialog()
                 End Using
-
-                ' Assign the bitmap to the class-level variable
-                Me.bitmap = bitmap
-
-                ' Draw the bitmap on the print page
-                ppd.Document = PrintDocument1
-                ppd.PrintPreviewControl.Zoom = 1.0
-                ppd.ShowDialog()
             End Using
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         End Try
     End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        If bitmap IsNot Nothing Then
+            Dim g As Graphics = e.Graphics
+            g.PageUnit = GraphicsUnit.Inch
+
+            ' Draw the image at the correct size in inches
+            g.DrawImage(bitmap, 0, 0, 2.14F, 3.376F)
+        Else
+            MessageBox.Show("Error: Bitmap object is null.")
+        End If
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
         Try

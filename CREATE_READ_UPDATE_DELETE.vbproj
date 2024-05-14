@@ -281,6 +281,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ipsLogoMain.ico" />
+    <Content Include="Resources\test1-FrontID.jpg" />
+    <None Include="Resources\test1-FrontID1.jpg" />
     <None Include="Resources\backIDJmc.jpg" />
     <None Include="Resources\FrontIDJmc.jpg" />
     <None Include="Resources\backID.png" />

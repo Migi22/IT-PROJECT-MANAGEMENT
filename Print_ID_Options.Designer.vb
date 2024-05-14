@@ -27,13 +27,18 @@ Partial Class Print_ID_Options
         Me.btnPrintBack = New System.Windows.Forms.Button()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.panelFrontID = New System.Windows.Forms.Panel()
+        Me.picBarcode = New System.Windows.Forms.PictureBox()
         Me.lblInputStudentNum = New System.Windows.Forms.Label()
         Me.lblInputCourseYear = New System.Windows.Forms.Label()
         Me.lblTitleCourseYear = New System.Windows.Forms.Label()
         Me.lblTitleStudentNum = New System.Windows.Forms.Label()
         Me.lblInputLastName = New System.Windows.Forms.Label()
+        Me.picStudentPic = New System.Windows.Forms.PictureBox()
         Me.lblFMname = New System.Windows.Forms.Label()
+        Me.picFrontIDFormat = New System.Windows.Forms.PictureBox()
         Me.panelBackID = New System.Windows.Forms.Panel()
+        Me.picStudentSignature = New System.Windows.Forms.PictureBox()
+        Me.picSchoolLogo = New System.Windows.Forms.PictureBox()
         Me.lblFirstSem = New System.Windows.Forms.Label()
         Me.lblSchoolRegistarName = New System.Windows.Forms.Label()
         Me.lblSchoolRegistar = New System.Windows.Forms.Label()
@@ -42,21 +47,17 @@ Partial Class Print_ID_Options
         Me.lblGuardianName = New System.Windows.Forms.Label()
         Me.lblTitleStudentSig = New System.Windows.Forms.Label()
         Me.lblInputBirthday = New System.Windows.Forms.Label()
-        Me.btnDone = New System.Windows.Forms.Button()
-        Me.picStudentSignature = New System.Windows.Forms.PictureBox()
-        Me.picSchoolLogo = New System.Windows.Forms.PictureBox()
         Me.picBackIDFormat = New System.Windows.Forms.PictureBox()
-        Me.picBarcode = New System.Windows.Forms.PictureBox()
-        Me.picStudentPic = New System.Windows.Forms.PictureBox()
-        Me.picFrontIDFormat = New System.Windows.Forms.PictureBox()
+        Me.btnDone = New System.Windows.Forms.Button()
+        Me.btnPrintBoth = New System.Windows.Forms.Button()
         Me.panelFrontID.SuspendLayout()
+        CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picFrontIDFormat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelBackID.SuspendLayout()
         CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picSchoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBackIDFormat, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picFrontIDFormat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblPrint_Option
@@ -67,7 +68,7 @@ Partial Class Print_ID_Options
         Me.lblPrint_Option.ForeColor = System.Drawing.Color.White
         Me.lblPrint_Option.Location = New System.Drawing.Point(0, 0)
         Me.lblPrint_Option.Name = "lblPrint_Option"
-        Me.lblPrint_Option.Size = New System.Drawing.Size(1283, 50)
+        Me.lblPrint_Option.Size = New System.Drawing.Size(800, 50)
         Me.lblPrint_Option.TabIndex = 0
         Me.lblPrint_Option.Text = "PRINT ID OPTION"
         Me.lblPrint_Option.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -109,6 +110,17 @@ Partial Class Print_ID_Options
         Me.panelFrontID.Size = New System.Drawing.Size(330, 532)
         Me.panelFrontID.TabIndex = 36
         '
+        'picBarcode
+        '
+        Me.picBarcode.BackColor = System.Drawing.Color.Transparent
+        Me.picBarcode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.picBarcode.Location = New System.Drawing.Point(-49, 436)
+        Me.picBarcode.Name = "picBarcode"
+        Me.picBarcode.Size = New System.Drawing.Size(427, 43)
+        Me.picBarcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picBarcode.TabIndex = 44
+        Me.picBarcode.TabStop = False
+        '
         'lblInputStudentNum
         '
         Me.lblInputStudentNum.AutoSize = True
@@ -145,10 +157,11 @@ Partial Class Print_ID_Options
         '
         Me.lblTitleStudentNum.AutoSize = True
         Me.lblTitleStudentNum.BackColor = System.Drawing.Color.Transparent
-        Me.lblTitleStudentNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleStudentNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleStudentNum.ForeColor = System.Drawing.Color.FromArgb(CType(CType(93, Byte), Integer), CType(CType(2, Byte), Integer), CType(CType(69, Byte), Integer))
         Me.lblTitleStudentNum.Location = New System.Drawing.Point(98, 400)
         Me.lblTitleStudentNum.Name = "lblTitleStudentNum"
-        Me.lblTitleStudentNum.Size = New System.Drawing.Size(135, 16)
+        Me.lblTitleStudentNum.Size = New System.Drawing.Size(149, 16)
         Me.lblTitleStudentNum.TabIndex = 40
         Me.lblTitleStudentNum.Text = "STUDENT NUMBER"
         Me.lblTitleStudentNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -157,12 +170,23 @@ Partial Class Print_ID_Options
         '
         Me.lblInputLastName.BackColor = System.Drawing.Color.Transparent
         Me.lblInputLastName.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInputLastName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(93, Byte), Integer), CType(CType(2, Byte), Integer), CType(CType(69, Byte), Integer))
         Me.lblInputLastName.Location = New System.Drawing.Point(30, 324)
         Me.lblInputLastName.Name = "lblInputLastName"
         Me.lblInputLastName.Size = New System.Drawing.Size(282, 30)
         Me.lblInputLastName.TabIndex = 39
         Me.lblInputLastName.Text = "Label1"
         Me.lblInputLastName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'picStudentPic
+        '
+        Me.picStudentPic.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.picStudentPic.Location = New System.Drawing.Point(73, 100)
+        Me.picStudentPic.Name = "picStudentPic"
+        Me.picStudentPic.Size = New System.Drawing.Size(186, 189)
+        Me.picStudentPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picStudentPic.TabIndex = 38
+        Me.picStudentPic.TabStop = False
         '
         'lblFMname
         '
@@ -174,6 +198,16 @@ Partial Class Print_ID_Options
         Me.lblFMname.TabIndex = 37
         Me.lblFMname.Text = "First && Middle Name"
         Me.lblFMname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'picFrontIDFormat
+        '
+        Me.picFrontIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.test1_FrontID
+        Me.picFrontIDFormat.Location = New System.Drawing.Point(0, 0)
+        Me.picFrontIDFormat.Name = "picFrontIDFormat"
+        Me.picFrontIDFormat.Size = New System.Drawing.Size(330, 532)
+        Me.picFrontIDFormat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picFrontIDFormat.TabIndex = 36
+        Me.picFrontIDFormat.TabStop = False
         '
         'panelBackID
         '
@@ -193,13 +227,34 @@ Partial Class Print_ID_Options
         Me.panelBackID.Size = New System.Drawing.Size(330, 532)
         Me.panelBackID.TabIndex = 37
         '
+        'picStudentSignature
+        '
+        Me.picStudentSignature.BackColor = System.Drawing.Color.Transparent
+        Me.picStudentSignature.Location = New System.Drawing.Point(82, 33)
+        Me.picStudentSignature.Name = "picStudentSignature"
+        Me.picStudentSignature.Size = New System.Drawing.Size(162, 69)
+        Me.picStudentSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picStudentSignature.TabIndex = 21
+        Me.picStudentSignature.TabStop = False
+        '
+        'picSchoolLogo
+        '
+        Me.picSchoolLogo.BackColor = System.Drawing.Color.Transparent
+        Me.picSchoolLogo.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
+        Me.picSchoolLogo.Location = New System.Drawing.Point(82, 321)
+        Me.picSchoolLogo.Name = "picSchoolLogo"
+        Me.picSchoolLogo.Size = New System.Drawing.Size(24, 24)
+        Me.picSchoolLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picSchoolLogo.TabIndex = 20
+        Me.picSchoolLogo.TabStop = False
+        '
         'lblFirstSem
         '
         Me.lblFirstSem.BackColor = System.Drawing.Color.Transparent
         Me.lblFirstSem.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFirstSem.Location = New System.Drawing.Point(96, 321)
+        Me.lblFirstSem.Location = New System.Drawing.Point(112, 321)
         Me.lblFirstSem.Name = "lblFirstSem"
-        Me.lblFirstSem.Size = New System.Drawing.Size(196, 23)
+        Me.lblFirstSem.Size = New System.Drawing.Size(194, 23)
         Me.lblFirstSem.TabIndex = 19
         Me.lblFirstSem.Text = "1ˢᵗ SEMESTER A.Y. 2023-2024"
         Me.lblFirstSem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -283,36 +338,6 @@ Partial Class Print_ID_Options
         Me.lblInputBirthday.Text = "BIRTHDAY: AUGUST 22 2002"
         Me.lblInputBirthday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'btnDone
-        '
-        Me.btnDone.Location = New System.Drawing.Point(424, 638)
-        Me.btnDone.Name = "btnDone"
-        Me.btnDone.Size = New System.Drawing.Size(114, 51)
-        Me.btnDone.TabIndex = 38
-        Me.btnDone.Text = "Done"
-        Me.btnDone.UseVisualStyleBackColor = True
-        '
-        'picStudentSignature
-        '
-        Me.picStudentSignature.BackColor = System.Drawing.Color.Transparent
-        Me.picStudentSignature.Location = New System.Drawing.Point(81, 34)
-        Me.picStudentSignature.Name = "picStudentSignature"
-        Me.picStudentSignature.Size = New System.Drawing.Size(169, 69)
-        Me.picStudentSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picStudentSignature.TabIndex = 21
-        Me.picStudentSignature.TabStop = False
-        '
-        'picSchoolLogo
-        '
-        Me.picSchoolLogo.BackColor = System.Drawing.Color.Transparent
-        Me.picSchoolLogo.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.jmc_logo
-        Me.picSchoolLogo.Location = New System.Drawing.Point(82, 321)
-        Me.picSchoolLogo.Name = "picSchoolLogo"
-        Me.picSchoolLogo.Size = New System.Drawing.Size(24, 24)
-        Me.picSchoolLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picSchoolLogo.TabIndex = 20
-        Me.picSchoolLogo.TabStop = False
-        '
         'picBackIDFormat
         '
         Me.picBackIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.backIDJmc
@@ -323,41 +348,30 @@ Partial Class Print_ID_Options
         Me.picBackIDFormat.TabIndex = 11
         Me.picBackIDFormat.TabStop = False
         '
-        'picBarcode
+        'btnDone
         '
-        Me.picBarcode.BackColor = System.Drawing.Color.Transparent
-        Me.picBarcode.Location = New System.Drawing.Point(26, 437)
-        Me.picBarcode.Name = "picBarcode"
-        Me.picBarcode.Size = New System.Drawing.Size(278, 43)
-        Me.picBarcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picBarcode.TabIndex = 44
-        Me.picBarcode.TabStop = False
+        Me.btnDone.Location = New System.Drawing.Point(640, 638)
+        Me.btnDone.Name = "btnDone"
+        Me.btnDone.Size = New System.Drawing.Size(114, 51)
+        Me.btnDone.TabIndex = 38
+        Me.btnDone.Text = "Done"
+        Me.btnDone.UseVisualStyleBackColor = True
         '
-        'picStudentPic
+        'btnPrintBoth
         '
-        Me.picStudentPic.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.picStudentPic.Location = New System.Drawing.Point(73, 100)
-        Me.picStudentPic.Name = "picStudentPic"
-        Me.picStudentPic.Size = New System.Drawing.Size(186, 189)
-        Me.picStudentPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picStudentPic.TabIndex = 38
-        Me.picStudentPic.TabStop = False
-        '
-        'picFrontIDFormat
-        '
-        Me.picFrontIDFormat.Image = Global.CREATE_READ_UPDATE_DELETE.My.Resources.Resources.FrontIDJmc
-        Me.picFrontIDFormat.Location = New System.Drawing.Point(0, 0)
-        Me.picFrontIDFormat.Name = "picFrontIDFormat"
-        Me.picFrontIDFormat.Size = New System.Drawing.Size(330, 532)
-        Me.picFrontIDFormat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picFrontIDFormat.TabIndex = 36
-        Me.picFrontIDFormat.TabStop = False
+        Me.btnPrintBoth.Location = New System.Drawing.Point(424, 638)
+        Me.btnPrintBoth.Name = "btnPrintBoth"
+        Me.btnPrintBoth.Size = New System.Drawing.Size(114, 51)
+        Me.btnPrintBoth.TabIndex = 39
+        Me.btnPrintBoth.Text = "Print Both"
+        Me.btnPrintBoth.UseVisualStyleBackColor = True
         '
         'Print_ID_Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1283, 726)
+        Me.ClientSize = New System.Drawing.Size(800, 726)
+        Me.Controls.Add(Me.btnPrintBoth)
         Me.Controls.Add(Me.btnDone)
         Me.Controls.Add(Me.panelBackID)
         Me.Controls.Add(Me.panelFrontID)
@@ -368,14 +382,14 @@ Partial Class Print_ID_Options
         Me.Text = "Print_ID_Options"
         Me.panelFrontID.ResumeLayout(False)
         Me.panelFrontID.PerformLayout()
+        CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picFrontIDFormat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelBackID.ResumeLayout(False)
         Me.panelBackID.PerformLayout()
         CType(Me.picStudentSignature, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picSchoolLogo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBackIDFormat, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picFrontIDFormat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -407,4 +421,5 @@ Partial Class Print_ID_Options
     Friend WithEvents lblInputBirthday As Label
     Friend WithEvents picBackIDFormat As PictureBox
     Friend WithEvents btnDone As Button
+    Friend WithEvents btnPrintBoth As Button
 End Class
