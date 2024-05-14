@@ -15,7 +15,7 @@ Public Class editSignature
 
     Private Sub editSignature_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            reloadtxtFilterSignature("SELECT student_signature FROM tbl_queue WHERE queue_ID = '" & QueueID & "'")
+            reloadtxtFilterSignatureAndPicture("SELECT student_signature FROM tbl_queue WHERE queue_ID = '" & QueueID & "'")
             If dt.Rows.Count > 0 AndAlso Not String.IsNullOrEmpty(dt.Rows(0).Item("student_signature").ToString) Then
                 Dim imageData As Byte() = DirectCast(dt.Rows(0).Item("student_signature"), Byte())
 

@@ -10,10 +10,15 @@
         dgv.Columns("student_address").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         dgv.Columns("student_Birthday").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         dgv.Columns("student_signature").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        dgv.Columns("image_file_name").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
         dgv.Columns("lname").Width = 150
         dgv.Columns("fname").Width = 150
+
+        ' Set DataGridViewImageCellLayout.Stretch layout for the "student_picture" column
+        Dim pictureColumn As DataGridViewImageColumn = CType(dgv.Columns("student_picture"), DataGridViewImageColumn)
+        Dim imageCell As New DataGridViewImageCell()
+        imageCell.ImageLayout = DataGridViewImageCellLayout.Stretch
+        pictureColumn.CellTemplate = imageCell
 
     End Sub
 

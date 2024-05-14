@@ -66,11 +66,18 @@ Public Class Print_ID_Options
             reloadtxt("SELECT * FROM tbl_queue WHERE student_number='" & lblInputStudentNum.Text & "'")
 
             If dt.Rows.Count > 0 Then
-                If String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                    picStudentPic.ImageLocation = Application.StartupPath & "\Profile\default.png"
+                If String.IsNullOrEmpty(dt.Rows(0).Item("student_picture").ToString) Then
+                    picStudentPic.ImageLocation = System.IO.Path.Combine(Application.StartupPath, "Resources", "default.png")
                 Else
-                    picStudentPic.ImageLocation = Application.StartupPath & "\Profile\" & dt.Rows(0).Item("image_file_name").ToString
+                    Dim imageData As Byte() = DirectCast(dt.Rows(0).Item("student_picture"), Byte())
+
+                    ' Convert byte array to image
+                    Using ms As New System.IO.MemoryStream(imageData)
+                        Dim image As Image = Image.FromStream(ms)
+                        picStudentPic.Image = image ' Display the image in PictureBox
+                    End Using
                 End If
+
             End If
         Catch ex As Exception
 

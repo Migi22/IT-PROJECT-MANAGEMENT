@@ -136,7 +136,7 @@ Module CRUD_Connection
         End Try
     End Sub
 
-    Public Sub reloadtxtFilterSignature(ByVal sql As String)
+    Public Sub reloadtxtFilterSignatureAndPicture(ByVal sql As String)
         Try
             strcon.Open()
             cmd.Connection = strcon
@@ -148,6 +148,7 @@ Module CRUD_Connection
 
             ' Load default image as byte array
             Dim defaultImageBytes As Byte() = File.ReadAllBytes(System.IO.Path.Combine(Application.StartupPath, "Resources", "NoSignature.jpg"))
+            Dim defaultStudentImageBytes As Byte() = File.ReadAllBytes(System.IO.Path.Combine(Application.StartupPath, "Resources", "default.png"))
 
             ' Check and update "student_signature" column in DataTable
             For Each row As DataRow In dt.Rows
@@ -156,6 +157,15 @@ Module CRUD_Connection
                 ' Check if "student_signature" is null or empty
                 If signatureBytes Is Nothing OrElse signatureBytes.Length = 0 Then
                     row("student_signature") = defaultImageBytes
+                End If
+            Next
+
+            For Each row As DataRow In dt.Rows
+                Dim signatureBytes As Byte() = TryCast(row("student_picture"), Byte())
+
+                ' Check if "student_picture" is null or empty
+                If signatureBytes Is Nothing OrElse signatureBytes.Length = 0 Then
+                    row("student_picture") = defaultStudentImageBytes
                 End If
             Next
         Catch ex As Exception

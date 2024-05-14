@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 
 Public Class editImage
     Private username As String = CurrentUser.Username
@@ -13,12 +14,14 @@ Public Class editImage
         Try
             If String.IsNullOrEmpty(txtPhoto.Text) OrElse String.IsNullOrEmpty(StudentLastName) Then
                 MessageBox.Show("You need to select a picture of the student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ElseIf Directory.Exists(Application.StartupPath & "\Profile\" & QueueID & "_" & StudentLastName & ".png") Then
-                Directory.Delete(StudentLastName)
             Else
-                picBrowserPic.Image.Save(Application.StartupPath & "\Profile\" & QueueID & "_" & StudentLastName & ".png")
-                updates("UPDATE tbl_queue SET image_file_name='" & QueueID & "_" & StudentLastName & ".png' 
-                WHERE queue_ID='" & QueueID & "'")
+                Dim fileName As String = txtPhoto.Text
+                Dim fileData As Byte() = File.ReadAllBytes(fileName)
+
+                ' Update the database with the new image data
+                updates("UPDATE tbl_queue SET student_picture = @fileData WHERE queue_ID = @QueueID",
+                           New MySqlParameter("@fileData", fileData),
+                           New MySqlParameter("@QueueID", QueueID))
 
                 'AUDIT
                 Try
@@ -54,6 +57,7 @@ Public Class editImage
                 .ValidateNames = True
 
                 If .ShowDialog = DialogResult.OK Then
+                    Dim fileName As String = .FileName
                     Try
                         txtPhoto.Text = .FileName
                         picBrowserPic.ImageLocation = .FileName
@@ -68,33 +72,33 @@ Public Class editImage
         End Try
     End Sub
 
-    Private Sub btnDeleteProfile_Click_1(sender As Object, e As EventArgs) Handles btnDeleteProfile.Click
+    Private Sub btnDeleteProfile_Click(sender As Object, e As EventArgs) Handles btnDeleteProfile.Click
         Try
             If String.IsNullOrEmpty(StudentLastName) Then
-                MessageBox.Show("You need to select first a student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ElseIf String.IsNullOrEmpty(dt.Rows(0).Item("image_file_name").ToString) Then
-                MessageBox.Show("There is no image to delete for this student", "No Image", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("You need to select a student first", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
-                updates("UPDATE tbl_queue SET image_file_name='' 
-                WHERE queue_ID='" & QueueID & "'")
+                ' Update the database to set the image data to NULL
+                updates("UPDATE tbl_queue SET student_picture = NULL WHERE queue_ID = @QueueID",
+                        New MySqlParameter("@QueueID", QueueID))
 
-                'AUDIT
+                ' AUDIT
                 Try
                     action = "DELETED STUDENT PICTURE: " & StudentLastName & ", " & StudentFirstName
                     dateTime = DateTime.Now
-                    LogAudit(username, Action, DateTime)
+                    LogAudit(username, action, dateTime)
                 Catch ex As Exception
                     MessageBox.Show("An error occurred during saving audit log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
-                'END AUDIT
+                ' END AUDIT
 
-                ReloadFunction.Invoke() 'Reload the datagrid
-                Close() 'Close After
+                ReloadFunction.Invoke() ' Reload the datagrid
+                Close() ' Close After
             End If
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
 
 End Class
