@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Reflection
 Imports System.Security.Policy
@@ -100,7 +101,7 @@ Public Class Form1
                 CType(ctrl, TextBox).Clear()
             End If
         Next
-        picStudentPic.Image = Nothing
+        'picStudentPic.Image = Nothing
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -138,10 +139,11 @@ Public Class Form1
         Try
             'reloadtxtFilterSignature("SELECT * From tbl_queue")
             ReloadData()
+            form1DTG(DataGridView1) ' Formats the cells for the Datagridview1
             If dt.Rows.Count > 0 Then
                 'DataGridView1.DataSource = dt
 
-                form1DTG(DataGridView1) ' Formats the cells for the Datagridview1
+
 
                 txtQueueNum.Text = dt.Rows(0).Item("queue_ID").ToString
                 txtFname.Text = dt.Rows(0).Item("fname").ToString
@@ -164,7 +166,8 @@ Public Class Form1
                 Dim signatureColumn As New DataGridViewImageColumn()
                 signatureColumn = CType(DataGridView1.Columns("student_signature"), DataGridViewImageColumn)
                 signatureColumn.ImageLayout = DataGridViewImageCellLayout.Zoom
-
+            Else
+                ClearText()
             End If
 
         Catch ex As Exception
@@ -236,6 +239,7 @@ Public Class Form1
 
         'temporary
         ReloadData()
+        reload_record()
     End Sub
 
     Private Sub ReloadData()
@@ -457,52 +461,58 @@ Public Class Form1
     End Sub
 
     Private Sub btnPrintID_Click(sender As Object, e As EventArgs) Handles btnPrintID.Click
-        If Not ValidateData() Then
-            MessageBox.Show("Some data is missing or empty. Please fill in all required fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return ' Exit the method without showing the options form
-        End If
-
-        If isDoneOrNeedVerify() Then
-            Return ' Exit the method without showing the options form
-        End If
-
-        Using optionsForm As New Print_ID_Options
-            'Fill the labels in the options form
-            optionsForm.lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
-                                            DataGridView1.CurrentRow.Cells("m_i").Value.ToString
-            optionsForm.lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
-            optionsForm.lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
-                                                    DataGridView1.CurrentRow.Cells("year_level").Value.ToString
-            optionsForm.lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
-
-            optionsForm.lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
-            optionsForm.lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
-            optionsForm.lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
-            optionsForm.lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
-
-            optionsForm.QueueID = DataGridView1.CurrentRow.Cells("queue_ID").Value.ToString
-
-            ' Retrieve the image data from the "Picture" column of the current row
-            Dim imageData As Byte() = CType(DataGridView1.CurrentRow.Cells("student_signature").Value, Byte())
-            If imageData IsNot Nothing Then
-                ' Create a MemoryStream to hold the image data
-                Using ms As New MemoryStream(imageData)
-                    ' Load the image from the MemoryStream
-                    Dim image As Image = Image.FromStream(ms)
-
-                    ' Display the image in the PictureBox of the options form
-                    optionsForm.picStudentSignature.Image = image
-                End Using
-            Else
-                ' If the image data is null, display a message or handle it as needed
-                MessageBox.Show("No image data available.")
+        ' Check if DataGridView1 is not null and has at least one row
+        If DataGridView1 IsNot Nothing AndAlso DataGridView1.CurrentRow IsNot Nothing Then
+            If Not ValidateData() Then
+                MessageBox.Show("Some data is missing or empty. Please fill in all required fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return ' Exit the method without showing the options form
             End If
 
-            AddHandler optionsForm.FormClosedEvent, AddressOf Print_ID_Options_FormClosed
+            If isDoneOrNeedVerify() Then
+                Return ' Exit the method without showing the options form
+            End If
 
-            optionsForm.ShowDialog()
-        End Using
+            Using optionsForm As New Print_ID_Options
+                'Fill the labels in the options form
+                optionsForm.lblFMname.Text = DataGridView1.CurrentRow.Cells("fname").Value.ToString & " " &
+                                            DataGridView1.CurrentRow.Cells("m_i").Value.ToString
+                optionsForm.lblInputLastName.Text = DataGridView1.CurrentRow.Cells("lname").Value.ToString
+                optionsForm.lblInputCourseYear.Text = DataGridView1.CurrentRow.Cells("course").Value.ToString & " - " &
+                                                    DataGridView1.CurrentRow.Cells("year_level").Value.ToString
+                optionsForm.lblInputStudentNum.Text = DataGridView1.CurrentRow.Cells("student_number").Value.ToString
+
+                optionsForm.lblInputBirthday.Text = "BIRTHDAY: " & DataGridView1.CurrentRow.Cells("student_Birthday").Value.ToString
+                optionsForm.lblGuardianName.Text = DataGridView1.CurrentRow.Cells("guardian_name").Value.ToString
+                optionsForm.lblInputGuardianNum.Text = DataGridView1.CurrentRow.Cells("guardian_contact_num").Value.ToString
+                optionsForm.lblStudentAddress.Text = DataGridView1.CurrentRow.Cells("student_address").Value.ToString
+
+                optionsForm.QueueID = DataGridView1.CurrentRow.Cells("queue_ID").Value.ToString
+
+                ' Retrieve the image data from the "Picture" column of the current row
+                Dim imageData As Byte() = CType(DataGridView1.CurrentRow.Cells("student_signature").Value, Byte())
+                If imageData IsNot Nothing Then
+                    ' Create a MemoryStream to hold the image data
+                    Using ms As New MemoryStream(imageData)
+                        ' Load the image from the MemoryStream
+                        Dim image As Image = Image.FromStream(ms)
+
+                        ' Display the image in the PictureBox of the options form
+                        optionsForm.picStudentSignature.Image = image
+                    End Using
+                Else
+                    ' If the image data is null, display a message or handle it as needed
+                    MessageBox.Show("No image data available.")
+                End If
+
+                AddHandler optionsForm.FormClosedEvent, AddressOf Print_ID_Options_FormClosed
+
+                optionsForm.ShowDialog()
+            End Using
+        Else
+            MessageBox.Show("The DataGridView is null or has no current row.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
+
     ' Function to check if there is a null or empty details that needed for ID processing
     Private Function ValidateData() As Boolean
         ' Validate that all required data is present
@@ -588,8 +598,16 @@ Public Class Form1
 
         If result = DialogResult.Yes Then
             Try
-                ' Perform the status update
-                updates("UPDATE tbl_queue SET status = '" & newStatus & "' WHERE queue_ID ='" & txtQueueNum.Text & "'")
+                ' Validate queue ID
+                If Not Integer.TryParse(txtQueueNum.Text, Nothing) Then
+                    MessageBox.Show("Invalid queue ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
+
+                ' Perform the status update with parameterized query
+                updates("UPDATE tbl_queue SET status = @NewStatus WHERE queue_ID = @QueueID",
+                    New MySqlParameter("@NewStatus", newStatus),
+                    New MySqlParameter("@QueueID", txtQueueNum.Text))
 
                 ' Reload the record
                 reload_record()
@@ -611,6 +629,7 @@ Public Class Form1
             End Try
         End If
     End Sub
+
 
     'End of btnChangeStatus
 
