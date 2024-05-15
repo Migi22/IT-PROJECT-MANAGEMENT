@@ -6,7 +6,13 @@ Imports MessagingToolkit.Barcode
 Public Class Print_ID_Options
     Public QueueID As String
 
+    Private currentPage As Integer
+    Private TotalPages As Integer
+
     Private bitmap As Bitmap
+    ' Class-level variables to hold the front and back bitmaps
+    Private bitmapFront As Bitmap
+    Private bitmapBack As Bitmap
     Private WithEvents ppd As New PrintPreviewDialog
 
     Public Event FormClosedEvent As EventHandler
@@ -36,6 +42,8 @@ Public Class Print_ID_Options
         lblSchoolRegistar.Parent = picBackIDFormat
         lblSchoolRegistarName.Parent = picBackIDFormat
         lblTitleStudentSig.Parent = picBackIDFormat
+        lblValidFor.Parent = picBackIDFormat
+        lblLabelEmergency.Parent = picBackIDFormat
 
 
         'Uppercase
@@ -85,90 +93,40 @@ Public Class Print_ID_Options
     End Sub
 
 
-
-    Private Sub btnPrintBack_Click(sender As Object, e As EventArgs) Handles btnPrintBack.Click
-        ' Open the PrintDialog to allow the user to select a printer
-        Dim pd As New PrintDialog()
-        If pd.ShowDialog() = DialogResult.OK Then
-            ' User selected a printer, proceed with printing
-            PrintID(panelBackID, pd.PrinterSettings)
-        End If
-
-        'PrintID(panelBackID)
-    End Sub
-
-    Private Sub btnPrintFront_Click(sender As Object, e As EventArgs) Handles btnPrintFront.Click
-
-
-        ' Open the PrintDialog to allow the user to select a printer
-        Dim pd As New PrintDialog()
-        If pd.ShowDialog() = DialogResult.OK Then
-            ' User selected a printer, proceed with printing
-            PrintID(panelFrontID, pd.PrinterSettings)
-        End If
-
-    End Sub
-
-    Public Sub PrintID(panel As Panel, printerSettings As PrinterSettings)
-        Try
-            ' Desired physical dimensions in inches
-            Dim desiredWidthInches As Double = 2.14
-            Dim desiredHeightInches As Double = 3.376
-
-            ' Create a bitmap with the dimensions of the panel
-            Using bitmap As New Bitmap(panel.ClientSize.Width, panel.ClientSize.Height)
-                ' Create a graphics object from the bitmap
-                Using grp As Graphics = Graphics.FromImage(bitmap)
-                    ' Clear the graphics with a white background
-                    grp.Clear(Color.White)
-
-                    ' Draw the panel content onto the bitmap
-                    panel.DrawToBitmap(bitmap, panel.ClientRectangle)
-
-                    ' Assign the bitmap to the class-level variable
-                    Me.bitmap = bitmap
-
-                    ' Debug output
-                    Debug.WriteLine("Panel Width: " & panel.ClientSize.Width & " pixels")
-                    Debug.WriteLine("Panel Height: " & panel.ClientSize.Height & " pixels")
-                    Debug.WriteLine("Desired Width: " & desiredWidthInches & " inches")
-                    Debug.WriteLine("Desired Height: " & desiredHeightInches & " inches")
-
-                    ' Set up the print preview
-                    ppd.Document = PrintDocument1
-                    PrintDocument1.PrinterSettings = printerSettings
-                    ppd.PrintPreviewControl.Zoom = 1.0
-                    ppd.ShowDialog()
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
-        End Try
-    End Sub
-
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        If bitmap IsNot Nothing Then
+        Try
             Dim g As Graphics = e.Graphics
             g.PageUnit = GraphicsUnit.Inch
 
             ' Draw the image at the correct size in inches
-            g.DrawImage(bitmap, 0, 0, 2.14F, 3.376F)
-        Else
-            MessageBox.Show("Error: Bitmap object is null.")
-        End If
+            If currentPage = 1 Then
+                If bitmapFront IsNot Nothing Then
+                    g.DrawImage(bitmapFront, 0, 0, 2.14F, 3.376F)
+                Else
+                    MessageBox.Show("Error: Front Bitmap object is null.")
+                End If
+            ElseIf currentPage = 2 Then
+                If bitmapBack IsNot Nothing Then
+                    g.DrawImage(bitmapBack, 0, 0, 2.14F, 3.376F)
+                Else
+                    MessageBox.Show("Error: Back Bitmap object is null.")
+                End If
+            End If
+
+            ' Increment the current page number
+            currentPage += 1
+
+            ' Check if there are more pages to print
+            If currentPage <= TotalPages Then
+                e.HasMorePages = True
+            Else
+                e.HasMorePages = False
+                currentPage = 1 ' Reset current page for the next print job
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error printing: " & ex.Message)
+        End Try
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
@@ -190,6 +148,68 @@ Public Class Print_ID_Options
 
     Private Sub Print_ID_Options_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         RaiseEvent FormClosedEvent(Me, EventArgs.Empty)
+    End Sub
+
+    Private Sub btnPrintBoth_Click(sender As Object, e As EventArgs) Handles btnPrintBoth.Click
+        ' Calculate the total pages to print
+        TotalPages = 2 ' Assuming you are printing both front and back pages
+
+        currentPage = 1
+
+        ' Open the PrintDialog to allow the user to select a printer
+        Dim pd As New PrintDialog()
+        If pd.ShowDialog() = DialogResult.OK Then
+            ' User selected a printer, proceed with printing
+            PrintID(panelFrontID, panelBackID, pd.PrinterSettings)
+            'PrintDocument1.Print()
+        End If
+    End Sub
+
+
+    Public Sub PrintID(frontPanel As Panel, backPanel As Panel, printerSettings As PrinterSettings)
+        Try
+            ' Desired physical dimensions in inches
+            Dim desiredWidthInches As Double = 2.14
+            Dim desiredHeightInches As Double = 3.376
+
+            ' Create bitmaps with the dimensions of the panels
+            Dim frontBitmap As New Bitmap(frontPanel.ClientSize.Width, frontPanel.ClientSize.Height)
+            Dim backBitmap As New Bitmap(backPanel.ClientSize.Width, backPanel.ClientSize.Height)
+
+            ' Create graphics objects from the bitmaps
+            Using frontGrp As Graphics = Graphics.FromImage(frontBitmap)
+                Using backGrp As Graphics = Graphics.FromImage(backBitmap)
+                    ' Clear the graphics with a white background
+                    frontGrp.Clear(Color.White)
+                    backGrp.Clear(Color.White)
+
+                    ' Draw the panel content onto the bitmaps
+                    frontPanel.DrawToBitmap(frontBitmap, frontPanel.ClientRectangle)
+                    backPanel.DrawToBitmap(backBitmap, backPanel.ClientRectangle)
+                End Using
+            End Using
+
+            ' Assign the bitmaps to class-level variables
+            Me.bitmapFront = frontBitmap
+            Me.bitmapBack = backBitmap
+
+            ' Debug output
+            Debug.WriteLine("Front Panel Width: " & frontPanel.ClientSize.Width & " pixels")
+            Debug.WriteLine("Front Panel Height: " & frontPanel.ClientSize.Height & " pixels")
+            Debug.WriteLine("Back Panel Width: " & backPanel.ClientSize.Width & " pixels")
+            Debug.WriteLine("Back Panel Height: " & backPanel.ClientSize.Height & " pixels")
+            Debug.WriteLine("Desired Width: " & desiredWidthInches & " inches")
+            Debug.WriteLine("Desired Height: " & desiredHeightInches & " inches")
+
+            ' Set up the print preview
+            ppd.Document = PrintDocument1
+            PrintDocument1.PrinterSettings = printerSettings
+            ppd.PrintPreviewControl.Zoom = 1.0
+            ppd.ShowDialog()
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
     End Sub
 
 

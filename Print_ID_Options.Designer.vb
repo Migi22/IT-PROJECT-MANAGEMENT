@@ -37,6 +37,7 @@ Partial Class Print_ID_Options
         Me.lblFMname = New System.Windows.Forms.Label()
         Me.picFrontIDFormat = New System.Windows.Forms.PictureBox()
         Me.panelBackID = New System.Windows.Forms.Panel()
+        Me.lblLabelEmergency = New System.Windows.Forms.Label()
         Me.picStudentSignature = New System.Windows.Forms.PictureBox()
         Me.picSchoolLogo = New System.Windows.Forms.PictureBox()
         Me.lblFirstSem = New System.Windows.Forms.Label()
@@ -50,6 +51,7 @@ Partial Class Print_ID_Options
         Me.picBackIDFormat = New System.Windows.Forms.PictureBox()
         Me.btnDone = New System.Windows.Forms.Button()
         Me.btnPrintBoth = New System.Windows.Forms.Button()
+        Me.lblValidFor = New System.Windows.Forms.Label()
         Me.panelFrontID.SuspendLayout()
         CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -211,6 +213,8 @@ Partial Class Print_ID_Options
         '
         'panelBackID
         '
+        Me.panelBackID.Controls.Add(Me.lblValidFor)
+        Me.panelBackID.Controls.Add(Me.lblLabelEmergency)
         Me.panelBackID.Controls.Add(Me.picStudentSignature)
         Me.panelBackID.Controls.Add(Me.picSchoolLogo)
         Me.panelBackID.Controls.Add(Me.lblFirstSem)
@@ -226,6 +230,19 @@ Partial Class Print_ID_Options
         Me.panelBackID.Name = "panelBackID"
         Me.panelBackID.Size = New System.Drawing.Size(330, 532)
         Me.panelBackID.TabIndex = 37
+        '
+        'lblLabelEmergency
+        '
+        Me.lblLabelEmergency.AutoSize = True
+        Me.lblLabelEmergency.BackColor = System.Drawing.Color.Black
+        Me.lblLabelEmergency.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLabelEmergency.ForeColor = System.Drawing.Color.White
+        Me.lblLabelEmergency.Location = New System.Drawing.Point(14, 132)
+        Me.lblLabelEmergency.Name = "lblLabelEmergency"
+        Me.lblLabelEmergency.Size = New System.Drawing.Size(301, 18)
+        Me.lblLabelEmergency.TabIndex = 22
+        Me.lblLabelEmergency.Text = "IN CASE OF EMERGENCY CONTACT:"
+        Me.lblLabelEmergency.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'picStudentSignature
         '
@@ -366,6 +383,19 @@ Partial Class Print_ID_Options
         Me.btnPrintBoth.Text = "Print Both"
         Me.btnPrintBoth.UseVisualStyleBackColor = True
         '
+        'lblValidFor
+        '
+        Me.lblValidFor.AutoSize = True
+        Me.lblValidFor.BackColor = System.Drawing.Color.Black
+        Me.lblValidFor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValidFor.ForeColor = System.Drawing.Color.White
+        Me.lblValidFor.Location = New System.Drawing.Point(36, 286)
+        Me.lblValidFor.Name = "lblValidFor"
+        Me.lblValidFor.Size = New System.Drawing.Size(247, 18)
+        Me.lblValidFor.TabIndex = 23
+        Me.lblValidFor.Text = "V  A L I D    O  N  L  Y    F  O  R" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblValidFor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Print_ID_Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -422,4 +452,6 @@ Partial Class Print_ID_Options
     Friend WithEvents picBackIDFormat As PictureBox
     Friend WithEvents btnDone As Button
     Friend WithEvents btnPrintBoth As Button
+    Friend WithEvents lblLabelEmergency As Label
+    Friend WithEvents lblValidFor As Label
 End Class
