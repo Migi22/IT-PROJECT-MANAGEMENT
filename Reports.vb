@@ -253,98 +253,102 @@ Public Class Reports
         Dim Claret As Color = Color.FromArgb(137, 49, 69) ' RGB values for #892145
         Dim Sunglow As Color = Color.FromArgb(255, 197, 59) ' RGB values for #FFC53B
 
+        Try
+            ' Print the header text for a new page
+            ' use a grey bg just like the control
+            If newpage Then
+                row = DataGridViewReports.Rows(mRow)
+                x = e.MarginBounds.Left
+                For Each cell As DataGridViewCell In row.Cells
+                    ' since we are printing the control's view
+                    ' skip individual columns
+                    If cell.Visible Then
+                        rc = New Rectangle(x, y, cell.Size.Width - 15, cell.Size.Height)
 
-        ' Print the header text for a new page
-        ' use a grey bg just like the control
-        If newpage Then
-            row = DataGridViewReports.Rows(mRow)
-            x = e.MarginBounds.Left
-            For Each cell As DataGridViewCell In row.Cells
-                ' since we are printing the control's view
-                ' skip individual columns
-                If cell.Visible Then
-                    rc = New Rectangle(x, y, cell.Size.Width - 15, cell.Size.Height)
 
+                        e.Graphics.FillRectangle(New SolidBrush(Claret), rc)
+                        e.Graphics.DrawRectangle(Pens.Black, rc)
 
-                    e.Graphics.FillRectangle(New SolidBrush(Claret), rc)
-                    e.Graphics.DrawRectangle(Pens.Black, rc)
+                        ' reused in the data pront - should be a function
+                        Select Case DataGridViewReports.Columns(cell.ColumnIndex).DefaultCellStyle.Alignment
+                            Case DataGridViewContentAlignment.BottomRight,
+                                 DataGridViewContentAlignment.MiddleRight
+                                fmt.Alignment = StringAlignment.Far
+                                rc.Offset(-1, 0)
+                            Case DataGridViewContentAlignment.BottomCenter,
+                                 DataGridViewContentAlignment.MiddleCenter
+                                fmt.Alignment = StringAlignment.Center
+                            Case Else
+                                fmt.Alignment = StringAlignment.Near
+                                rc.Offset(2, 0)
+                        End Select
 
-                    ' reused in the data pront - should be a function
-                    Select Case DataGridViewReports.Columns(cell.ColumnIndex).DefaultCellStyle.Alignment
-                        Case DataGridViewContentAlignment.BottomRight,
-                             DataGridViewContentAlignment.MiddleRight
-                            fmt.Alignment = StringAlignment.Far
-                            rc.Offset(-1, 0)
-                        Case DataGridViewContentAlignment.BottomCenter,
-                             DataGridViewContentAlignment.MiddleCenter
-                            fmt.Alignment = StringAlignment.Center
-                        Case Else
-                            fmt.Alignment = StringAlignment.Near
-                            rc.Offset(2, 0)
-                    End Select
-
-                    e.Graphics.DrawString(DataGridViewReports.Columns(cell.ColumnIndex).HeaderText,
-                                          DataGridViewReports.Font, New SolidBrush(Sunglow), rc, fmt)
-                    x += rc.Width
-                    h = Math.Max(h, rc.Height)
-                End If
-            Next
-            y += h
-        End If
-
-        newpage = False
-
-        'now print the data for each row
-        Dim thisNDX As Int32
-        For thisNDX = mRow To DataGridViewReports.RowCount - 1
-            ' no need to try to print the new row
-            If DataGridViewReports.Rows(thisNDX).IsNewRow Then Exit For
-
-            row = DataGridViewReports.Rows(thisNDX)
-            x = e.MarginBounds.Left
-            h = 0
-
-            ' reset X for data
-            x = e.MarginBounds.Left
-
-            'print the data
-            For Each cell As DataGridViewCell In row.Cells
-                If cell.Visible Then
-                    rc = New Rectangle(x, y, cell.Size.Width - 15, cell.Size.Height)
-
-                    e.Graphics.DrawRectangle(Pens.Black, rc)
-
-                    Select Case DataGridViewReports.Columns(cell.ColumnIndex).DefaultCellStyle.Alignment
-                        Case DataGridViewContentAlignment.BottomRight,
-                            DataGridViewContentAlignment.MiddleRight
-                            fmt.Alignment = StringAlignment.Far
-                            rc.Offset(-1, 0)
-                        Case DataGridViewContentAlignment.BottomCenter,
-                             DataGridViewContentAlignment.MiddleCenter
-                            fmt.Alignment = StringAlignment.Center
-                        Case Else
-                            fmt.Alignment = StringAlignment.Near
-                            rc.Offset(2, 0)
-                    End Select
-
-                    e.Graphics.DrawString(cell.FormattedValue.ToString(),
-                                          DataGridViewReports.Font, Brushes.Black, rc, fmt)
-                    x += rc.Width
-                    h = Math.Max(h, rc.Height)
-                End If
-            Next
-            y += h
-            ' next row to print
-            mRow = thisNDX + 1
-
-            If y + h > e.MarginBounds.Bottom Then
-                e.HasMorePages = True
-                ' mRow -= 1 causes last row to rePrint on Next page
-                newpage = True
-                Return
+                        e.Graphics.DrawString(DataGridViewReports.Columns(cell.ColumnIndex).HeaderText,
+                                              DataGridViewReports.Font, New SolidBrush(Sunglow), rc, fmt)
+                        x += rc.Width
+                        h = Math.Max(h, rc.Height)
+                    End If
+                Next
+                y += h
             End If
 
-        Next
+            newpage = False
+
+            'now print the data for each row
+            Dim thisNDX As Int32
+            For thisNDX = mRow To DataGridViewReports.RowCount - 1
+                ' no need to try to print the new row
+                If DataGridViewReports.Rows(thisNDX).IsNewRow Then Exit For
+
+                row = DataGridViewReports.Rows(thisNDX)
+                x = e.MarginBounds.Left
+                h = 0
+
+                ' reset X for data
+                x = e.MarginBounds.Left
+
+                'print the data
+                For Each cell As DataGridViewCell In row.Cells
+                    If cell.Visible Then
+                        rc = New Rectangle(x, y, cell.Size.Width - 15, cell.Size.Height)
+
+                        e.Graphics.DrawRectangle(Pens.Black, rc)
+
+                        Select Case DataGridViewReports.Columns(cell.ColumnIndex).DefaultCellStyle.Alignment
+                            Case DataGridViewContentAlignment.BottomRight,
+                                DataGridViewContentAlignment.MiddleRight
+                                fmt.Alignment = StringAlignment.Far
+                                rc.Offset(-1, 0)
+                            Case DataGridViewContentAlignment.BottomCenter,
+                                 DataGridViewContentAlignment.MiddleCenter
+                                fmt.Alignment = StringAlignment.Center
+                            Case Else
+                                fmt.Alignment = StringAlignment.Near
+                                rc.Offset(2, 0)
+                        End Select
+
+                        e.Graphics.DrawString(cell.FormattedValue.ToString(),
+                                              DataGridViewReports.Font, Brushes.Black, rc, fmt)
+                        x += rc.Width
+                        h = Math.Max(h, rc.Height)
+                    End If
+                Next
+                y += h
+                ' next row to print
+                mRow = thisNDX + 1
+
+                If y + h > e.MarginBounds.Bottom Then
+                    e.HasMorePages = True
+                    ' mRow -= 1 causes last row to rePrint on Next page
+                    newpage = True
+                    Return
+                End If
+
+            Next
+        Catch ex As Exception
+            MessageBox.Show("Error on printing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
 
     End Sub
 

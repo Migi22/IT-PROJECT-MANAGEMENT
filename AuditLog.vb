@@ -143,7 +143,7 @@ Public Class AuditLog
                 ' since we are printing the control's view
                 ' skip individual columns
                 If cell.Visible Then
-                    rc = New Rectangle(x, y, cell.Size.Width, cell.Size.Height)
+                    rc = New Rectangle(x, y, cell.Size.Width - 20, cell.Size.Height - 20)
 
 
                     e.Graphics.FillRectangle(New SolidBrush(Claret), rc)
@@ -190,7 +190,7 @@ Public Class AuditLog
             'print the data
             For Each cell As DataGridViewCell In row.Cells
                 If cell.Visible Then
-                    rc = New Rectangle(x, y, cell.Size.Width, cell.Size.Height)
+                    rc = New Rectangle(x, y, cell.Size.Width - 20, cell.Size.Height - 20)
 
                     e.Graphics.DrawRectangle(Pens.Black, rc)
 

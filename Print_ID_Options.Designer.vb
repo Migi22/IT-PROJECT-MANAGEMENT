@@ -23,8 +23,6 @@ Partial Class Print_ID_Options
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblPrint_Option = New System.Windows.Forms.Label()
-        Me.btnPrintFront = New System.Windows.Forms.Button()
-        Me.btnPrintBack = New System.Windows.Forms.Button()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.panelFrontID = New System.Windows.Forms.Panel()
         Me.picBarcode = New System.Windows.Forms.PictureBox()
@@ -37,6 +35,7 @@ Partial Class Print_ID_Options
         Me.lblFMname = New System.Windows.Forms.Label()
         Me.picFrontIDFormat = New System.Windows.Forms.PictureBox()
         Me.panelBackID = New System.Windows.Forms.Panel()
+        Me.lblValidFor = New System.Windows.Forms.Label()
         Me.lblLabelEmergency = New System.Windows.Forms.Label()
         Me.picStudentSignature = New System.Windows.Forms.PictureBox()
         Me.picSchoolLogo = New System.Windows.Forms.PictureBox()
@@ -51,7 +50,6 @@ Partial Class Print_ID_Options
         Me.picBackIDFormat = New System.Windows.Forms.PictureBox()
         Me.btnDone = New System.Windows.Forms.Button()
         Me.btnPrintBoth = New System.Windows.Forms.Button()
-        Me.lblValidFor = New System.Windows.Forms.Label()
         Me.panelFrontID.SuspendLayout()
         CType(Me.picBarcode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picStudentPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,24 +72,6 @@ Partial Class Print_ID_Options
         Me.lblPrint_Option.TabIndex = 0
         Me.lblPrint_Option.Text = "PRINT ID OPTION"
         Me.lblPrint_Option.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnPrintFront
-        '
-        Me.btnPrintFront.Location = New System.Drawing.Point(26, 638)
-        Me.btnPrintFront.Name = "btnPrintFront"
-        Me.btnPrintFront.Size = New System.Drawing.Size(114, 51)
-        Me.btnPrintFront.TabIndex = 3
-        Me.btnPrintFront.Text = "Print Front ID"
-        Me.btnPrintFront.UseVisualStyleBackColor = True
-        '
-        'btnPrintBack
-        '
-        Me.btnPrintBack.Location = New System.Drawing.Point(146, 638)
-        Me.btnPrintBack.Name = "btnPrintBack"
-        Me.btnPrintBack.Size = New System.Drawing.Size(114, 51)
-        Me.btnPrintBack.TabIndex = 4
-        Me.btnPrintBack.Text = "Print Back ID"
-        Me.btnPrintBack.UseVisualStyleBackColor = True
         '
         'PrintDocument1
         '
@@ -231,6 +211,19 @@ Partial Class Print_ID_Options
         Me.panelBackID.Size = New System.Drawing.Size(330, 532)
         Me.panelBackID.TabIndex = 37
         '
+        'lblValidFor
+        '
+        Me.lblValidFor.AutoSize = True
+        Me.lblValidFor.BackColor = System.Drawing.Color.Black
+        Me.lblValidFor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValidFor.ForeColor = System.Drawing.Color.White
+        Me.lblValidFor.Location = New System.Drawing.Point(36, 286)
+        Me.lblValidFor.Name = "lblValidFor"
+        Me.lblValidFor.Size = New System.Drawing.Size(247, 18)
+        Me.lblValidFor.TabIndex = 23
+        Me.lblValidFor.Text = "V  A L I D    O  N  L  Y    F  O  R" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblValidFor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'lblLabelEmergency
         '
         Me.lblLabelEmergency.AutoSize = True
@@ -367,7 +360,7 @@ Partial Class Print_ID_Options
         '
         'btnDone
         '
-        Me.btnDone.Location = New System.Drawing.Point(640, 638)
+        Me.btnDone.Location = New System.Drawing.Point(424, 638)
         Me.btnDone.Name = "btnDone"
         Me.btnDone.Size = New System.Drawing.Size(114, 51)
         Me.btnDone.TabIndex = 38
@@ -376,25 +369,12 @@ Partial Class Print_ID_Options
         '
         'btnPrintBoth
         '
-        Me.btnPrintBoth.Location = New System.Drawing.Point(424, 638)
+        Me.btnPrintBoth.Location = New System.Drawing.Point(40, 638)
         Me.btnPrintBoth.Name = "btnPrintBoth"
         Me.btnPrintBoth.Size = New System.Drawing.Size(114, 51)
         Me.btnPrintBoth.TabIndex = 39
         Me.btnPrintBoth.Text = "Print Both"
         Me.btnPrintBoth.UseVisualStyleBackColor = True
-        '
-        'lblValidFor
-        '
-        Me.lblValidFor.AutoSize = True
-        Me.lblValidFor.BackColor = System.Drawing.Color.Black
-        Me.lblValidFor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblValidFor.ForeColor = System.Drawing.Color.White
-        Me.lblValidFor.Location = New System.Drawing.Point(36, 286)
-        Me.lblValidFor.Name = "lblValidFor"
-        Me.lblValidFor.Size = New System.Drawing.Size(247, 18)
-        Me.lblValidFor.TabIndex = 23
-        Me.lblValidFor.Text = "V  A L I D    O  N  L  Y    F  O  R" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.lblValidFor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Print_ID_Options
         '
@@ -405,8 +385,6 @@ Partial Class Print_ID_Options
         Me.Controls.Add(Me.btnDone)
         Me.Controls.Add(Me.panelBackID)
         Me.Controls.Add(Me.panelFrontID)
-        Me.Controls.Add(Me.btnPrintBack)
-        Me.Controls.Add(Me.btnPrintFront)
         Me.Controls.Add(Me.lblPrint_Option)
         Me.Name = "Print_ID_Options"
         Me.Text = "Print_ID_Options"
@@ -425,8 +403,6 @@ Partial Class Print_ID_Options
     End Sub
 
     Friend WithEvents lblPrint_Option As Label
-    Friend WithEvents btnPrintFront As Button
-    Friend WithEvents btnPrintBack As Button
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents panelFrontID As Panel
     Friend WithEvents picBarcode As PictureBox
